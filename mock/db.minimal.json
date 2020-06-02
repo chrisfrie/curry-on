@@ -1,0 +1,123 @@
+{
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Draw your own Currywurst",
+      "details": "Get creative and draw the perfect (or maybe even artistic) Currywurst!",
+      "points": 9,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 2,
+      "title": "Places where you shouldn't eat Currywurst",
+      "details": "Trains, elevators and other narrow spaces are the ideal places to enchant everyone in the area with the wonderful smell of Currywurst. Show us the place where you and your Currywurst got many nasty looks.",
+      "points": 6,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 3,
+      "title": "Le grand Chef",
+      "details": "Create the most awesome Currywurst there is. Post your picture and soon the biggest Wurstlovers will line up at your kitchen.",
+      "points": 12,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 4,
+      "title": "What Currywurst experience could trigger this emotion?",
+      "details": "Show us your best picture when you had an shocking Currywurst-Experience.",
+      "attachment": "file.jpg",
+      "points": 6,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 5,
+      "title": "No Currywurst - just Pommes...",
+      "details": "No emoji can desbribe how disappointed you were in that place where you thought you can get a lecker Currywurst, but they only have pommes in the menu! A picture of your disappointed face is better than all emojis together, please upload one to complete the challenge.",
+      "points": 6,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 6,
+      "title": "Eating a Currywurst is exciting!",
+      "details": "Can you make people cheer for you eating a Currywurst? Show us!",
+      "points": 6,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 7,
+      "title": "Blindfolded Currywurst",
+      "details": "Without the other knowing, Your friend orders for you, and you order for your friend, share a picture of what you got and whether you're happy with it!",
+      "points": 9,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 8,
+      "title": "Hungry as a hunter?",
+      "details": "Order and eat the whole menu! To complete the challenge upload a picture of you after eating the whole menu.",
+      "points": 12,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 9,
+      "title": "What is the best curry moustache?",
+      "details": "Portrait this beautiful moustache here.",
+      "points": 9,
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    },
+    {
+      "id": 10,
+      "title": "Christmas Currywurst",
+      "details": "Show us your Christmas themed Currywurst!",
+      "points": 9,
+      "startingDate": "01/12/2020",
+      "endDate": "26/12/2020",
+      "creatorId": 1,
+      "picturesIds": [1, 3, 5]
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Erikas Currywurst",
+      "location": "Karl-Heine-Straße 76"
+    },
+    {
+      "id": 2,
+      "name": "Curry & Co",
+      "location": "Wherever"
+    },
+    {
+      "id": 3,
+      "name": "Curry36",
+      "location": "Mehringdamm 36"
+    }
+  ],
+  "pictures": [
+    {
+      "id": 1,
+      "details": "This was the most exciting Currywurst-Day in a long time!",
+      "date": "04/24/2020 15:00",
+      "pictureLocation": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Gabi",
+      "email": "mail@gabi.com",
+      "points": 23,
+      "checkIns": [3],
+      "finishedChallenges": [5, 8, 1],
+      "uploadedPictures": [1]
+    }
+  ]
+}
