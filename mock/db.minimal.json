@@ -116,6 +116,7 @@
       "email": "mail@gabi.com",
       "points": 23,
       "checkIns": [3],
+      "bookmarkedChallenges": [2, 4],
       "finishedChallenges": [5, 8, 1],
       "uploadedPictures": [1]
     }
