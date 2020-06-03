@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>About</h1>
-    <div>
-      <img src="public/butler.jpg" alt="Butler" />
+    <div class="about-card">
+      <img src="../../public/butler.jpg" alt="Butler" />
       <p>
         Manfred, a valuable butler from the 50s, worked all his life serving
         oysters in the hippiest restaurant in Berlin.
@@ -22,4 +22,13 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.about-card {
+  background-color: 545454;
+  display: grid;
+  grid-template-columns: 100px 200px;
+  grid-template-rows: 100px 100px;
+  justify-content: space-around;
+}
+
+</style>
