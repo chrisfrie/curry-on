@@ -12,12 +12,13 @@
       </div>
       <p>
         However, he always dreamed of currywurst. He loved currywurst and
-        prepare it and ate it in any version. <br> <br>
-        Nowadays his ghost always
-        challenges currywurst lovers to be served by him, but is not only eat the
-        wurst and enjoy the curry... is something else. <br> <br>
-        Help Manfred solving currywurst challenges and make
-        his dream come true. 
+        prepare it and ate it in any version. <br />
+        <br />
+        Nowadays his ghost always challenges currywurst lovers to be served by
+        him, but is not only eat the wurst and enjoy the curry... is something
+        else. <br />
+        <br />
+        Help Manfred solving currywurst challenges and make his dream come true.
       </p>
     </div>
   </div>
@@ -29,12 +30,12 @@ export default {};
 
 <style scoped>
 .about-card {
-  background-color: #545454;
-  color: #ebf1f0;
-  border-radius: 20px;
+  color: var(--dark-text);
   box-sizing: border-box;
   padding: 10px 20px;
   text-align: center;
+  max-width: 35rem;
+  margin: 0 auto;
 }
 
 .about-card-intro {

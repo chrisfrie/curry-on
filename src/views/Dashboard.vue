@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Dashboard</p>
+    <h1>Curry On!</h1>
     <ChallengeCard
       v-for="challenge in challenges"
       :key="challenge.id"
@@ -28,8 +28,4 @@ export default {
 };
 </script>
 
-<style scoped>
-p {
-  font-size: 24px;
-}
-</style>
+<style scoped></style>
