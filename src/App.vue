@@ -6,12 +6,15 @@
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Karla", sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--dark-text);
+  background-color: var(--light-background);
 }
 
 :root {
@@ -24,7 +27,7 @@
 }
 
 #nav {
-  background-color: #ebf1f0;
+  background-color: var(--light-background);
   padding: 30px;
   border: 2px solid;
 }

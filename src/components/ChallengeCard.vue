@@ -4,7 +4,7 @@
       <div class="challenge-card-grid">
         <div class="challenge-card">
           <img :src="challenge.picturesIds[0]" />
-          <h2>{{ challenge.title }}</h2>
+          <p>{{ challenge.title }}</p>
           <div class="pommes-points">
             <p>{{ challenge.points }}</p>
           </div>
@@ -29,13 +29,13 @@ export default {
 .challenge-card {
   width: 400px;
   height: 150px;
-  display: grid;
-  grid-template-rows: 25% 25% 25% 25%;
-  grid-template-columns: 24% 19% 19% 27% 10%;
+  display: flex;
   color: var(--light-text);
   background-color: var(--dark-background);
   border-radius: 20px;
-  margin-left: 3rem;
+  margin-left: 2rem;
+  border: 4px solid #4e4e5f;
+  box-sizing: border-box;
 }
 
 .challenge-card img {
@@ -44,31 +44,30 @@ export default {
   object-fit: cover;
   border: rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  border: 1px solid var(--component-color);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-left: -2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  align-self: center;
 }
 
-.challenge-card h2 {
-  grid-column: 2 / 5;
-  grid-row-start: 1;
-  display: flex;
-  align-items: center;
+.challenge-card p {
+  width: 60%;
   justify-content: center;
+  align-self: center;
 }
 
 .pommes-points {
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
   color: var(--dark-text);
-  background-color: #f0c552;
+  background-color: var(--primary-color);
   border-radius: 50%;
-  grid-column-start: 5;
-  grid-row-start: 4;
+  align-self: flex-end;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0.25rem;
 }
 </style>
