@@ -6,12 +6,14 @@
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--dark-text);
+  background-color: var(--light-background);
 }
 
 :root {
@@ -24,7 +26,7 @@
 }
 
 #nav {
-  background-color: #ebf1f0;
+  background-color: var(--light-background);
   padding: 30px;
   border: 2px solid;
 }
