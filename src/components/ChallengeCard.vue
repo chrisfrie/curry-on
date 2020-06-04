@@ -3,9 +3,9 @@
     <div class="challenge-card-grid">
       <div class="challenge-card">
         <img :src="challenge.picturesIds[0]" />
-        <body>
+        <p>
           {{ challenge.title }}
-        </body>
+        </p>
         <div class="pommes-points">
           <p>{{ challenge.points }}</p>
         </div>
@@ -51,7 +51,7 @@ export default {
   align-self: center;
 }
 
-.challenge-card body {
+.challenge-card p {
   width: 60%;
   justify-content: center;
   align-self: center;
