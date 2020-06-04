@@ -16,7 +16,7 @@
         Nowadays his ghost always
         challenges currywurst lovers to be served by him, but is not only eat the
         wurst and enjoy the curry... is something else. <br> <br>
-        Help Manfred and make
+        Help Manfred solving currywurst challenges and make
         his dream come true. 
       </p>
     </div>
