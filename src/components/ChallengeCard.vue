@@ -30,11 +30,10 @@ export default {
   width: 400px;
   height: 150px;
   display: flex;
-  color: var(--light-text);
-  background-color: var(--dark-background);
-  border-radius: 20px;
+  /* color: var(--light-text);
+  background-color: var(--dark-background); */
   margin-left: 2rem;
-  border: 4px solid #4e4e5f;
+  border: 1px solid #9c9b96;
   box-sizing: border-box;
 }
 
@@ -42,26 +41,26 @@ export default {
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border: rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  border: 1px solid var(--component-color);
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-left: -2rem;
   align-self: center;
 }
 
 .challenge-card p {
-  width: 60%;
+  padding: 1rem;
+  flex-grow: 1;
   justify-content: center;
   align-self: center;
 }
 
+.challenge-card a {
+  color: var(--light-text);
+}
+
 .pommes-points {
-  min-width: 30px;
+  width: 30px;
   height: 30px;
-  box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
-  color: var(--dark-text);
+  color: white;
   background-color: var(--primary-color);
   border-radius: 50%;
   align-self: flex-end;
@@ -69,5 +68,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 0.25rem;
+  font-weight: 700;
+  font-size: 12px;
 }
 </style>
