@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <div class="challenge-card-grid">
-      <div class="challenge-card">
-        <img :src="challenge.picturesIds[0]" />
-        <p>
-          {{ challenge.title }}
-        </p>
-        <div class="pommes-points">
-          <p>{{ challenge.points }}</p>
+  <router-link :to="{ name: 'show-challenge', params: { id: challenge.id } }">
+    <div>
+      <div class="challenge-card-grid">
+        <div class="challenge-card">
+          <img :src="challenge.picturesIds[0]" />
+          <p>{{ challenge.title }}</p>
+          <div class="pommes-points">
+            <p>{{ challenge.points }}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
