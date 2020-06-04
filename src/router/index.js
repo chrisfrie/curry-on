@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
+import About from "../views/About.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,11 @@ const routes = [
     path: "/",
     name: "dashboard",
     component: Dashboard
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About
   },
   {
     path: "/challenges/:id",
