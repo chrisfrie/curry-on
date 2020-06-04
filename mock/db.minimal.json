@@ -6,7 +6,11 @@
       "details": "Get creative and draw the perfect (or maybe even artistic) Currywurst!",
       "points": 9,
       "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      "picturesIds": [
+        "https://scontent-frt3-2.xx.fbcdn.net/v/t1.0-9/s960x960/67459404_2429206074033339_3827985689568346112_o.jpg?_nc_cat=101&_nc_sid=2d5d41&_nc_eui2=AeF97wbmIqrURX0lQAsekgcksA5y1nvg6-iwDnLWe-Dr6KihLHU7AUUY16aBSfjO-Uc&_nc_ohc=qtGNZh7NzHoAX9uWMwp&_nc_ht=scontent-frt3-2.xx&_nc_tp=7&oh=4129fc3d22bef4bd1afef2331678b26d&oe=5EFC8C48",
+        3,
+        5
+      ]
     },
     {
       "id": 2,
@@ -14,7 +18,7 @@
       "details": "Trains, elevators and other narrow spaces are the ideal places to enchant everyone in the area with the wonderful smell of Currywurst. Show us the place where you and your Currywurst got many nasty looks.",
       "points": 6,
       "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      "picturesIds": ["https://i.ibb.co/wLRwNws/1384534801000.jpg", 3, 5]
     },
     {
       "id": 3,
@@ -22,7 +26,7 @@
       "details": "Create the most awesome Currywurst there is. Post your picture and soon the biggest Wurstlovers will line up at your kitchen.",
       "points": 12,
       "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      "picturesIds": ["https://i.ibb.co/mB3vjS7/maxresdefault.jpg", 3, 5]
     },
     {
       "id": 4,
@@ -31,7 +35,11 @@
       "attachment": "file.jpg",
       "points": 6,
       "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      "picturesIds": [
+        "https://i.ibb.co/wz45Hcg/claudio-schwarz-purzlbaum-PJr-RYKd-Awl-Q-unsplash.jpg",
+        3,
+        5
+      ]
     },
     {
       "id": 5,
@@ -39,7 +47,11 @@
       "details": "No emoji can desbribe how disappointed you were in that place where you thought you can get a lecker Currywurst, but they only have pommes in the menu! A picture of your disappointed face is better than all emojis together, please upload one to complete the challenge.",
       "points": 6,
       "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      "picturesIds": [
+        "https://i.ibb.co/CsfbW3y/photo-1541592106381-b31e9677c0e5.jpg",
+        3,
+        5
+      ]
     },
     {
       "id": 6,
@@ -47,7 +59,11 @@
       "details": "Can you make people cheer for you eating a Currywurst? Show us!",
       "points": 6,
       "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      "picturesIds": [
+        "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
+        3,
+        5
+      ]
     },
     {
       "id": 7,
@@ -116,6 +132,7 @@
       "email": "mail@gabi.com",
       "points": 23,
       "checkIns": [3],
+      "bookmarkedChallenges": [2, 4],
       "finishedChallenges": [5, 8, 1],
       "uploadedPictures": [1]
     }

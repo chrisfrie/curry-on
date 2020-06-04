@@ -9,24 +9,38 @@
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Karla", sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--dark-text);
+  background-color: var(--light-background);
+}
+
+:root {
+  --light-text: #ebf1f0;
+  --dark-text: #545454;
+  --light-background: #ebf1f0;
+  --dark-background: #4e4e5f;
+  --primary-color: #f0c552;
+  --component-color: #96979d;
 }
 
 #nav {
+  background-color: var(--light-background);
   padding: 30px;
+  border: 2px solid;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: var (--light-text);
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: var (--light-text);
 }
 </style>
