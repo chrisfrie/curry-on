@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
-import About from "../views/About.vue";
+import Intro from "../views/Intro.vue";
 
 Vue.use(VueRouter);
 
@@ -11,12 +11,12 @@ const routes = [
   {
     path: "/",
     name: "dashboard",
-    component: Dashboard
+    component: Dashboard,
   },
   {
-    path: "/about",
-    name: "about",
-    component: About
+    path: "/intro",
+    name: "intro",
+    component: Intro,
   },
   {
     path: "/challenges/:id",
@@ -30,14 +30,14 @@ const routes = [
       to.params.challenge = res.data;
       next();
     },
-    props: true
-  }
+    props: true,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
