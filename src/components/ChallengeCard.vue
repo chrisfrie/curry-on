@@ -35,18 +35,21 @@ export default {
   margin-left: 2rem;
   border: 1px solid #9c9b96;
   box-sizing: border-box;
+  box-shadow: -6px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .challenge-card img {
-  width: 120px;
+  width: 150px;
   height: 120px;
   object-fit: cover;
   box-sizing: border-box;
   margin-left: -2rem;
   align-self: center;
+  border: 1px solid #9c9b96;
 }
 
 .challenge-card p {
+  font-size: 1.4rem;
   padding: 1rem;
   flex-grow: 1;
   justify-content: center;
@@ -70,5 +73,10 @@ export default {
   margin: 0.25rem;
   font-weight: 700;
   font-size: 12px;
+}
+
+.pommes-points p {
+  font-size: 1rem;
+  color: var(--dark-text);
 }
 </style>
