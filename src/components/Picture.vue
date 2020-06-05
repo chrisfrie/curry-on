@@ -1,5 +1,5 @@
 <template>
-  <div class="lightbox">
+  <div class="lightbox" @click.self="closeLightbox">
     <img :src="pictureUrl" />
 
     <div class="lightbox-info">
@@ -11,13 +11,14 @@
 </template>
 
 <script>
-import { getPictures } from "@/services/challenge-service.js";
+import { getPictures, getChallenges } from "@/services/challenge-service.js";
 
 export default {
   name: "Picture",
   data() {
     return {
-      pictures: []
+      pictures: [],
+      challenges: []
     };
   },
   computed: {
@@ -32,9 +33,14 @@ export default {
         : "";
     }
   },
-  methods: {},
+  methods: {
+    closeLightbox() {
+      this.$router.push(`/challenges/${this.challenges}`);
+    }
+  },
   async created() {
     this.pictures = (await getPictures()).data;
+    this.challenges = (await getChallenges()).data;
   }
 };
 </script>
@@ -47,21 +53,21 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  display: grid;
-  grid-template-columns: 1rem 1fr auto;
-  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
 }
 .lightbox img {
   margin: auto;
   width: 100%;
-  grid-column-start: 2;
 }
 .lightbox-info {
   margin: auto 2rem auto 0;
 }
 .lightbox-info-inner {
   background-color: #ffffff;
-  display: inline-block;
   padding: 2rem;
+  min-width: 80%;
 }
 </style>

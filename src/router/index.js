@@ -23,7 +23,7 @@ const routes = [
     path: "/challenges/:id",
     name: "show-challenge",
     component: ShowChallenge,
-    async beforeEnter(to, form, next) {
+    async beforeEnter(to, from, next) {
       console.log(to.params.id);
       const res = await axios.get(
         `http://localhost:3000/challenges/${to.params.id}`
