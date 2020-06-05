@@ -4,22 +4,61 @@
       <div class="logo">
         <img src="../../public/butler.png" alt="Butler" />
       </div>
+      <!-- <div class="navigation-menu-desktop"> -->
       <div class="links">
         <router-link to="/">Challenges</router-link> |
         <router-link to="/about">About</router-link>
       </div>
-      <div class="hamburger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+      <!-- </div> -->
+      <div class="hamburger" id="expand-mobile-nav">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
       </div>
+
+      <!-- <div class="navigation-menu-mobile">
+        <button class="hamburger" @click="expandMobileNavigation"></button>
+        <ul>
+          <li><router-link to="/">Challenges</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
+        </ul>
+      </div> -->
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    expandMobileNavigation() {
+      var nav = document.querySelector("nav");
+      nav.classList.add("mobile-navigation-expanded");
+    },
+    collapseMobileNavigation() {
+      var nav = document.querySelector("nav");
+      nav.classList.remove("mobile-navigation-expanded");
+    }
+  }
+};
+
+//     var nav = document.querySelector("nav");
+
+// var expandMobileNavigation = function() {
+//   nav.classList.add("mobile-navigation-expanded");
+// };
+
+// var collapseMobileNavigation = function() {
+//   nav.classList.remove("mobile-navigation-expanded");
+// };
+
+// var expandButton = document.querySelector("#expand-mobile-navigation");
+
+// expandButton.addEventListener("click", expandMobileNavigation);
+
+// var collapseButton = document.querySelector("#collapse-mobile-navigation");
+
+// collapseButton.addEventListener("click", collapseMobileNavigation);};
 </script>
 
 <style scoped>
@@ -27,9 +66,12 @@ export default {};
   display: flex;
   height: 4rem;
   background-color: var(--light-background);
-  padding: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid #bdbcb6;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #nav a {
@@ -53,9 +95,6 @@ export default {};
 
 .links {
   padding: 1rem;
-  flex-grow: 1;
-  justify-content: center;
-  align-self: center;
 }
 
 .hamburger {
@@ -66,24 +105,22 @@ export default {};
   justify-content: center;
 }
 
-.line1 {
+.line {
   width: 38px;
   border-bottom: 3px solid #545454;
   margin-bottom: 5px;
   align-self: center;
 }
 
-.line2 {
-  width: 38px;
-  border-bottom: 3px solid #545454;
-  margin-bottom: 5px;
-  align-self: center;
+@media (max-width: 599px) {
+  .links {
+    display: none;
+  }
 }
 
-.line3 {
-  width: 38px;
-  border-bottom: 3px solid #545454;
-  margin-bottom: 5px;
-  align-self: center;
+@media (min-width: 600px) {
+  .hamburger {
+    display: none;
+  }
 }
 </style>
