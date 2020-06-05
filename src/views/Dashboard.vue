@@ -1,11 +1,13 @@
 <template>
   <div>
     <h1>Curry On!</h1>
-    <ChallengeCard
-      v-for="challenge in challenges"
-      :key="challenge.id"
-      :challenge="challenge"
-    />
+    <div v-for="(challenges, index) in chapters" :key="index" class="chapter">
+      <ChallengeCard
+        v-for="challenge in challenges"
+        :key="challenge.id"
+        :challenge="challenge"
+      />
+    </div>
   </div>
 </template>
 
@@ -24,8 +26,24 @@ export default {
   },
   async created() {
     this.challenges = (await getChallenges()).data;
+  },
+  computed: {
+    chapters() {
+      const result = [];
+      for (let chapterId = 1; chapterId <= 3; chapterId++) {
+        const chapter = this.challenges.filter(
+          challenge => challenge.chapterId == chapterId
+        );
+        result.push(chapter);
+      }
+      return result;
+    }
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chapter {
+  margin-bottom: 5rem;
+}
+</style>

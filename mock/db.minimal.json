@@ -10,7 +10,8 @@
         "https://scontent-frt3-2.xx.fbcdn.net/v/t1.0-9/s960x960/67459404_2429206074033339_3827985689568346112_o.jpg?_nc_cat=101&_nc_sid=2d5d41&_nc_eui2=AeF97wbmIqrURX0lQAsekgcksA5y1nvg6-iwDnLWe-Dr6KihLHU7AUUY16aBSfjO-Uc&_nc_ohc=qtGNZh7NzHoAX9uWMwp&_nc_ht=scontent-frt3-2.xx&_nc_tp=7&oh=4129fc3d22bef4bd1afef2331678b26d&oe=5EFC8C48",
         3,
         5
-      ]
+      ],
+      "chapterId": 1
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "details": "Trains, elevators and other narrow spaces are the ideal places to enchant everyone in the area with the wonderful smell of Currywurst. Show us the place where you and your Currywurst got many nasty looks.",
       "points": 6,
       "creatorId": 1,
-      "picturesIds": ["https://i.ibb.co/wLRwNws/1384534801000.jpg", 3, 5]
+      "picturesIds": ["https://i.ibb.co/wLRwNws/1384534801000.jpg", 3, 5],
+      "chapterId": 2
     },
     {
       "id": 3,
@@ -26,7 +28,8 @@
       "details": "Create the most awesome Currywurst there is. Post your picture and soon the biggest Wurstlovers will line up at your kitchen.",
       "points": 12,
       "creatorId": 1,
-      "picturesIds": ["https://i.ibb.co/mB3vjS7/maxresdefault.jpg", 3, 5]
+      "picturesIds": ["https://i.ibb.co/mB3vjS7/maxresdefault.jpg", 3, 5],
+      "chapterId": 2
     },
     {
       "id": 4,
@@ -39,7 +42,8 @@
         "https://i.ibb.co/wz45Hcg/claudio-schwarz-purzlbaum-PJr-RYKd-Awl-Q-unsplash.jpg",
         3,
         5
-      ]
+      ],
+      "chapterId": 3
     },
     {
       "id": 5,
@@ -51,7 +55,8 @@
         "https://i.ibb.co/CsfbW3y/photo-1541592106381-b31e9677c0e5.jpg",
         3,
         5
-      ]
+      ],
+      "chapterId": 3
     },
     {
       "id": 6,
@@ -63,41 +68,8 @@
         "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
         3,
         5
-      ]
-    },
-    {
-      "id": 7,
-      "title": "Blindfolded Currywurst",
-      "details": "Without the other knowing, Your friend orders for you, and you order for your friend, share a picture of what you got and whether you're happy with it!",
-      "points": 9,
-      "creatorId": 1,
-      "picturesIds": [1, 3, 5]
-    },
-    {
-      "id": 8,
-      "title": "Hungry as a hunter?",
-      "details": "Order and eat the whole menu! To complete the challenge upload a picture of you after eating the whole menu.",
-      "points": 12,
-      "creatorId": 1,
-      "picturesIds": [1, 3, 5]
-    },
-    {
-      "id": 9,
-      "title": "What is the best curry moustache?",
-      "details": "Portrait this beautiful moustache here.",
-      "points": 9,
-      "creatorId": 1,
-      "picturesIds": [1, 3, 5]
-    },
-    {
-      "id": 10,
-      "title": "Christmas Currywurst",
-      "details": "Show us your Christmas themed Currywurst!",
-      "points": 9,
-      "startingDate": "01/12/2020",
-      "endDate": "26/12/2020",
-      "creatorId": 1,
-      "picturesIds": [1, 3, 5]
+      ],
+      "chapterId": 3
     }
   ],
   "restaurants": [
