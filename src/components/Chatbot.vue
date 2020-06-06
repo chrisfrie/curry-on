@@ -22,7 +22,7 @@
             <ul>
               <li
                 v-for="chat in chats"
-                :key="chat.message"
+                :key="chat.id"
                 class="chat-bubble"
                 :class="[
                   chat.sender === 'User' ? 'user-class' : 'manfred-class'
@@ -51,6 +51,7 @@
 
 <script>
 import chatbotData from "@/chatbot-data";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   data() {
@@ -61,7 +62,10 @@ export default {
       noToStory: false,
       chatClosed: false,
       userInput: "",
-      index: 0
+      index: 0,
+      intervalHandle: 0,
+      counter: 0,
+      engagementCount: 0
     };
   },
 
@@ -71,37 +75,37 @@ export default {
     },
 
     sendMessage() {
+      if (!this.userInput) return;
+      this.counter = 0;
       this.pushToChats("User", this.userInput);
 
       const generalMatch = this.findTrigger(chatbotData.general);
       if (generalMatch) {
-        setTimeout(
-          () =>
-            this.pushToChats(
-              "Manfred",
-              chatbotData.general[this.index].response[0]
-            ),
-          3000
-        );
-        this.index = 0;
+        setTimeout(() => {
+          this.pushToChats(
+            "Manfred",
+            this.getResponseText(chatbotData.general)
+          );
+          this.index = 0;
+        }, 3000);
+
         this.userInput = "";
       } else {
+        console.log("entering inital");
         const state = chatbotData[this.currentState];
+        console.log(this.currentState);
 
         // this.pushToChats("User", this.userInput);
         const match = this.findTrigger(state);
 
         if (match) {
-          const responseText = Array.isArray(
-            state[this.index].responses[0].text
-          )
-            ? state[this.index].responses[0].text[0]
-            : state[this.index].responses[0].text;
-          setTimeout(() => this.pushToChats("Manfred", responseText), 3000);
+          setTimeout(() => {
+            this.pushToChats("Manfred", this.getResponseText(state));
+            this.index = 0;
+            this.currentState = state[this.index].responses[0].nextState;
+          }, 3000);
         }
-        this.currentState = state[this.index].responses[0].nextState;
 
-        this.index = 0;
         this.userInput = "";
       }
     },
@@ -126,6 +130,7 @@ export default {
     async pushToChats(sender, message) {
       const chatboxArea = this.$refs.chatboxArea;
       this.chats.push({
+        id: uuidv4(),
         sender,
         message
       });
@@ -134,10 +139,42 @@ export default {
         top: chatboxArea.scrollHeight - chatboxArea.clientHeight,
         behavior: "smooth"
       });
+    },
+    getResponseText(state) {
+      console.log("State", state);
+
+      var randomResponseIndex = Math.floor(
+        Math.random() * state[this.index].responses[0].text.length
+      );
+      console.log("index in get", randomResponseIndex);
+
+      return Array.isArray(state[this.index].responses[0].text)
+        ? state[this.index].responses[0].text[randomResponseIndex]
+        : state[this.index].responses[0].text;
+    }
+  },
+  watch: {
+    engagementCount: function() {
+      if (this.engagementCount >= 2) {
+        clearInterval(this.intervalHandle);
+      }
     }
   },
   mounted() {
     this.pushToChats("Manfred", chatbotData.welcome);
+  },
+  created() {
+    this.intervalHandle = setInterval(() => {
+      this.counter++;
+      if (this.counter > 30) {
+        this.pushToChats("Manfred", "Bist du noch da?");
+        this.counter = 0;
+        this.engagementCount++;
+      }
+    }, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.intervalHandle);
   }
 };
 </script>

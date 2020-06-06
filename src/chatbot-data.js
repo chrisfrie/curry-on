@@ -1,24 +1,32 @@
 const general = [
   {
+    trigger: ["commands"],
+    responses: [{ text: "We have story & trivia" }]
+  },
+  {
     trigger: ["hi", "hey", "hello"],
-    response: ["Hallo!", "Guten Tag", "Hello"]
+    responses: [{ text: ["Hallo!", "Guten Tag", "Hello"] }]
   },
   {
     trigger: ["what", "is going on", "what is up"],
-    response: [
-      "I haven't had my daily currywurst today",
-      "Nothing much",
-      "Serving on a daily basis, as always",
-      "Exciting things, I saw Hertha yesterday!"
+    responses: [
+      {
+        text: [
+          "I haven't had my daily currywurst today",
+          "Nothing much",
+          "Serving on a daily basis, as always",
+          "Exciting things, I saw Hertha yesterday!"
+        ]
+      }
     ]
   },
   {
     trigger: ["thanks", "thank you"],
-    response: ["You're welcome", "No problem"]
+    responses: [{ text: ["You're welcome", "No problem"] }]
   },
   {
     trigger: ["bye", "good bye", "goodbye"],
-    response: ["Goodbye", "See you later"]
+    responses: [{ text: ["Goodbye", "See you later"] }]
   },
   {
     trigger: [
@@ -33,9 +41,13 @@ const general = [
       "twat",
       "suck"
     ],
-    response: [
-      "Watch your language my dear",
-      "Pardon, I do not speak to people with bad manners, I am a respected butler!"
+    responses: [
+      {
+        text: [
+          "Watch your language my dear",
+          "Pardon, I do not speak to people with bad manners, I am a respected butler!"
+        ]
+      }
     ]
   }
 ];
@@ -43,7 +55,7 @@ const general = [
 const initial = [
   {
     // think about how user is going to ask th question about the story - guide him to ask about the story
-    trigger: ["story", "joke", "tale"],
+    trigger: ["trivia", "story", "tale"],
     responses: [
       {
         text: "Do you want to hear some trivia?",
@@ -56,7 +68,7 @@ const initial = [
 const endState = [
   {
     trigger: ["boring", "none", "neither", "meh"],
-    response: [
+    responses: [
       {
         text: [
           "Coffee time, bye",
