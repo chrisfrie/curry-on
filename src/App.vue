@@ -40,6 +40,10 @@ h4 {
   font-weight: 700;
 }
 
+h2 {
+  font-size: 1.4rem;
+}
+
 a {
   color: var(--dark-text);
   text-decoration: none;
