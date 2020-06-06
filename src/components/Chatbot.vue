@@ -18,7 +18,7 @@
           </div>
         </header>
         <div :style="[chatClosed ? { display: 'none' } : {}]">
-          <div class="chatbox-area">
+          <div class="chatbox-area" ref="chatboxArea">
             <ul>
               <li
                 v-for="chat in chats"
@@ -33,8 +33,15 @@
             </ul>
           </div>
           <footer class="chatbox-footer">
-            <input type="text" placeholder="Ask Manfred" />
-            <button>send</button>
+            <input
+              v-model="userInput"
+              type="text"
+              placeholder="Ask Manfred"
+              @keyup.enter="sendMessage"
+            />
+            <button @click="sendMessage">
+              send
+            </button>
           </footer>
         </div>
       </section>
@@ -43,29 +50,94 @@
 </template>
 
 <script>
-export default {
-  props: ["chatbot"],
+import chatbotData from "@/chatbot-data";
 
+export default {
   data() {
     return {
-      chats: [
-        { sender: "User", message: "Hi Manfred" },
-        { sender: "Manfred", message: "Hallo!" },
-        {
-          sender: "User",
-          message:
-            "How many Pommes Points do I have? And maybe just tell me another cool story about your Curryurst life"
-        },
-        { sender: "Manfred", message: "That's sausage to me" }
-      ],
-      chatClosed: false
+      chats: [],
+      currentState: "initial",
+      noToTrivia: false,
+      noToStory: false,
+      chatClosed: false,
+      userInput: "",
+      index: 0
     };
   },
 
   methods: {
     toggleChatbox() {
       this.chatClosed = !this.chatClosed;
+    },
+
+    sendMessage() {
+      this.pushToChats("User", this.userInput);
+
+      const generalMatch = this.findTrigger(chatbotData.general);
+      if (generalMatch) {
+        setTimeout(
+          () =>
+            this.pushToChats(
+              "Manfred",
+              chatbotData.general[this.index].response[0]
+            ),
+          3000
+        );
+        this.index = 0;
+        this.userInput = "";
+      } else {
+        const state = chatbotData[this.currentState];
+
+        // this.pushToChats("User", this.userInput);
+        const match = this.findTrigger(state);
+
+        if (match) {
+          const responseText = Array.isArray(
+            state[this.index].responses[0].text
+          )
+            ? state[this.index].responses[0].text[0]
+            : state[this.index].responses[0].text;
+          setTimeout(() => this.pushToChats("Manfred", responseText), 3000);
+        }
+        this.currentState = state[this.index].responses[0].nextState;
+
+        this.index = 0;
+        this.userInput = "";
+      }
+    },
+
+    findTrigger(state) {
+      return state.find(({ trigger }, index) => {
+        const foundAWord = this.userInput
+          .toLowerCase()
+          .split(" ")
+          .some(word => trigger.includes(word));
+
+        if (foundAWord) {
+          this.index = index;
+          console.log("index", this.index);
+          return true;
+        } else {
+          return false;
+        }
+      });
+    },
+
+    async pushToChats(sender, message) {
+      const chatboxArea = this.$refs.chatboxArea;
+      this.chats.push({
+        sender,
+        message
+      });
+      await this.$nextTick();
+      chatboxArea.scrollTo({
+        top: chatboxArea.scrollHeight - chatboxArea.clientHeight,
+        behavior: "smooth"
+      });
     }
+  },
+  mounted() {
+    this.pushToChats("Manfred", chatbotData.welcome);
   }
 };
 </script>
@@ -113,7 +185,13 @@ export default {
   border: none;
 }
 
+.chatbox-area {
+  overflow-y: scroll;
+  max-height: 200px;
+}
+
 .chatbox-area ul {
+  margin: 0;
   list-style: none;
   padding: 0;
   display: flex;
