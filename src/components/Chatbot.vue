@@ -76,6 +76,7 @@ export default {
 
     sendMessage() {
       if (!this.userInput) return;
+
       this.counter = 0;
       this.pushToChats("User", this.userInput);
 
@@ -90,6 +91,7 @@ export default {
         }, 3000);
 
         this.userInput = "";
+        return;
       } else {
         console.log("entering inital");
         const state = chatbotData[this.currentState];
@@ -104,10 +106,12 @@ export default {
             this.index = 0;
             this.currentState = state[this.index].responses[0].nextState;
           }, 3000);
+          this.userInput = "";
+          return;
         }
-
-        this.userInput = "";
       }
+      setTimeout(() => this.pushToChats("Manfred", "Sry"), 1000);
+      this.userInput = "";
     },
 
     findTrigger(state) {
