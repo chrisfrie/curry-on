@@ -9,20 +9,27 @@
         <router-link to="/">Challenges</router-link> |
         <router-link to="/about">About</router-link>
       </div>
-      <!-- </div> -->
-      <div class="hamburger" id="expand-mobile-nav">
+
+      <div class="control" @click="showNav">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
       </div>
 
-      <!-- <div class="navigation-menu-mobile">
-        <button class="hamburger" @click="expandMobileNavigation"></button>
-        <ul>
-          <li><router-link to="/">Challenges</router-link></li>
-          <li><router-link to="/about">About</router-link></li>
-        </ul>
-      </div> -->
+      <transition name="expand">
+        <div
+          :class="{ 'navigation-menu-mobile': showSidebar }"
+          v-if="showSidebar"
+        >
+          <div class="control" @click="showNav">
+            <img src="../../public/butler.png" alt="Butler" />
+          </div>
+          <ul>
+            <li><router-link to="/">Challenges</router-link></li>
+            <li><router-link to="/about">About</router-link></li>
+          </ul>
+        </div>
+      </transition>
     </div>
     <router-view />
   </div>
@@ -30,41 +37,44 @@
 
 <script>
 export default {
+  data: () => {
+    return {
+      showSidebar: false
+    };
+  },
   methods: {
-    expandMobileNavigation() {
-      var nav = document.querySelector("nav");
-      nav.classList.add("mobile-navigation-expanded");
-    },
-    collapseMobileNavigation() {
-      var nav = document.querySelector("nav");
-      nav.classList.remove("mobile-navigation-expanded");
+    showNav() {
+      this.showSidebar = !this.showSidebar;
     }
+    // enter() {
+    //   this.style.height = "auto";
+    //   const height = getComputedStyle().height;
+    //   this.style.height = 0;
+
+    //   getComputedStyle(el);
+
+    //   setTimeout(() => {
+    //     el.style.height = "auto";
+    //   });
+    // },
+    // afterEnter(el) {
+    //   el.style.height = "auto";
+    // },
+    // leave(el) {
+    //   el.style.height = getComputedStyle(el).height;
+    //   getComputedStyle(el);
+    //   setTimeout(() => {
+    //     el.style.height = 0;
+    //   });
+    // }
   }
 };
-
-//     var nav = document.querySelector("nav");
-
-// var expandMobileNavigation = function() {
-//   nav.classList.add("mobile-navigation-expanded");
-// };
-
-// var collapseMobileNavigation = function() {
-//   nav.classList.remove("mobile-navigation-expanded");
-// };
-
-// var expandButton = document.querySelector("#expand-mobile-navigation");
-
-// expandButton.addEventListener("click", expandMobileNavigation);
-
-// var collapseButton = document.querySelector("#collapse-mobile-navigation");
-
-// collapseButton.addEventListener("click", collapseMobileNavigation);};
 </script>
 
 <style scoped>
 #nav {
   display: flex;
-  height: 4rem;
+  height: 4.5rem;
   background-color: var(--light-background);
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -97,12 +107,13 @@ export default {
   padding: 1rem;
 }
 
-.hamburger {
+.control {
   display: flex;
   flex-direction: column;
   padding: auto;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .line {
@@ -119,8 +130,42 @@ export default {
 }
 
 @media (min-width: 600px) {
-  .hamburger {
+  .control {
     display: none;
   }
+}
+
+.navigation-menu-mobile {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding-bottom: 4rem;
+  align-items: flex-end;
+  text-align: left;
+  background-color: #f4f3ed;
+  z-index: 999;
+  transition: all 1s ease-in-out;
+  border-bottom: 1px solid #bdbcb6;
+}
+
+ul {
+  list-style-type: none;
+  padding: auto;
+  align-items: right;
+}
+
+.expand-enter-active .expand-leave-active {
+  transition: all 1s;
+}
+
+.expand-enter-to {
+  transform: none;
+}
+
+.expand-enter,
+.expand-leave-to {
+  transform: translateY(-200px);
 }
 </style>
