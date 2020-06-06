@@ -21,11 +21,17 @@
         Help Manfred solving currywurst challenges and make his dream come true.
       </p>
     </div>
+    <Chatbot />
   </div>
 </template>
 
 <script>
-export default {};
+import Chatbot from "@/components/Chatbot.vue";
+export default {
+  components: {
+    Chatbot
+  }
+};
 </script>
 
 <style scoped>

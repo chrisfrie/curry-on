@@ -76,6 +76,7 @@ export default {
   bottom: 0;
   right: 0;
   width: 100vw;
+  background-color: var(--light-background);
 }
 
 .chatbot {
@@ -110,10 +111,6 @@ export default {
 
 .chatbox-footer button {
   border: none;
-}
-
-.chatbox-area {
-  background-color: var(--light-background);
 }
 
 .chatbox-area ul {
