@@ -10,7 +10,10 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
-@import url("/public/Marbre.otf");
+@font-face {
+  font-family: "Marbre";
+  src: url("./assets/fonts/Marbre.otf");
+}
 
 body {
   background-color: var(--light-background);
