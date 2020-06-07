@@ -101,7 +101,7 @@ export default {
             this.getResponseText(chatbotData.general)
           );
           this.index = 0;
-        }, 3000);
+        }, 2000);
 
         this.userInput = "";
         return;
@@ -116,9 +116,9 @@ export default {
         if (match) {
           setTimeout(() => {
             this.pushToChats("Manfred", this.getResponseText(state));
-            this.index = 0;
             this.currentState = state[this.index].responses[0].nextState;
-          }, 3000);
+            this.index = 0;
+          }, 2000);
           this.userInput = "";
           return;
         }
@@ -138,6 +138,7 @@ export default {
       return state.find(({ trigger }, index) => {
         const foundAWord = this.userInput
           .toLowerCase()
+          .replace(/[^\w\s\d]/gi, "")
           .split(" ")
           .some(word => trigger.includes(word));
 
