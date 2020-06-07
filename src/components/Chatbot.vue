@@ -123,7 +123,14 @@ export default {
           return;
         }
       }
-      setTimeout(() => this.pushToChats("Manfred", "Sry"), 1000);
+      setTimeout(
+        () =>
+          this.pushToChats(
+            "Manfred",
+            "Pardon me? Could you rephrase that, please?"
+          ),
+        1000
+      );
       this.userInput = "";
     },
 
@@ -184,7 +191,7 @@ export default {
     this.intervalHandle = setInterval(() => {
       this.counter++;
       if (this.counter > 30) {
-        this.pushToChats("Manfred", "Bist du noch da?");
+        this.pushToChats("Manfred", "Fell asleep? Let's curry on!");
         this.counter = 0;
         this.engagementCount++;
       }

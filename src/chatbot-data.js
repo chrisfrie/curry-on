@@ -1,32 +1,41 @@
 const general = [
   {
-    trigger: ["commands"],
-    responses: [{ text: "We have story & trivia" }]
+    trigger: ["commands", "instructions", "command", "instruction", "help"],
+    responses: [
+      {
+        text:
+          "Hello my dear friend! As I see you need some help talking to me. I love some good Smalltalk, also I prepared some 'trivia' and I love speaking about my one big 'love' - 'Herta'!"
+      }
+    ]
   },
   {
-    trigger: ["hi", "hey", "hello"],
-    responses: [{ text: ["Hallo!", "Guten Tag", "Hello"] }]
+    trigger: ["hi", "hey", "hello", "hallo", "morning", "afternoon"],
+    responses: [{ text: ["Hallo!", "Guten Tag", "Hello", "Tach", "Good day"] }]
   },
   {
-    trigger: ["what", "is going on", "what is up"],
+    trigger: ["what", "going", "up", "doing", "whats", "are"],
     responses: [
       {
         text: [
           "I haven't had my daily currywurst today",
           "Nothing much",
           "Serving on a daily basis, as always",
-          "Exciting things, I saw Hertha yesterday!"
+          "Exciting things, I saw Herta yesterday!"
         ]
       }
     ]
   },
   {
-    trigger: ["thanks", "thank you"],
-    responses: [{ text: ["You're welcome", "No problem"] }]
+    trigger: ["thanks", "thank"],
+    responses: [
+      {
+        text: ["You're welcome", "No problem", "At your service", "My pleasure"]
+      }
+    ]
   },
   {
-    trigger: ["bye", "good bye", "goodbye"],
-    responses: [{ text: ["Goodbye", "See you later"] }]
+    trigger: ["bye", "night", "goodbye"],
+    responses: [{ text: ["Goodbye", "See you later", "Nice talking to you"] }]
   },
   {
     trigger: [
@@ -45,7 +54,22 @@ const general = [
       {
         text: [
           "Watch your language my dear",
-          "Pardon, I do not speak to people with bad manners, I am a respected butler!"
+          "Pardon, I do not speak to people with bad manners, I am a respected butler!",
+          "Curry on, kid...",
+          "I think my pig whistles!",
+          "I believe I spider!"
+        ]
+      }
+    ]
+  },
+  {
+    trigger: ["pommes", "points", "score", "point"],
+    responses: [
+      {
+        text: [
+          "This is sausage to me!",
+          "What do I care?",
+          "Come back, when you are a grown up!"
         ]
       }
     ]
@@ -62,6 +86,16 @@ const initial = [
         nextState: "decideTellTrivia"
       }
     ]
+  },
+  {
+    // think about how user is going to ask th question about the story - guide him to ask about the story
+    trigger: ["love", "herta"],
+    responses: [
+      {
+        text: "What about a love story?",
+        nextState: "decideTellLoveStory"
+      }
+    ]
   }
 ];
 
@@ -72,7 +106,7 @@ const endState = [
       {
         text: [
           "Coffee time, bye",
-          "I need to leave now, cannot leave my lover waiting ofr me",
+          "I need to leave now, cannot leave my lover waiting for me",
           "I am going out for a cigar!"
         ]
       }
@@ -87,7 +121,7 @@ const decideTellTrivia = [
       "yeah",
       "great",
       "sure",
-      "of course",
+      "course",
       "like",
       "love",
       "alright",
@@ -102,7 +136,7 @@ const decideTellTrivia = [
         text: [
           "Currywurst has its own dedicated museum, wait no more and visit the Deutsches Currywurst Museum!",
           "800 million Currywurst are eaten every year in Germany and about 70 million just in Berlin, imagine the pleasure! ",
-          "Currywurst exists also as a flauvored energy drink."
+          "Currywurst exists also as a flavoured energy drink."
         ],
 
         nextState: "initial"
@@ -123,11 +157,12 @@ const decideTellTrivia = [
 const decideTellLoveStory = [
   {
     trigger: [
+      "herta",
       "yes",
       "yeah",
       "great",
       "sure",
-      "of course",
+      "course",
       "like",
       "love",
       "alright",
@@ -148,7 +183,7 @@ const decideTellLoveStory = [
     ]
   },
   {
-    trigger: ["no", "nope", "nop", "never", "hardly", "nay", "negative"],
+    trigger: ["no", "nope", "nop", "never", "hardly", "nay", "negative", "nah"],
     responses: [
       {
         text: ["But, my life is all about currywurst and Hertha!"],
@@ -160,30 +195,11 @@ const decideTellLoveStory = [
 ];
 
 export default {
-  welcome: "You finished my story, let's talk!",
+  welcome:
+    "Hello Wurst-Enthusiast! Finished my story? Everything has an end but the Wurst has two, so let's talk!",
   general,
   initial,
   endState,
   decideTellTrivia,
   decideTellLoveStory
 };
-
-// let currentState = "initial";
-
-// const handleUserInput = (userInput) => {
-// const case = general.find({trigger}, userInput.toLowerCase().split(/\s+/).some(word => trigger.includes(word)));
-
-// if (case) {
-
-// }
-// else {
-// const state = bot[currentState];
-// const case = state.find({trigger}, trigger.includes(userInput));
-// if (!case) {
-//     console.log ("What do you mean???")
-//     return;
-// }
-// const response = case.responses[Math.floor(Math.random() * case.response.length)];
-// console.log (response.text);
-// currentState = response.nextState;
-// }
