@@ -1,64 +1,43 @@
 <template>
-  <div class="chatbot-wrapper">
-    <transition name="slide-header">
-      <div v-if="chatClosed" class="chatbot chatbot-closed">
-        <section name="chatbox">
-          <header class="chatbox-header">
-            <h2>Manfred says hi</h2>
-            <div class="toggle-box">
-              <button
-                @click="toggleChatbox"
-                v-if="chatClosed"
-                class="open-chatbot"
-              >
-                ^
-              </button>
-            </div>
-          </header>
-        </section>
+  <div :class="{ chatClosed }" class="chatbot">
+    <section name="chatbox">
+      <header>
+        <h2>Manfred says hi</h2>
+        <div class="toggle-box">
+          <button @click="toggleChatbox" v-if="chatClosed" class="open-chatbot">
+            ^
+          </button>
+          <button v-else @click="toggleChatbox" class="close-chatbot">
+            X
+          </button>
+        </div>
+      </header>
+      <div>
+        <main ref="chatboxArea">
+          <ul>
+            <li
+              v-for="chat in chats"
+              :key="chat.id"
+              class="chat-bubble"
+              :class="[chat.sender === 'User' ? 'user-class' : 'manfred-class']"
+            >
+              {{ chat.message }}
+            </li>
+          </ul>
+        </main>
+        <footer>
+          <input
+            v-model="userInput"
+            type="text"
+            placeholder="Ask Manfred"
+            @keyup.enter="sendMessage"
+          />
+          <button @click="sendMessage">
+            send
+          </button>
+        </footer>
       </div>
-    </transition>
-    <transition name="slide">
-      <div v-if="!chatClosed" class="chatbot">
-        <section name="chatbox">
-          <header class="chatbox-header">
-            <h2>Manfred says hi</h2>
-            <div class="toggle-box">
-              <button @click="toggleChatbox" class="close-chatbot">
-                X
-              </button>
-            </div>
-          </header>
-          <div>
-            <div class="chatbox-area" ref="chatboxArea">
-              <ul>
-                <li
-                  v-for="chat in chats"
-                  :key="chat.id"
-                  class="chat-bubble"
-                  :class="[
-                    chat.sender === 'User' ? 'user-class' : 'manfred-class'
-                  ]"
-                >
-                  {{ chat.message }}
-                </li>
-              </ul>
-            </div>
-            <footer class="chatbox-footer">
-              <input
-                v-model="userInput"
-                type="text"
-                placeholder="Ask Manfred"
-                @keyup.enter="sendMessage"
-              />
-              <button @click="sendMessage">
-                send
-              </button>
-            </footer>
-          </div>
-        </section>
-      </div>
-    </transition>
+    </section>
   </div>
 </template>
 
@@ -205,48 +184,17 @@ export default {
 </script>
 
 <style scoped>
-.slide-leave-active {
-  transition: transform 1s ease, opacity 0.2s linear 1s;
-}
-
-.slide-enter-active {
-  transition: transform 1s ease 0.2s, opacity 0.2s;
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: translateY(calc(100% - 2rem));
-  opacity: 0;
-}
-.slide-enter-to,
-.slide-leave {
-  transform: none;
-}
-
-.slide-header-enter,
-.slide-header-leave-to {
-  opacity: 0;
-}
-
-.slide-header-enter-active {
-  transition: opacity 0.2s;
-}
-
-.slide-header-leave-active {
-  transition: opacity 0.2s linear 1s;
-}
-
-.slide-header-leave,
-.slide-header-enter-to {
-  opacity: initial;
-}
-
 .chatbot {
   background-color: var(--light-background);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 100vw;
+  transition: transform 1s ease;
+}
+
+.chatbot.chatClosed {
+  transform: translateY(calc(100% - 2rem));
 }
 
 @media (min-width: 600px) {
@@ -255,18 +203,18 @@ export default {
   }
 }
 
-.chatbox-header {
+header {
   background-color: rgb(156, 155, 150);
   position: relative;
   height: 2rem;
 }
 
-.chatbox-header h2 {
+header h2 {
   padding: 0.25rem;
   margin: 0;
 }
 
-.chatbox-header button {
+header button {
   border: none;
   background-color: rgb(156, 155, 150);
 }
@@ -279,32 +227,32 @@ export default {
   width: 2rem;
 }
 
-.chatbox-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.chatbox-footer input {
-  flex: 1;
-}
-
-.chatbox-footer button {
-  border: none;
-  background-color: rgba(156, 155, 150, 0.8);
-}
-
-.chatbox-area {
+main {
   overflow-y: scroll;
   max-height: 200px;
 }
 
-.chatbox-area ul {
+main ul {
   margin: 0;
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer input {
+  flex: 1;
+}
+
+footer button {
+  border: none;
+  background-color: rgba(156, 155, 150, 0.8);
 }
 
 .chat-bubble {
