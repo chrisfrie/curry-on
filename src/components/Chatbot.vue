@@ -237,10 +237,14 @@ export default {
   background-color: var(--light-background);
   position: absolute;
   bottom: 0;
-
   right: 0;
   width: 100vw;
-  border: 1px solid #9c9b96;
+}
+
+@media (min-width: 600px) {
+  .chatbot {
+    width: 500px;
+  }
 }
 
 .chatbox-header {
