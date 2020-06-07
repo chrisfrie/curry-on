@@ -198,11 +198,11 @@ export default {
 
 <style scoped>
 .slide-leave-active {
-  transition: transform 1s ease;
+  transition: transform 1s ease, opacity 0.2s linear 1s;
 }
 
 .slide-enter-active {
-  transition: transform 1s ease;
+  transition: transform 1s ease 0.2s, opacity 0.2s;
 }
 
 .slide-enter,
@@ -215,10 +215,6 @@ export default {
   transform: none;
 }
 
-.chatbot-closed {
-  z-index: 100;
-}
-
 .slide-header-enter,
 .slide-header-leave-to {
   opacity: 0;
@@ -226,11 +222,10 @@ export default {
 
 .slide-header-enter-active {
   transition: opacity 0.2s;
-  transition-delay: 1s;
 }
 
 .slide-header-leave-active {
-  transition: opacity 0.2;
+  transition: opacity 0.2s linear 1s;
 }
 
 .slide-header-leave,
@@ -238,11 +233,8 @@ export default {
   opacity: initial;
 }
 
-.chatbot-wrapper {
-  background-color: var(--light-background);
-}
-
 .chatbot {
+  background-color: var(--light-background);
   position: absolute;
   bottom: 0;
 
@@ -252,12 +244,19 @@ export default {
 }
 
 .chatbox-header {
-  background-color: rgba(156, 155, 150, 0.8);
+  background-color: rgb(156, 155, 150);
   position: relative;
+  height: 2rem;
 }
 
 .chatbox-header h2 {
+  padding: 0.25rem;
   margin: 0;
+}
+
+.chatbox-header button {
+  border: none;
+  background-color: rgb(156, 155, 150);
 }
 
 .toggle-box {
@@ -279,6 +278,7 @@ export default {
 
 .chatbox-footer button {
   border: none;
+  background-color: rgba(156, 155, 150, 0.8);
 }
 
 .chatbox-area {
