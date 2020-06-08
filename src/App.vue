@@ -1,31 +1,61 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Dashboard</router-link>
-    </div>
-    <router-view />
+    <Navbar></Navbar>
   </div>
 </template>
 
+<script>
+import Navbar from "@/components/Navbar.vue";
+export default {
+  components: {
+    Navbar
+  }
+};
+</script>
+
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+
+body {
+  background-color: var(--light-background);
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Bellefair", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--dark-text);
 }
 
-#nav {
-  padding: 30px;
+:root {
+  --light-text: #ebf1f0;
+  --dark-text: #545454;
+  --light-background: #f4f3ed;
+  --dark-background: #4e4e5f;
+  --primary-color: #f0c552;
+  --component-color: #96979d;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Marbre", sans-serif;
+  font-weight: 700;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+a {
+  color: var(--dark-text);
+  text-decoration: none;
+}
+
+button {
+  font-family: "Bellefair", serif;
+  text-transform: uppercase;
+  background-color: #c9c8c3;
+  color: var(--dark-text);
+  border: 2px solid #9c9b96;
+  outline: none;
 }
 </style>
