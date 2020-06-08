@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
+    <router-view />
   </div>
 </template>
 
@@ -15,6 +16,10 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+@font-face {
+  font-family: "Marbre";
+  src: url("./assets/fonts/Marbre.otf");
+}
 
 body {
   background-color: var(--light-background);
