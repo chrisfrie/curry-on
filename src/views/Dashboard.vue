@@ -3,9 +3,7 @@
     <h1>Manfred's Tale!</h1>
     <Chapter1 />
     <Chapter2 />
-    <Chapter3>
-      <Chatbot />
-    </Chapter3>
+    <Chapter3 />
   </div>
 </template>
 
@@ -13,16 +11,13 @@
 import Chapter1 from "@/components/Chapter1.vue";
 import Chapter2 from "@/components/Chapter2.vue";
 import Chapter3 from "@/components/Chapter3.vue";
-import Chatbot from "@/components/Chatbot.vue";
 
 export default {
   components: {
     Chapter1,
     Chapter2,
     Chapter3,
-    Chatbot
-  },
-
+  }
 };
 </script>
 
