@@ -21,13 +21,16 @@
           :class="{ 'navigation-menu-mobile': showSidebar }"
           v-if="showSidebar"
         >
-          <div class="control" @click="showNav">
-            <img src="../../public/butler.png" alt="Butler" />
-          </div>
+          <img src="../../public/butler.png" alt="Butler" />
           <ul>
             <li><router-link to="/">Challenges</router-link></li>
             <li><router-link to="/about">About</router-link></li>
           </ul>
+          <div class="control" @click="showNav">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </transition>
     </div>
@@ -138,12 +141,14 @@ export default {
 .navigation-menu-mobile {
   position: fixed;
   display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
   top: 0;
   left: 0;
   width: 100vw;
-  padding-bottom: 4rem;
-  align-items: flex-end;
-  text-align: left;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
   background-color: #f4f3ed;
   z-index: 999;
   transition: all 1s ease-in-out;
