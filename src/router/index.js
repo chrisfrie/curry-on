@@ -7,6 +7,7 @@ import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
+import Profile from "@/views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -49,6 +50,11 @@ const routes = [
     path: "/pictures/:id",
     name: "picture",
     component: Picture
+  },
+  {
+    path: "/profiles",
+    name: "profile",
+    component: Profile
   }
 ];
 

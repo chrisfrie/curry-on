@@ -7,7 +7,8 @@
       <!-- <div class="navigation-menu-desktop"> -->
       <div class="links">
         <router-link to="/">Intro</router-link> |
-        <router-link to="/challenges">Challenges</router-link>
+        <router-link to="/challenges">Challenges</router-link> |
+        <router-link to="/profiles">Profile</router-link>
       </div>
 
       <div class="control" @click="showNav">
@@ -25,6 +26,7 @@
           <ul>
             <li><router-link to="/">Intro</router-link></li>
             <li><router-link to="/challenges">Challenges</router-link></li>
+            <li><router-link to="/profiles">Profile</router-link></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
