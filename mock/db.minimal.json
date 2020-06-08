@@ -92,9 +92,28 @@
   "pictures": [
     {
       "id": 1,
-      "details": "This was the most exciting Currywurst-Day in a long time!",
-      "date": "04/24/2020 15:00",
-      "pictureLocation": 2
+      "title": null,
+      "filename": "curry1.jpg"
+    },
+    {
+      "id": 2,
+      "title": null,
+      "filename": "curry2.jpg"
+    },
+    {
+      "id": 3,
+      "title": null,
+      "filename": "curry3.jpg"
+    },
+    {
+      "id": 4,
+      "title": null,
+      "filename": "curry4.jpg"
+    },
+    {
+      "id": 5,
+      "title": null,
+      "filename": "curry5.jpg"
     }
   ],
   "users": [
