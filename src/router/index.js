@@ -14,8 +14,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "dashboard",
-    component: Dashboard,
+    name: "challenges",
+    component: Dashboard
   },
   {
     path: "/about",

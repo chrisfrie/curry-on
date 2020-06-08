@@ -1,8 +1,12 @@
 <template>
-  <router-link :to="{ name: 'show-challenge', params: { id: challenge.id } }">
+  <router-link
+    :disabled="locked"
+    :event="!locked ? 'click' : ''"
+    :to="{ name: 'show-challenge', params: { id: challenge.id } }"
+  >
     <div>
       <div class="challenge-card-grid">
-        <div class="challenge-card">
+        <div class="challenge-card" :class="{ locked }">
           <img :src="challenge.picturesIds[0]" />
           <p>{{ challenge.title }}</p>
           <div class="pommes-points">
@@ -16,7 +20,16 @@
 
 <script>
 export default {
-  props: ["challenge"]
+  props: {
+    challenge: {
+      type: Object,
+      required: true
+    },
+    locked: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
 
@@ -70,5 +83,9 @@ export default {
   margin: 0.25rem;
   font-weight: 700;
   font-size: 12px;
+}
+.challenge-card.locked {
+  opacity: 0.1;
+  cursor: default;
 }
 </style>
