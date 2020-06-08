@@ -22,11 +22,18 @@
         </button>
       </form>
     </div>
+    <Gallery />
   </div>
 </template>
 
 <script>
+import Gallery from "@/components/Gallery.vue";
+
 export default {
+  components: {
+    Gallery
+  },
+
   props: ["challenge"],
   methods: {
     openForm() {
