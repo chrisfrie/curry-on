@@ -2,7 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Challenges</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/register">Register</router-link>
     </div>
     <router-view />
   </div>
@@ -10,6 +12,10 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+@font-face {
+  font-family: "Marbre";
+  src: url("./assets/fonts/Marbre.otf");
+}
 
 body {
   background-color: var(--light-background);
