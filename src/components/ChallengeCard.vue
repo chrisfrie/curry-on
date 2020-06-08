@@ -49,6 +49,9 @@ export default {
   border: 1px solid #9c9b96;
   box-sizing: border-box;
 }
+.challenge-card:last-child {
+  margin-bottom: 4rem;
+}
 
 .challenge-card img {
   width: 120px;
