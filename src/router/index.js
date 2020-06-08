@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
-import About from "../views/About.vue";
+import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
@@ -12,15 +12,16 @@ import Register from "@/views/Register.vue";
 Vue.use(VueRouter);
 
 const routes = [
+  
   {
     path: "/",
+    name: "intro",
+    component: Intro,
+  },
+  }
+    path: "/challenges",
     name: "challenges",
     component: Dashboard
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: About,
   },
   {
     path: "/login",
