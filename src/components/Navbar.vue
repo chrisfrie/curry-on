@@ -7,7 +7,11 @@
       <!-- <div class="navigation-menu-desktop"> -->
       <div class="links">
         <router-link to="/">Intro</router-link> |
-        <router-link to="/challenges">Challenges</router-link>
+        <router-link to="/challenges">Story</router-link> |
+        <router-link to="">Leaderboard</router-link> |
+        <router-link to="">Impressum</router-link> |
+        <router-link to="">Profile</router-link> |
+        <router-link to="">Login</router-link>
       </div>
 
       <div class="control" @click="showNav">
@@ -24,7 +28,11 @@
           <img src="../../public/butler.png" alt="Butler" />
           <ul>
             <li><router-link to="/">Intro</router-link></li>
-            <li><router-link to="/challenges">Challenges</router-link></li>
+            <li><router-link to="/challenges">Story</router-link></li>
+            <li><router-link to="">Leaderboard</router-link></li>
+            <li><router-link to="">Impressum</router-link></li>
+            <li><router-link to="">Profile</router-link></li>
+            <li><router-link to="">Login</router-link></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
