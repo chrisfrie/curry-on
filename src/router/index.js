@@ -8,17 +8,15 @@ import Picture from "@/views/Picture.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
-  
   {
     path: "/",
     name: "intro",
-    component: Intro,
+    component: Intro
   },
-  }
+  {
     path: "/challenges",
     name: "challenges",
     component: Dashboard
@@ -45,19 +43,19 @@ const routes = [
       to.params.challenge = res.data;
       next();
     },
-    props: true,
+    props: true
   },
   {
     path: "/pictures/:id",
     name: "picture",
-    component: Picture,
-  },
+    component: Picture
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;
