@@ -30,16 +30,15 @@
     <div id="register">
       <button id="close" @click="divHide(), reverseRegister()">X</button>
       <h1>Register</h1>
-      <!-- <div class="avatar-preview">
-      <img v-if="avatarURL" :src="avatarURL" />
-      <p v-else>Preview</p>
-    </div> -->
+      <div class="avatar-preview">
+        <img v-if="avatarURL" :src="avatarURL" />
+        <p v-else>Preview</p>
+      </div>
       <form @submit.prevent="submitRegister">
-        <!-- <button id="close" onclick="divHide()">X</button>
-       <label class="file-upload">
-        Upload Avatar
-        <input @change="fileSelected" type="file"
-      /></label> -->
+        <label class="file-upload">
+          Upload Avatar
+          <input @change="fileSelected" type="file"
+        /></label>
         <input
           v-model="users.name"
           type="text"
@@ -101,11 +100,10 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-
       try {
         // Dispatch the login action
         await this.$store.dispatch("login", this.users);
-        this.$router.push("/");
+        this.$router.push("/challenges");
       } catch {
         this.$store.dispatch("pushNotification", {
           type: "error",
@@ -116,7 +114,7 @@ export default {
     async submitRegister() {
       try {
         await this.$store.dispatch("register", this.user);
-        this.$router.push("/");
+        this.$router.push("/challenges");
 
         if (this.avatar) {
           await this.$store.dispatch("createProfile", this.avatar);
@@ -167,5 +165,40 @@ input {
   max-width: 40px;
   text-align: center;
   padding: 0;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+.file-upload {
+  border: 1px solid lightgrey;
+  color: grey;
+  width: 25%;
+
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #c9c8c3;
+  font-size: 13.33px;
+}
+.avatar-preview {
+  width: 200px;
+  height: 200px;
+  border: 1px solid lightgrey;
+  color: grey;
+  margin: 0.8rem auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 </style>
