@@ -52,7 +52,7 @@ const routes = [
     component: Picture
   },
   {
-    path: "/profiles",
+    path: "/profiles/:id",
     name: "profile",
     component: Profile
   }
