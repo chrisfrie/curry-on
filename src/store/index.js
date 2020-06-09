@@ -1,73 +1,43 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import router from "@/router";
 
 Vue.use(Vuex);
 
-let nextId = 1;
-
-// Notification ID
-function getNewId() {
-  const id = nextId;
-  nextId += 1;
-  return id;
-}
-
 export default new Vuex.Store({
   state: {
-<<<<<<< HEAD
-    user: {
-      username: "Gabi",
-      completedChallenges: [
-        {
-          challengeId: 1,
-          imageUrl: ""
-        }
-      ]
-    }
+    jwt: null,
+    user: null,
+    challenges: []
   },
-  mutations: {},
-  actions: {},
-=======
-    notifications: [],
-    userData: null
-  },
-
   mutations: {
-    PUSH_NOTIFICATION(state, notification) {
-      state.notifications.push(notification);
+    SET_JWT(state, jwt) {
+      state.jwt = jwt;
     },
-    REMOVE_NOTIFICATION(state, notificationToRemove) {
-      const index = state.notifications.findIndex(
-        notification => notification.id == notificationToRemove.id
-      );
-      state.notifications.splice(index, 1);
+    SET_USER(state, user) {
+      state.user = user;
     },
-    SET_USER_DATA(state, userData) {
-      state.userData = userData;
-      localStorage.setItem("userData", JSON.stringify(userData));
-      axios.defaults.headers.common["Authorization"] = `Bearer ${userData.jwt}`;
-    },
-    REMOVE_USER_DATA(state) {
-      state.userData = null;
-      localStorage.removeItem("userData");
-      delete axios.defaults.headers.common["Authorization"];
+    SET_CHALLENGES(state, challenges) {
+      state.challenges = challenges;
     }
   },
   actions: {
-    pushNotification(context, { type, message }) {
-      const notification = {
-        id: getNewId(),
-        type: type || "success",
-        message
-      };
-      context.commit("PUSH_NOTIFICATION", notification);
-
-      setTimeout(() => {
-        context.commit("REMOVE_NOTIFICATION", notification);
-      }, 6000);
-    }
+    register() {},
+    async login(ctx, { email, password }) {
+      const res = await axios.post("http://localhost:1337/auth/local", {
+        identifier: email,
+        password
+      });
+      const { user, jwt } = res.data;
+      ctx.commit("SET_JWT", jwt);
+      ctx.commit("SET_USER", user);
+      router.push({ name: "challenges" });
+    },
+    logout() {}
+    // fetchChallenges(ctx) {},
+    // completeChallenge(ctx, { userChallengePicture, caption, challengeId }) {},
+    // updateUser(ctx) {}
   },
->>>>>>> origin/landing-page
   modules: {}
 });

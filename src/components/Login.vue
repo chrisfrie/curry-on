@@ -96,20 +96,10 @@ export default {
       this.avatar = event.target.files[0];
     },
     async submitLogin() {
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
-      try {
-        // Dispatch the login action
-        await this.$store.dispatch("login", this.users);
-        this.$router.push("/challenges");
-      } catch {
-        this.$store.dispatch("pushNotification", {
-          type: "error",
-          message: "Unable to login, please check your inputs and try again."
-        });
-      }
+      this.$store.dispatch("login", {
+        email: this.users.email,
+        password: this.users.password
+      });
     },
     async submitRegister() {
       try {
