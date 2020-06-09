@@ -44,19 +44,19 @@ export default {
 </script>
 
 <style scoped>
+.challenge-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .challenge-card-grid {
-  display: flex;
-  justify-content: center;
   margin-top: 1rem;
 }
 .challenge-card {
-  width: 400px;
   height: 150px;
   display: flex;
-  /* color: var(--light-text);
-  background-color: var(--dark-background); */
-  margin-left: 2rem;
   border: 1px solid #9c9b96;
+  margin: 0 1.5rem;
   box-sizing: border-box;
 }
 .challenge-container:last-child {

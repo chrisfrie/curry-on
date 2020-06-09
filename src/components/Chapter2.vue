@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chapter" id="chapter2">
     <div>
       <h2>Chapter Two</h2>
       <p>

@@ -1,9 +1,11 @@
 <template>
   <div>
     <h1>Manfred's Tale!</h1>
-    <Chapter1 v-if="$store.getters.isChapterRevealed(1)" />
-    <Chapter2 v-if="$store.getters.isChapterRevealed(2)" />
-    <Chapter3 v-if="$store.getters.isChapterRevealed(3)" />
+    <main>
+      <Chapter1 v-if="$store.getters.isChapterRevealed(1)" />
+      <Chapter2 v-if="$store.getters.isChapterRevealed(2)" />
+      <Chapter3 v-if="$store.getters.isChapterRevealed(3)" />
+    </main>
   </div>
 </template>
 
@@ -27,5 +29,11 @@ export default {
 <style scoped>
 .chapter {
   margin-bottom: 5rem;
+}
+
+main {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
 }
 </style>
