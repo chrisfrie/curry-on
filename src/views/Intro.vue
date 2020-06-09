@@ -38,15 +38,43 @@
       </p>
     </div>
 
-    <button type="button" class="start">Start</button>
+    <button id="popup" @click="divShow()" type="button" class="start">
+      Start
+    </button>
+    <div id="loginPopUp">
+      <Login />
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import Login from "@/components/Login.vue";
+
+export default {
+  components: {
+    Login
+  },
+  methods: {
+    divShow() {
+      document.getElementById("loginPopUp").style.display = "block";
+    }
+  }
+};
 </script>
 
 <style scoped>
+#loginPopUp {
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+  display: none;
+  position: fixed;
+  background-color: #313131;
+  overflow: auto;
+  top: 0;
+  left: 0;
+}
+
 .about-card {
   color: var(--dark-text);
   box-sizing: border-box;
@@ -94,5 +122,14 @@ export default {};
 }
 .list {
   list-style-type: none;
+}
+button {
+  border: none;
+  outline: none;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem;
+  width: 75%;
+  max-width: 300px;
+  display: block;
 }
 </style>
