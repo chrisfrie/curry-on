@@ -23,7 +23,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    // need to implement
     register() {},
+    // Login needs error handling - if there is an error, show the user what is needed
     async login(ctx, { email, password }) {
       // Do a post request to /auth/local with email and password
       const res = await axios.post("http://localhost:1337/auth/local", {
@@ -38,11 +40,14 @@ export default new Vuex.Store({
       // Redirect to /challenges
       router.push({ name: "challenges" });
     },
+    // need to implement
     logout() {},
+    // Needs Error handling - maybe don't do a fetch, when we already have the challenges (if challanges array is populated, don't fetch again)
     async fetchChallenges(ctx) {
       const res = await axios.get("http://localhost:1337/challenges");
       ctx.commit("SET_CHALLENGES", res.data);
     },
+    // Needs Error handling - make sure that only authenticated user can complete challenges for him/herself
     async completeChallenge(ctx, { userChallengePicture, caption, challenge }) {
       const formData = new FormData();
       formData.set(
@@ -61,6 +66,7 @@ export default new Vuex.Store({
       ctx.dispatch("updateUser");
       router.push({ name: "challenges" });
     },
+    // Needs some Error handling - put a try - catch handler with a notification system; Maybe a notification for completing a challenge;
     async updateUser(ctx) {
       const res = await axios.get(
         "http://localhost:1337/users/" + ctx.state.user.id,
