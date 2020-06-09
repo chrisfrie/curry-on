@@ -26,14 +26,12 @@ export default {
   },
   computed: {
     challenges() {
-      const challenge1 = this.$store.getters.getChallengeById(1);
-      const challenge2 = this.$store.getters.getChallengeById(2);
-      if (
-        this.$store.state.user.pictures.find(picture => picture.challenge == 1)
-      ) {
-        return [challenge1, challenge2];
+      if (this.$store.getters.getChallengeById(2)) {
+        const challenge2 = this.$store.getters.getChallengeById(2);
+        const challenge3 = this.$store.getters.getChallengeById(3);
+        return [challenge2, challenge3];
       } else {
-        return [challenge1];
+        return [];
       }
     }
   }

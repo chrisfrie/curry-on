@@ -5,6 +5,7 @@ import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
+import store from "@/store";
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,17 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name == "intro") {
+    next();
+    return;
+  } else {
+    if (store.state.user) {
+      next();
+    } else next("/");
+  }
 });
 
 export default router;

@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Manfred's Tale!</h1>
-    <Chapter1 />
-    <Chapter2 />
-    <Chapter3 />
+    <Chapter1 v-if="$store.getters.isChapterRevealed(1)" />
+    <Chapter2 v-if="$store.getters.isChapterRevealed(2)" />
+    <Chapter3 v-if="$store.getters.isChapterRevealed(3)" />
   </div>
 </template>
 

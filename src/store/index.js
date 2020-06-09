@@ -77,8 +77,27 @@ export default new Vuex.Store({
     getChallengeById: state => id => {
       return state.challenges.find(challenge => challenge.id == id);
     },
-    challengesChapter1: state => {
-      return state.challenges.filter();
+    isChapterRevealed: state => chapterId => {
+      if (!state.user) return false;
+
+      if (chapterId == 1) {
+        return true;
+      } else if (chapterId == 2) {
+        return state.user.pictures.find(element => element.challenge == 1);
+      } else if (chapterId == 3) {
+        return (
+          state.user.pictures.find(element => element.challenge == 2) &&
+          state.user.pictures.find(element => element.challenge == 3)
+        );
+      } else if (chapterId == 4) {
+        return (
+          state.user.pictures.find(element => element.challenge == 4) &&
+          state.user.pictures.find(element => element.challenge == 5) &&
+          state.user.pictures.find(element => element.challenge == 6)
+        );
+      } else {
+        return false;
+      }
     }
   },
   modules: {}

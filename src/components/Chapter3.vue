@@ -9,8 +9,12 @@
         cupiditate, quaerat recusandae.
       </p>
     </div>
-    <ChallengeCard :challenge="challenge" />
-    <Chatbot />
+    <ChallengeCard
+      v-for="(challenge, index) in challenges"
+      :challenge="challenge"
+      :key="index"
+    />
+    <Chatbot v-if="isChapterRevealed(4)" />
   </div>
 </template>
 
@@ -23,11 +27,17 @@ export default {
     ChallengeCard,
     Chatbot
   },
-
-  data() {
-    return {
-      challenge: []
-    };
+  computed: {
+    challenges() {
+      if (this.$store.getters.getChallengeById(4)) {
+        const challenge4 = this.$store.getters.getChallengeById(4);
+        const challenge5 = this.$store.getters.getChallengeById(5);
+        const challenge6 = this.$store.getters.getChallengeById(6);
+        return [challenge4, challenge5, challenge6];
+      } else {
+        return [];
+      }
+    }
   }
 };
 </script>

@@ -26,7 +26,9 @@ export default {
   },
   computed: {
     challenges() {
-      return this.$store.state.challenges;
+      // return this.$store.state.challenges;
+      const challenge1 = this.$store.getters.getChallengeById(1);
+      return challenge1 ? [challenge1] : [];
     }
   }
 };
