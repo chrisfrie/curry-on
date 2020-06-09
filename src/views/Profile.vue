@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="profile-wrapper">
     <h2>Profile</h2>
     <section class="profile-body">
       <div class="avatar"><img :src="imageURL" /></div>
@@ -8,12 +8,17 @@
         <p>Current Pommes Points: {{ profile.pommesPoints }}</p>
       </div>
     </section>
+    <div class="profile-gallery"><ProfileGallery /></div>
   </div>
 </template>
 
 <script>
+import ProfileGallery from "@/components/ProfileGallery.vue";
 export default {
   props: ["profile"],
+  components: {
+    ProfileGallery
+  },
   computed: {
     imageURL() {
       return "http://localhost:3000" + this.profile.avatar.url;
