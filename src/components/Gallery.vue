@@ -2,7 +2,7 @@
   <div class="gallery">
     <div class="gallery-panel" v-for="picture in pictures" :key="picture.id">
       <router-link :to="`/pictures/${picture.id}`">
-        <img :src="thumbUrl(picture.filename)" />
+        <img :src="myApiUrl + picture.userChallengePicture.url" />
       </router-link>
     </div>
   </div>
@@ -18,10 +18,9 @@ export default {
       pictures: []
     };
   },
-
-  methods: {
-    thumbUrl(filename) {
-      return require(`../assets/images/thumbnails/${filename}`);
+  computed: {
+    myApiUrl() {
+      return process.env.VUE_APP_API_URL;
     }
   },
 
@@ -37,6 +36,7 @@ export default {
   flex-wrap: wrap;
   max-width: 90%;
   margin: 5rem auto;
+  justify-content: center;
 }
 
 .gallery-panel img {
@@ -44,6 +44,6 @@ export default {
   height: 120px;
   object-fit: cover;
   border-radius: 0.2rem;
-  margin-right: 1rem;
+  margin: 0.3rem 0.3rem;
 }
 </style>
