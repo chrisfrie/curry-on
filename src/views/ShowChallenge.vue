@@ -10,9 +10,9 @@
     <button class="open-button" @click="openForm()">Accept Challenge!</button>
 
     <div class="form-popup" id="challengeForm">
-      <form class="form-container">
+      <form class="form-container" @submit.prevent="submit">
         <label for="chooseAPicture">Choose a Picture</label>
-        <input type="file" required />
+        <input type="file" @change="fileSelected" required />
         <label for="Caption">Describe your Picture</label>
         <input type="text" />
 
@@ -22,16 +22,17 @@
         </button>
       </form>
     </div>
-    <Gallery />
   </div>
 </template>
 
 <script>
-import Gallery from "@/components/Gallery.vue";
-
 export default {
-  components: {
-    Gallery
+  components: {},
+
+  data() {
+    return {
+      userChallengePicture: null
+    };
   },
 
   props: ["challenge"],
@@ -41,6 +42,20 @@ export default {
     },
     closeForm() {
       document.getElementById("challengeForm").style.display = "none";
+    },
+    submit() {
+      this.$store.dispatch("completeChallenge", {
+        challenge: this.challenge.id,
+        caption: "CAPTION",
+        userChallengePicture: this.userChallengePicture
+      });
+    },
+    fileSelected(event) {
+      if (event.target.files.length == 0) {
+        return;
+      } else {
+        this.userChallengePicture = event.target.files[0];
+      }
     }
   }
 };

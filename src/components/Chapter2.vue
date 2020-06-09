@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chapter" id="chapter2">
     <div>
       <h2>Chapter Two</h2>
       <p>
@@ -9,7 +9,11 @@
         cupiditate, quaerat recusandae.
       </p>
     </div>
-    <ChallengeCard v-for="(challenge, index) in challenges" :key="index" />
+    <ChallengeCard
+      v-for="(challenge, index) in challenges"
+      :challenge="challenge"
+      :key="index"
+    />
   </div>
 </template>
 
@@ -20,32 +24,16 @@ export default {
   components: {
     ChallengeCard
   },
-
-  data() {
-    return {
-      challenges: [
-        {
-          id: 2,
-          title: "Places where you shouldn't eat Currywurst",
-          details:
-            "Trains, elevators and other narrow spaces are the ideal places to enchant everyone in the area with the wonderful smell of Currywurst. Show us the place where you and your Currywurst got many nasty looks.",
-          points: 6,
-          creatorId: 1,
-          picturesIds: ["https://i.ibb.co/wLRwNws/1384534801000.jpg", 3, 5],
-          chapterId: 2
-        },
-        {
-          id: 3,
-          title: "Le grand Chef",
-          details:
-            "Create the most awesome Currywurst there is. Post your picture and soon the biggest Wurstlovers will line up at your kitchen.",
-          points: 12,
-          creatorId: 1,
-          picturesIds: ["https://i.ibb.co/mB3vjS7/maxresdefault.jpg", 3, 5],
-          chapterId: 2
-        }
-      ]
-    };
+  computed: {
+    challenges() {
+      if (this.$store.getters.getChallengeById(2)) {
+        const challenge2 = this.$store.getters.getChallengeById(2);
+        const challenge3 = this.$store.getters.getChallengeById(3);
+        return [challenge2, challenge3];
+      } else {
+        return [];
+      }
+    }
   }
 };
 </script>

@@ -1,9 +1,11 @@
 <template>
   <div>
     <h1>Manfred's Tale!</h1>
-    <Chapter1 />
-    <Chapter2 />
-    <Chapter3 />
+    <main>
+      <Chapter1 v-if="$store.getters.isChapterRevealed(1)" />
+      <Chapter2 v-if="$store.getters.isChapterRevealed(2)" />
+      <Chapter3 v-if="$store.getters.isChapterRevealed(3)" />
+    </main>
   </div>
 </template>
 
@@ -16,7 +18,10 @@ export default {
   components: {
     Chapter1,
     Chapter2,
-    Chapter3,
+    Chapter3
+  },
+  created() {
+    this.$store.dispatch("fetchChallenges");
   }
 };
 </script>
@@ -24,5 +29,11 @@ export default {
 <style scoped>
 .chapter {
   margin-bottom: 5rem;
+}
+
+main {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
 }
 </style>
