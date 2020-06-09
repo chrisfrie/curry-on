@@ -26,7 +26,7 @@ const routes = [
     async beforeEnter(to, from, next) {
       console.log(to.params.id);
       const res = await axios.get(
-        `http://localhost:3000/challenges/${to.params.id}`
+        `http://localhost:1337/challenges/${to.params.id}`
       );
       to.params.challenge = res.data;
       next();

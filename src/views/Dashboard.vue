@@ -16,7 +16,10 @@ export default {
   components: {
     Chapter1,
     Chapter2,
-    Chapter3,
+    Chapter3
+  },
+  created() {
+    this.$store.dispatch("fetchChallenges");
   }
 };
 </script>
