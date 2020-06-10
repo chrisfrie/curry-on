@@ -5,6 +5,7 @@ import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
+import Profile from "@/views/Profile.vue";
 import store from "@/store";
 
 Vue.use(VueRouter);
@@ -37,7 +38,29 @@ const routes = [
   {
     path: "/pictures/:id",
     name: "picture",
-    component: Picture
+    component: Picture,
+    async beforeEnter(to, from, next) {
+      console.log(to.params.id);
+      const res = await axios.get(
+        `http://localhost:1337/pictures/${to.params.id}`
+      );
+      to.params.picture = res.data;
+      next();
+    },
+    props: true
+  },
+  {
+    path: "/profiles/:id",
+    name: "profile",
+    component: Profile,
+    async beforeEnter(to, from, next) {
+      const res = await axios.get(
+        `http://localhost:1337/users/${to.params.id}`
+      );
+      to.params.user = res.data;
+      next();
+    },
+    props: true
   }
 ];
 

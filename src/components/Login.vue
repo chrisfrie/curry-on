@@ -5,7 +5,7 @@
       <h1>Login</h1>
       <form @submit.prevent="submitLogin">
         <input
-          v-model="users.email"
+          v-model="user.email"
           type="email"
           name="email"
           placeholder="Email"
@@ -14,7 +14,7 @@
             Email is required, please check your input
           </div> -->
         <input
-          v-model="users.password"
+          v-model="user.password"
           type="password"
           name="password"
           placeholder="Password"
@@ -24,36 +24,36 @@
           </div> -->
 
         <button type="submit">Login</button>
-        <button type="submit" @click="showRegister">Register</button>
       </form>
+      <button type="submit" @click="showRegister">Register</button>
     </div>
     <div id="register">
       <button id="close" @click="divHide(), reverseRegister()">X</button>
       <h1>Register</h1>
-      <div class="avatar-preview">
+      <!-- <div class="avatar-preview">
         <img v-if="avatarURL" :src="avatarURL" />
         <p v-else>Preview</p>
-      </div>
+      </div> -->
       <form @submit.prevent="submitRegister">
-        <label class="file-upload">
+        <!-- <label class="file-upload">
           Upload Avatar
           <input @change="fileSelected" type="file"
-        /></label>
+        /></label> -->
         <input
-          v-model="users.name"
+          v-model="user.username"
           type="text"
           name="name"
           placeholder="Username"
         />
         <input
-          v-model="users.email"
+          v-model="user.email"
           type="email"
           name="email"
           placeholder="Email"
         />
 
         <input
-          v-model="users.password"
+          v-model="user.password"
           type="password"
           name="password"
           placeholder="Password"
@@ -69,52 +69,52 @@
 export default {
   data() {
     return {
-      users: {
-        name: "",
+      user: {
+        username: "",
         email: "",
         password: ""
-      },
-      avatar: null
+      }
+      // avatar: null
     };
   },
   computed: {
-    avatarURL() {
-      return this.avatar ? window.URL.createObjectURL(this.avatar) : null;
-    }
+    // avatarURL() {
+    //   return this.avatar ? window.URL.createObjectURL(this.avatar) : null;
+    // }
   },
   methods: {
     divHide() {
       document.getElementById("loginPopUp").style.display = "none";
     },
-    fileSelected(event) {
-      // Check if a file was selected
-      if (event.target.files.length == 0) {
-        return;
-      }
+    // fileSelected(event) {
+    //   // Check if a file was selected
+    //   if (event.target.files.length == 0) {
+    //     return;
+    //   }
 
-      // Set avatar to selected file
-      this.avatar = event.target.files[0];
-    },
+    //   // Set avatar to selected file
+    //   this.avatar = event.target.files[0];
+    // },
     async submitLogin() {
       this.$store.dispatch("login", {
-        email: this.users.email,
-        password: this.users.password
+        email: this.user.email,
+        password: this.user.password
       });
     },
-    async submitRegister() {
-      try {
-        await this.$store.dispatch("register", this.user);
-        this.$router.push("/challenges");
+    submitRegister() {
+      // try {
+      this.$store.dispatch("register", this.user);
+      // this.$router.push("/challenges");
 
-        if (this.avatar) {
-          await this.$store.dispatch("createProfile", this.avatar);
-        }
-      } catch {
-        this.$store.dispatch("pushNotification", {
-          type: "error",
-          message: "Sorry, couldn't register, please check your inputs"
-        });
-      }
+      //   if (this.avatar) {
+      //     await this.$store.dispatch("createProfile", this.avatar);
+      //   }
+      // } catch {
+      //   this.$store.dispatch("pushNotification", {
+      //     type: "error",
+      //     message: "Sorry, couldn't register, please check your inputs"
+      //   });
+      // }
     },
     showRegister() {
       document.getElementById("register").style.display = "block";

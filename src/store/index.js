@@ -30,7 +30,16 @@ export default new Vuex.Store({
   },
   actions: {
     // need to implement
-    register() {},
+    async register(ctx, userdata) {
+      const res = await axios.post(
+        "http://localhost:1337/auth/local/register",
+        userdata
+      );
+      const { user, jwt } = res.data;
+      ctx.commit("SET_USER", user);
+      ctx.commit("SET_JWT", jwt);
+      router.push({ name: "challenges" });
+    },
     // Login needs error handling - if there is an error, show the user what is needed
     async login(ctx, { email, password }) {
       // Do a post request to /auth/local with email and password
@@ -101,6 +110,7 @@ export default new Vuex.Store({
     getChallengeById: state => id => {
       return state.challenges.find(challenge => challenge.id == id);
     },
+
     isChapterRevealed: state => chapterId => {
       if (!state.user) return false;
 
