@@ -5,11 +5,20 @@ import router from "@/router";
 
 Vue.use(Vuex);
 
+let nextId = 1;
+
+function getNewNotificationId() {
+  const id = nextId;
+  nextId += 1;
+  return id;
+}
+
 export default new Vuex.Store({
   state: {
     jwt: null,
     user: null,
-    challenges: []
+    challenges: [],
+    notifications: []
   },
   mutations: {
     SET_JWT(state, jwt) {
@@ -26,34 +35,44 @@ export default new Vuex.Store({
     },
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
+    },
+    PUSH_NOTIFICATION(state, notification) {
+      state.notifications.push(notification);
     }
   },
   actions: {
-    // need to implement
     async register(ctx, userdata) {
-      const res = await axios.post(
-        "http://localhost:1337/auth/local/register",
-        userdata
-      );
-      const { user, jwt } = res.data;
-      ctx.commit("SET_USER", user);
-      ctx.commit("SET_JWT", jwt);
-      router.push({ name: "challenges" });
+      try {
+        const res = await axios.post(
+          "http://localhost:1337/auth/local/register",
+          userdata
+        );
+        const { user, jwt } = res.data;
+        ctx.commit("SET_USER", user);
+        ctx.commit("SET_JWT", jwt);
+        router.push({ name: "challenges" });
+      } catch {
+        alert("Unable to register, please check your inputs and try again.");
+      }
     },
     // Login needs error handling - if there is an error, show the user what is needed
     async login(ctx, { email, password }) {
-      // Do a post request to /auth/local with email and password
-      const res = await axios.post("http://localhost:1337/auth/local", {
-        identifier: email,
-        password
-      });
-      // Extract the user and jwt key from the response body
-      const { user, jwt } = res.data;
-      // Trigger the mutations
-      ctx.commit("SET_JWT", jwt);
-      ctx.commit("SET_USER", user);
-      // Redirect to /challenges
-      router.push({ name: "challenges" });
+      try {
+        // Do a post request to /auth/local with email and password
+        const res = await axios.post("http://localhost:1337/auth/local", {
+          identifier: email,
+          password
+        });
+        // Extract the user and jwt key from the response body
+        const { user, jwt } = res.data;
+        // Trigger the mutations
+        ctx.commit("SET_JWT", jwt);
+        ctx.commit("SET_USER", user);
+        // Redirect to /challenges
+        router.push({ name: "challenges" });
+      } catch {
+        alert("Unable to login, please check your inputs and try again.");
+      }
     },
     loadUserFromLocalStorage(ctx) {
       const jwt = localStorage.getItem("jwt");
@@ -63,7 +82,6 @@ export default new Vuex.Store({
         ctx.commit("SET_USER", JSON.parse(user));
       }
     },
-    // need to implement
     logout(ctx) {
       localStorage.clear();
       ctx.commit("CLEAR_USER");
@@ -104,6 +122,14 @@ export default new Vuex.Store({
         }
       );
       ctx.commit("SET_USER", res.data);
+    },
+    pushNotification(ctx, { type, message }) {
+      const notification = {
+        id: getNewNotificationId(),
+        type: type || "success",
+        message
+      };
+      ctx.commit("PUSH_NOTIFICATION", notification);
     }
   },
   getters: {
