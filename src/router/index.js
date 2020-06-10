@@ -55,9 +55,9 @@ const routes = [
     component: Profile,
     async beforeEnter(to, from, next) {
       const res = await axios.get(
-        `http://localhost:1337/profiles/${to.params.id}`
+        `http://localhost:1337/users/${to.params.id}`
       );
-      to.params.profile = res.data;
+      to.params.user = res.data;
       next();
     },
     props: true

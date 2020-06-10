@@ -4,11 +4,11 @@
     <section class="profile-body">
       <div class="avatar"><img :src="imageURL" /></div>
       <div class="user-info">
-        <h2>{{ profile.user.username }}</h2>
+        <h2>{{ user.username }}</h2>
         <p>Current Pommes Points: {{ pommesPoints }}</p>
       </div>
     </section>
-    <ProfileGallery :picture="$store.state.user.pictures" />
+    <ProfileGallery :picture="user.pictures" />
   </div>
 </template>
 
@@ -16,29 +16,29 @@
 import ProfileGallery from "@/components/ProfileGallery.vue";
 
 export default {
-  props: ["profile"],
+  props: ["user"],
   components: {
     ProfileGallery
   },
   computed: {
     imageURL() {
-      return "http://localhost:1337" + this.profile.avatar.url;
+      return "http://localhost:1337" + this.user.profile.avatar.url;
     },
     pommesPoints() {
+      if (!this.$store.state.challenges.length) return 0;
+      const completedChallenges = this.user.pictures.map(picture => {
+        return picture.challenge;
+      });
       let currentPoints = 0;
-      let pictures = [this.$store.state.user.pictures];
-      for (const element of pictures) {
-        if (element.find(element => element.challenge == 1)) {
-          currentPoints += this.$store.state.challenges.pommesPoints;
-        } else if (element.find(element => element.challenge == 2)) {
-          currentPoints += 6;
-        } else if (element.find(element => element.challenge == 3)) {
-          currentPoints += 6;
-        }
+      for (const element of completedChallenges) {
+        const challenge = this.$store.getters.getChallengeById(element);
+        currentPoints += Number(challenge.pommesPoints);
       }
-
       return currentPoints;
     }
+  },
+  async created() {
+    this.$store.dispatch("fetchChallenges");
   }
 };
 </script>
