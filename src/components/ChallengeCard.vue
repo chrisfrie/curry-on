@@ -1,21 +1,23 @@
 <template>
-  <router-link
-    :disabled="locked"
-    :event="!locked ? 'click' : ''"
-    :to="{ name: 'show-challenge', params: { id: challenge.id } }"
-  >
-    <div>
-      <div class="challenge-card-grid">
-        <div class="challenge-card" :class="{ locked }">
-          <img :src="imageUrl" />
-          <p>{{ challenge.title }}</p>
-          <div class="pommes-points">
-            <p>{{ challenge.pommesPoints }}</p>
+  <div class="challenge-container">
+    <router-link
+      :disabled="locked"
+      :event="!locked ? 'click' : ''"
+      :to="{ name: 'show-challenge', params: { id: challenge.id } }"
+    >
+      <div>
+        <div class="challenge-card-grid">
+          <div class="challenge-card" :class="{ locked }">
+            <img :src="imageUrl" />
+            <p>{{ challenge.title }}</p>
+            <div class="pommes-points">
+              <p>{{ challenge.pommesPoints }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </router-link>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -42,22 +44,22 @@ export default {
 </script>
 
 <style scoped>
+.challenge-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .challenge-card-grid {
-  display: flex;
-  justify-content: center;
   margin-top: 1rem;
 }
 .challenge-card {
-  width: 400px;
   height: 150px;
   display: flex;
-  /* color: var(--light-text);
-  background-color: var(--dark-background); */
-  margin-left: 2rem;
   border: 1px solid #9c9b96;
+  margin: 0 1.5rem;
   box-sizing: border-box;
 }
-.challenge-card:last-child {
+.challenge-container:last-child {
   margin-bottom: 4rem;
 }
 

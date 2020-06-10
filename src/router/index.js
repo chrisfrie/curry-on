@@ -5,9 +5,8 @@ import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
 import Profile from "@/views/Profile.vue";
+import store from "@/store";
 
 Vue.use(VueRouter);
 
@@ -23,23 +22,13 @@ const routes = [
     component: Dashboard
   },
   {
-    path: "/login",
-    name: "login",
-    component: Login
-  },
-  {
-    path: "/register",
-    name: "register",
-    component: Register
-  },
-  {
     path: "/challenges/:id",
     name: "show-challenge",
     component: ShowChallenge,
     async beforeEnter(to, from, next) {
       console.log(to.params.id);
       const res = await axios.get(
-        `http://localhost:3000/challenges/${to.params.id}`
+        `http://localhost:1337/challenges/${to.params.id}`
       );
       to.params.challenge = res.data;
       next();
@@ -79,6 +68,17 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name == "intro") {
+    next();
+    return;
+  } else {
+    if (store.state.user) {
+      next();
+    } else next("/");
+  }
 });
 
 export default router;
