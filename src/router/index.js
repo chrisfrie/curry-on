@@ -6,7 +6,7 @@ import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
 import Profile from "@/views/Profile.vue";
-// import store from "@/store";
+import store from "@/store";
 
 Vue.use(VueRouter);
 
@@ -70,15 +70,14 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.name == "intro") {
-//     next();
-//     return;
-//   } else {
-//     if (store.state.user) {
-//       next();
-//     } else next("/");
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.name == "intro") {
+    next();
+  } else if (!store.state.user) {
+    next("/");
+  } else {
+    next();
+  }
+});
 
 export default router;

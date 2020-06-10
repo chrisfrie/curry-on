@@ -13,10 +13,16 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_JWT(state, jwt) {
+      localStorage.setItem("jwt", jwt);
       state.jwt = jwt;
     },
     SET_USER(state, user) {
+      localStorage.setItem("user", JSON.stringify(user));
       state.user = user;
+    },
+    CLEAR_USER(state) {
+      state.jwt = null;
+      state.user = null;
     },
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
@@ -40,8 +46,20 @@ export default new Vuex.Store({
       // Redirect to /challenges
       router.push({ name: "challenges" });
     },
+    loadUserFromLocalStorage(ctx) {
+      const jwt = localStorage.getItem("jwt");
+      const user = localStorage.getItem("user");
+      if (jwt && user) {
+        ctx.commit("SET_JWT", jwt);
+        ctx.commit("SET_USER", JSON.parse(user));
+      }
+    },
     // need to implement
-    logout() {},
+    logout(ctx) {
+      localStorage.clear();
+      ctx.commit("CLEAR_USER");
+      router.push({ name: "intro" });
+    },
     // Needs Error handling - maybe don't do a fetch, when we already have the challenges (if challanges array is populated, don't fetch again)
     async fetchChallenges(ctx) {
       const res = await axios.get("http://localhost:1337/challenges");
