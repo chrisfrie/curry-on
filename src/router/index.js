@@ -50,11 +50,10 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.name == "intro") {
     next();
-    return;
+  } else if (!store.state.user) {
+    next("/");
   } else {
-    if (store.state.user) {
-      next();
-    } else next("/");
+    next();
   }
 });
 
