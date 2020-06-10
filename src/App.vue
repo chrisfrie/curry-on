@@ -15,6 +15,10 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+@font-face {
+  font-family: "Marbre";
+  src: url("./assets/fonts/Marbre.otf");
+}
 
 body {
   background-color: var(--light-background);
@@ -43,6 +47,10 @@ h3,
 h4 {
   font-family: "Marbre", sans-serif;
   font-weight: 700;
+}
+
+h2 {
+  font-size: 1.4rem;
 }
 
 a {

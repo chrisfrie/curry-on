@@ -6,8 +6,8 @@
       </div>
       <!-- <div class="navigation-menu-desktop"> -->
       <div class="links">
-        <router-link to="/">Challenges</router-link> |
-        <router-link to="/about">About</router-link>
+        <router-link to="/">Intro</router-link> |
+        <router-link to="/challenges">Challenges</router-link>
       </div>
 
       <div class="control" @click="showNav">
@@ -23,8 +23,8 @@
         >
           <img src="../../public/butler.png" alt="Butler" />
           <ul>
-            <li><router-link to="/">Challenges</router-link></li>
-            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/">Intro</router-link></li>
+            <li><router-link to="/challenges">Challenges</router-link></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
