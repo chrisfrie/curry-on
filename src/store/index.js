@@ -83,6 +83,7 @@ export default new Vuex.Store({
     getChallengeById: state => id => {
       return state.challenges.find(challenge => challenge.id == id);
     },
+
     isChapterRevealed: state => chapterId => {
       if (!state.user) return false;
 

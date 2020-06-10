@@ -22,7 +22,7 @@
         </button>
       </form>
     </div>
-    <Gallery />
+    <Gallery :challenge="challenge" />
   </div>
 </template>
 

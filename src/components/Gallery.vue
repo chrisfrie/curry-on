@@ -1,6 +1,10 @@
 <template>
   <div class="gallery">
-    <div class="gallery-panel" v-for="picture in pictures" :key="picture.id">
+    <div
+      class="gallery-panel"
+      v-for="picture in challenge.pictures"
+      :key="picture.id"
+    >
       <router-link :to="`/pictures/${picture.id}`">
         <img :src="myApiUrl + picture.userChallengePicture.url" />
       </router-link>
@@ -9,23 +13,15 @@
 </template>
 
 <script>
-import { getPictures } from "@/services/challenge-service.js";
+// import { getPictures } from "@/services/challenge-service.js";
 
 export default {
   name: "Gallery",
-  data() {
-    return {
-      pictures: []
-    };
-  },
+  props: ["challenge"],
   computed: {
     myApiUrl() {
       return process.env.VUE_APP_API_URL;
     }
-  },
-
-  async created() {
-    this.pictures = (await getPictures()).data;
   }
 };
 </script>
