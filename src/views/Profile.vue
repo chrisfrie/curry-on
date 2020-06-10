@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     imageURL() {
-      return "http://localhost:3000" + this.profile.avatar.url;
+      return "http://localhost:1337" + this.profile.avatar.url;
     }
   }
 };

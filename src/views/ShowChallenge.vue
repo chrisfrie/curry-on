@@ -22,12 +22,16 @@
         </button>
       </form>
     </div>
+    <Gallery />
   </div>
 </template>
 
 <script>
+import Gallery from "@/components/Gallery.vue";
 export default {
-  components: {},
+  components: {
+    Gallery
+  },
 
   data() {
     return {

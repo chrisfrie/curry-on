@@ -42,7 +42,7 @@ const routes = [
     async beforeEnter(to, from, next) {
       console.log(to.params.id);
       const res = await axios.get(
-        `http://localhost:3000/pictures/${to.params.id}`
+        `http://localhost:1337/pictures/${to.params.id}`
       );
       to.params.picture = res.data;
       next();
@@ -55,7 +55,7 @@ const routes = [
     component: Profile,
     async beforeEnter(to, from, next) {
       const res = await axios.get(
-        `http://localhost:3000/profiles/${to.params.id}`
+        `http://localhost:1337/profiles/${to.params.id}`
       );
       to.params.profile = res.data;
       next();
