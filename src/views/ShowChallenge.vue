@@ -32,6 +32,7 @@ export default {
   components: {
     Gallery
   },
+  props: ["challenge"],
 
   data() {
     return {
@@ -39,7 +40,6 @@ export default {
     };
   },
 
-  props: ["challenge"],
   methods: {
     openForm() {
       document.getElementById("challengeForm").style.display = "flex";

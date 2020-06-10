@@ -13,8 +13,6 @@
 </template>
 
 <script>
-// import { getPictures } from "@/services/challenge-service.js";
-
 export default {
   name: "Gallery",
   props: ["challenge"],

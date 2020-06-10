@@ -4,16 +4,18 @@
     <section class="profile-body">
       <div class="avatar"><img :src="imageURL" /></div>
       <div class="user-info">
-        <h2>UserName: {{ profile.user.username }}</h2>
+        <h2>{{ profile.user.username }}</h2>
         <p>Current Pommes Points: {{ profile.pommesPoints }}</p>
+        <p>{{ $store.state.user.id }}</p>
       </div>
     </section>
-    <div class="profile-gallery"><ProfileGallery /></div>
+    <ProfileGallery :picture="$store.state.user.pictures" />
   </div>
 </template>
 
 <script>
 import ProfileGallery from "@/components/ProfileGallery.vue";
+
 export default {
   props: ["profile"],
   components: {

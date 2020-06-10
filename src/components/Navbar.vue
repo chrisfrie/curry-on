@@ -8,7 +8,7 @@
       <div class="links">
         <router-link to="/">Intro</router-link> |
         <router-link to="/challenges">Challenges</router-link> |
-        <router-link to="/profiles">Profile</router-link>
+        <router-link to="/profiles/2">Profile</router-link>
       </div>
 
       <div class="control" @click="showNav">
@@ -26,7 +26,9 @@
           <ul>
             <li><router-link to="/">Intro</router-link></li>
             <li><router-link to="/challenges">Challenges</router-link></li>
-            <li><router-link to="/profiles">Profile</router-link></li>
+            <li>
+              <router-link to="/profiles/1">Profile</router-link>
+            </li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
