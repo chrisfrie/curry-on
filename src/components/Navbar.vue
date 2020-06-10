@@ -4,10 +4,17 @@
       <div class="logo">
         <img src="../../public/butler.png" alt="Butler" />
       </div>
-      <!-- <div class="navigation-menu-desktop"> -->
       <div class="links">
         <router-link to="/">Intro</router-link> |
-        <router-link to="/challenges">Challenges</router-link>
+        <router-link to="/challenges">Story</router-link> |
+        <router-link
+          v-if="$store.state.user"
+          :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
+          >Profile</router-link
+        >
+        | <router-link to="">Leaderboard</router-link> |
+        <router-link to="">Impressum</router-link> |
+        <router-link to="">Login</router-link>
       </div>
 
       <div class="control" @click="showNav">
@@ -22,9 +29,22 @@
           v-if="showSidebar"
         >
           <img src="../../public/butler.png" alt="Butler" />
-          <ul>
+          <ul @click="showNav">
             <li><router-link to="/">Intro</router-link></li>
-            <li><router-link to="/challenges">Challenges</router-link></li>
+            <li><router-link to="/challenges">Story</router-link></li>
+            <li>
+              <router-link
+                v-if="$store.state.user"
+                :to="{
+                  name: 'profile',
+                  params: { id: `${$store.state.user.id}` }
+                }"
+                >Profile</router-link
+              >
+            </li>
+            <li><router-link to="">Leaderboard</router-link></li>
+            <li><router-link to="">Impressum</router-link></li>
+            <li><router-link to="">Login</router-link></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
@@ -49,27 +69,6 @@ export default {
     showNav() {
       this.showSidebar = !this.showSidebar;
     }
-    // enter() {
-    //   this.style.height = "auto";
-    //   const height = getComputedStyle().height;
-    //   this.style.height = 0;
-
-    //   getComputedStyle(el);
-
-    //   setTimeout(() => {
-    //     el.style.height = "auto";
-    //   });
-    // },
-    // afterEnter(el) {
-    //   el.style.height = "auto";
-    // },
-    // leave(el) {
-    //   el.style.height = getComputedStyle(el).height;
-    //   getComputedStyle(el);
-    //   setTimeout(() => {
-    //     el.style.height = 0;
-    //   });
-    // }
   }
 };
 </script>

@@ -1,10 +1,9 @@
 <template>
   <div class="lightbox" @click.self="closeLightbox">
-    <img :src="pictureUrl" />
-
+    <img :src="myApiUrl + picture.userChallengePicture.url" />
     <div class="lightbox-info">
       <div class="lightbox-info-inner">
-        Info
+        {{ picture.caption }}
       </div>
     </div>
   </div>
@@ -27,15 +26,13 @@ export default {
         return picture.id === Number(this.$route.params.id);
       });
     },
-    pictureUrl() {
-      return this.picture
-        ? require(`../assets/images/${this.picture.filename}`)
-        : "";
+    myApiUrl() {
+      return process.env.VUE_APP_API_URL;
     }
   },
   methods: {
     closeLightbox() {
-      this.$router.push(`/challenges/${this.challenges}`);
+      this.$router.push({ path: `/challenges/${this.picture.challenge.id}` });
     }
   },
   async created() {
@@ -47,27 +44,29 @@ export default {
 
 <style scoped>
 .lightbox {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   align-items: center;
 }
 .lightbox img {
-  margin: auto;
+  margin: 30% 0 0 0;
   width: 100%;
 }
 .lightbox-info {
-  margin: auto 2rem auto 0;
+  margin: 0;
+  width: 100vw;
 }
 .lightbox-info-inner {
-  background-color: #ffffff;
-  padding: 2rem;
-  min-width: 80%;
+  background-color: var(--light-background);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  justify-content: center;
 }
 </style>

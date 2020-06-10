@@ -22,12 +22,17 @@
         </button>
       </form>
     </div>
+    <Gallery :challenge="challenge" />
   </div>
 </template>
 
 <script>
+import Gallery from "@/components/Gallery.vue";
 export default {
-  components: {},
+  components: {
+    Gallery
+  },
+  props: ["challenge"],
 
   data() {
     return {
@@ -35,7 +40,6 @@ export default {
     };
   },
 
-  props: ["challenge"],
   methods: {
     openForm() {
       document.getElementById("challengeForm").style.display = "flex";
