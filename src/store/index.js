@@ -30,12 +30,14 @@ export default new Vuex.Store({
   },
   actions: {
     // need to implement
-    async register(ctx, user) {
+    async register(ctx, userdata) {
       const res = await axios.post(
         "http://localhost:1337/auth/local/register",
-        user
+        userdata
       );
-      ctx.commit("SET_USER", res.data);
+      const { user, jwt } = res.data;
+      ctx.commit("SET_USER", user);
+      ctx.commit("SET_JWT", jwt);
       router.push({ name: "challenges" });
     },
     // Login needs error handling - if there is an error, show the user what is needed
