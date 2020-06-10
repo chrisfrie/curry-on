@@ -49,7 +49,16 @@ const routes = [
   {
     path: "/pictures/:id",
     name: "picture",
-    component: Picture
+    component: Picture,
+    async beforeEnter(to, from, next) {
+      console.log(to.params.id);
+      const res = await axios.get(
+        `http://localhost:3000/pictures/${to.params.id}`
+      );
+      to.params.picture = res.data;
+      next();
+    },
+    props: true
   },
   {
     path: "/profiles/:id",

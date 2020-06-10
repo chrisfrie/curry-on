@@ -7,10 +7,10 @@
     <div>
       <div class="challenge-card-grid">
         <div class="challenge-card" :class="{ locked }">
-          <img :src="challenge.picturesIds[0]" />
+          <img :src="imageUrl" />
           <p>{{ challenge.title }}</p>
           <div class="pommes-points">
-            <p>{{ challenge.points }}</p>
+            <p>{{ challenge.pommesPoints }}</p>
           </div>
         </div>
       </div>
@@ -28,6 +28,14 @@ export default {
     locked: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    imageUrl() {
+      return (
+        process.env.VUE_APP_UPLOAD_URL +
+        this.challenge.pictures[0].userChallengePicture.url
+      );
     }
   }
 };
@@ -48,6 +56,9 @@ export default {
   margin-left: 2rem;
   border: 1px solid #9c9b96;
   box-sizing: border-box;
+}
+.challenge-card:last-child {
+  margin-bottom: 4rem;
 }
 
 .challenge-card img {
