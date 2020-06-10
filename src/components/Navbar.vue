@@ -8,7 +8,10 @@
       <div class="links">
         <router-link to="/">Intro</router-link> |
         <router-link to="/challenges">Challenges</router-link> |
-        <router-link to="/profiles/2">Profile</router-link>
+        <router-link
+          :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
+          >Profile</router-link
+        >
       </div>
 
       <div class="control" @click="showNav">
@@ -27,7 +30,13 @@
             <li><router-link to="/">Intro</router-link></li>
             <li><router-link to="/challenges">Challenges</router-link></li>
             <li>
-              <router-link to="/profiles/1">Profile</router-link>
+              <router-link
+                :to="{
+                  name: 'profile',
+                  params: { id: `${$store.state.user.id}` }
+                }"
+                >Profile</router-link
+              >
             </li>
           </ul>
           <div class="control" @click="showNav">
