@@ -3,31 +3,61 @@ import VueRouter from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
-import About from "../views/About.vue";
+import Intro from "../views/Intro.vue";
+import Picture from "@/views/Picture.vue";
+import Profile from "@/views/Profile.vue";
+import store from "@/store";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "dashboard",
-    component: Dashboard
+    name: "intro",
+    component: Intro
   },
   {
-    path: "/about",
-    name: "about",
-    component: About
+    path: "/challenges",
+    name: "challenges",
+    component: Dashboard
   },
   {
     path: "/challenges/:id",
     name: "show-challenge",
     component: ShowChallenge,
-    async beforeEnter(to, form, next) {
+    async beforeEnter(to, from, next) {
       console.log(to.params.id);
       const res = await axios.get(
-        `http://localhost:3000/challenges/${to.params.id}`
+        `http://localhost:1337/challenges/${to.params.id}`
       );
       to.params.challenge = res.data;
+      next();
+    },
+    props: true
+  },
+  {
+    path: "/pictures/:id",
+    name: "picture",
+    component: Picture,
+    async beforeEnter(to, from, next) {
+      console.log(to.params.id);
+      const res = await axios.get(
+        `http://localhost:1337/pictures/${to.params.id}`
+      );
+      to.params.picture = res.data;
+      next();
+    },
+    props: true
+  },
+  {
+    path: "/profiles/:id",
+    name: "profile",
+    component: Profile,
+    async beforeEnter(to, from, next) {
+      const res = await axios.get(
+        `http://localhost:1337/users/${to.params.id}`
+      );
+      to.params.user = res.data;
       next();
     },
     props: true
@@ -38,6 +68,16 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name == "intro") {
+    next();
+  } else if (!store.state.user) {
+    next("/");
+  } else {
+    next();
+  }
 });
 
 export default router;

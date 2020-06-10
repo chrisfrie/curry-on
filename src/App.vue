@@ -1,15 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Challenges</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <Navbar />
   </div>
 </template>
 
+<script>
+import Navbar from "@/components/Navbar.vue";
+export default {
+  components: {
+    Navbar
+  }
+};
+</script>
+
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+@font-face {
+  font-family: "Marbre";
+  src: url("./assets/fonts/Marbre.otf");
+}
 
 body {
   background-color: var(--light-background);
@@ -40,6 +49,10 @@ h4 {
   font-weight: 700;
 }
 
+h2 {
+  font-size: 1.4rem;
+}
+
 a {
   color: var(--dark-text);
   text-decoration: none;
@@ -52,20 +65,5 @@ button {
   color: var(--dark-text);
   border: 2px solid #9c9b96;
   outline: none;
-}
-
-#nav {
-  background-color: var(--light-background);
-  padding: 10px;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #bdbcb6;
-}
-
-#nav a {
-  color: var (--light-text);
-}
-
-#nav a.router-link-exact-active {
-  color: var (--light-text);
 }
 </style>
