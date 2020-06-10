@@ -6,6 +6,7 @@ import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
 import store from "@/store";
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 Vue.use(VueRouter);
 
@@ -26,9 +27,7 @@ const routes = [
     component: ShowChallenge,
     async beforeEnter(to, from, next) {
       console.log(to.params.id);
-      const res = await axios.get(
-        `http://localhost:1337/challenges/${to.params.id}`
-      );
+      const res = await axios.get(`/challenges/${to.params.id}`);
       to.params.challenge = res.data;
       next();
     },
