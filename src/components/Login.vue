@@ -24,8 +24,8 @@
           </div> -->
 
         <button type="submit">Login</button>
-        <button type="submit" @click="showRegister">Register</button>
       </form>
+      <button type="submit" @click="showRegister">Register</button>
     </div>
     <div id="register">
       <button id="close" @click="divHide(), reverseRegister()">X</button>
@@ -101,20 +101,20 @@ export default {
         password: this.users.password
       });
     },
-    async submitRegister() {
-      try {
-        await this.$store.dispatch("register", this.user);
-        this.$router.push("/challenges");
+    submitRegister() {
+      // try {
+      this.$store.dispatch("register", this.user);
+      // this.$router.push("/challenges");
 
-        if (this.avatar) {
-          await this.$store.dispatch("createProfile", this.avatar);
-        }
-      } catch {
-        this.$store.dispatch("pushNotification", {
-          type: "error",
-          message: "Sorry, couldn't register, please check your inputs"
-        });
-      }
+      //   if (this.avatar) {
+      //     await this.$store.dispatch("createProfile", this.avatar);
+      //   }
+      // } catch {
+      //   this.$store.dispatch("pushNotification", {
+      //     type: "error",
+      //     message: "Sorry, couldn't register, please check your inputs"
+      //   });
+      // }
     },
     showRegister() {
       document.getElementById("register").style.display = "block";

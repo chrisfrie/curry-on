@@ -24,7 +24,14 @@ export default new Vuex.Store({
   },
   actions: {
     // need to implement
-    register() {},
+    async register(ctx, user) {
+      const res = await axios.post(
+        "http://localhost:1337/auth/local/register",
+        user
+      );
+      ctx.commit("SET_USER", res.data);
+      router.push({ name: "challenges" });
+    },
     // Login needs error handling - if there is an error, show the user what is needed
     async login(ctx, { email, password }) {
       // Do a post request to /auth/local with email and password
