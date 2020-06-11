@@ -4,7 +4,7 @@
       <div class="main-container">
         <main class="main-content">
           <Navbar v-if="$store.state.user" />
-          <transition name="view">
+          <transition :name="transitionName">
             <router-view />
           </transition>
         </main>
@@ -52,6 +52,24 @@ import Navbar from "@/components/Navbar.vue";
 export default {
   components: {
     Navbar
+  },
+  data() {
+    return {
+      transitionName: ""
+    };
+  },
+  watch: {
+    $route(to, from) {
+      if (from.name.startsWith("chapter") && to.name.startsWith("chapter")) {
+        const toChapter = Number(to.name[7]);
+        const fromChapter = Number(from.name[7]);
+
+        this.transitionName =
+          toChapter < fromChapter ? "slide-right" : "slide-left";
+      } else {
+        this.transitionName = "none";
+      }
+    }
   }
 };
 </script>
@@ -205,20 +223,33 @@ button {
   flex-shrink: 0;
   scroll-snap-align: start;
 }
-
-.view-enter-active .view-leave-active {
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+.slide-left-leave-active,
+.slide-right-leave-active,
+.slide-left-leave-active .chapter-content,
+.slide-right-leave-active .chapter-content {
+  transition: all 1s ease-in;
 }
 
-.view-enter,
-.view.leave-to {
-  opacity: 0;
-  transform: translateX(100px);
+.slide-left-enter-active,
+.slide-right-enter-active,
+.slide-left-enter-active .chapter-content,
+.slide-right-enter-active .chapter-content {
+  transition: all 1s ease-out 1s;
 }
 
-.view-enter-to,
-.view-leave {
-  opacity: 1;
-  transform: translateX(0px);
+.slide-left-enter .chapter-content {
+  transform: translateX(100vw);
+}
+
+.slide-left-leave-to .chapter-content {
+  transform: translateX(-100vw);
+}
+
+.slide-right-enter .chapter-content {
+  transform: translateX(-100vw);
+}
+
+.slide-right-leave-to .chapter-content {
+  transform: translateX(100vw);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="chapter" id="chapter4">
     <StoryNav />
-    <div>
+    <div class="chapter-content">
       <p>
         The Currywurst with Ketchup sauce turned out to be a big success. I had
         even become a business partner with the famous Simon, The Bude Owner
