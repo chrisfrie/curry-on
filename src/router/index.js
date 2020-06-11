@@ -66,6 +66,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  console.log(to.name);
   if (to.name == "intro") {
     next();
   } else if (!store.state.user) {
