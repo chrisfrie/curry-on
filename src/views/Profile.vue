@@ -42,7 +42,7 @@ export default {
       return this.$store.state.user;
     },
     imageURL() {
-      return process.env.VUE_APP_API_URL + this.user.profile.avatar.url;
+      return process.env.VUE_APP_UPLOAD_URL + this.user.profile.avatar.url;
     },
     pommesPoints() {
       if (!this.$store.state.challenges.length) return 0;

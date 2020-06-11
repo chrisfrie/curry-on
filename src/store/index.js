@@ -157,7 +157,6 @@ export default new Vuex.Store({
         formData.set(
           "data",
           JSON.stringify({
-            avatar,
             user: ctx.state.user.id
           })
         );
