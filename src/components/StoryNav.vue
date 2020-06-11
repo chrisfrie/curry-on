@@ -4,8 +4,8 @@
     <router-link :to="{ name: 'chapter1' }">I</router-link>
     <router-link
       :to="{ name: 'chapter2' }"
-      :disabled="!$store.getters.isChapterRevealed(1)"
-      :event="$store.getters.isChapterRevealed(1) ? 'click' : ''"
+      :disabled="!$store.getters.isChapterRevealed(2)"
+      :event="$store.getters.isChapterRevealed(2) ? 'click' : ''"
       >II</router-link
     >
     <router-link
