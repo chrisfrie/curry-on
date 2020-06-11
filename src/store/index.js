@@ -143,6 +143,10 @@ export default new Vuex.Store({
         });
         ctx.dispatch("updateUser");
         router.push({ name: "challenges" });
+        ctx.dispatch("pushNotification", {
+          type: "success",
+          message: "Great, you successfully completed the challenge! Curry On!"
+        });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",

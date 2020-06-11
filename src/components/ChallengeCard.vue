@@ -34,10 +34,7 @@ export default {
   },
   computed: {
     imageUrl() {
-      return (
-        process.env.VUE_APP_UPLOAD_URL +
-        this.challenge.pictures[0].userChallengePicture.url
-      );
+      return process.env.VUE_APP_UPLOAD_URL + this.challenge.titlePicture.url;
     }
   }
 };
