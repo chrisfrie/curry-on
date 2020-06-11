@@ -2,7 +2,20 @@
   <div class="profile-wrapper">
     <h2>Profile</h2>
     <section class="profile-body">
-      <div class="avatar"><img :src="imageURL" /></div>
+      <div v-if="user.profile && user.profile.avatar" class="avatar">
+        <img :src="imageURL" />
+      </div>
+
+      <template v-else-if="$store.state.user.id == user.id">
+        <input
+          style="display: none"
+          ref="fileInput"
+          @change="fileSelected"
+          type="file"
+        />
+        <button @click="$refs.fileInput.click()">Upload Avatar</button>
+      </template>
+
       <div class="user-info">
         <h2>{{ user.username }}</h2>
         <p>Current Pommes Points: {{ pommesPoints }}</p>
@@ -16,11 +29,18 @@
 import ProfileGallery from "@/components/ProfileGallery.vue";
 
 export default {
-  props: ["user"],
   components: {
     ProfileGallery
   },
+  data() {
+    return {
+      avatar: null
+    };
+  },
   computed: {
+    user() {
+      return this.$store.state.user;
+    },
     imageURL() {
       return process.env.VUE_APP_API_URL + this.user.profile.avatar.url;
     },
@@ -35,6 +55,19 @@ export default {
         currentPoints += Number(challenge.pommesPoints);
       }
       return currentPoints;
+    },
+    avatarPreviewUrl() {
+      return this.avatar ? window.URL.createObjectURL(this.avatar) : null;
+    }
+  },
+  methods: {
+    fileSelected(event) {
+      // Check if a file was selected
+      if (event.target.files.length == 0) {
+        return;
+      }
+
+      this.$store.dispatch("createProfile", { avatar: event.target.files[0] });
     }
   },
   async created() {

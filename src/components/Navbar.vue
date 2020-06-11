@@ -12,7 +12,7 @@
           <router-link
             class="link"
             v-if="$store.state.user"
-            :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
+            :to="{ name: 'profile' }"
             >Profile</router-link
           >
           <span @click="logout" class="link">Logout</span>
@@ -35,8 +35,7 @@
               <router-link
                 v-if="$store.state.user"
                 :to="{
-                  name: 'profile',
-                  params: { id: `${$store.state.user.id}` }
+                  name: 'profile'
                 }"
                 >Profile</router-link
               >

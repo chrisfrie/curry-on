@@ -151,6 +151,34 @@ export default new Vuex.Store({
         });
       }
     },
+    async createProfile(ctx, { avatar }) {
+      try {
+        const formData = new FormData();
+        formData.set(
+          "data",
+          JSON.stringify({
+            avatar,
+            user: ctx.state.user.id
+          })
+        );
+        formData.set("files.avatar", avatar);
+
+        await axios.post("/profiles", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
+        ctx.dispatch("updateUser");
+        ctx.dispatch("pushNotification", {
+          type: "success",
+          message: "Nice picture! Successfully uploaded."
+        });
+      } catch {
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "Sorry my dear, your picture got lost in the mail. Please check your Briefmarke."
+        });
+      }
+    },
     // Maybe a notification for completing a challenge;
     async updateUser(ctx) {
       try {
