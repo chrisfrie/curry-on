@@ -61,7 +61,6 @@ const routes = [
     name: "show-challenge",
     component: ShowChallenge,
     async beforeEnter(to, from, next) {
-      console.log(to.params.id);
       const res = await axios.get(`/challenges/${to.params.id}`);
       to.params.challenge = res.data;
       next();
@@ -73,7 +72,6 @@ const routes = [
     name: "picture",
     component: Picture,
     async beforeEnter(to, from, next) {
-      console.log(to.params.id);
       const res = await axios.get(`/pictures/${to.params.id}`);
       to.params.picture = res.data;
       next();
