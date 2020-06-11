@@ -20,30 +20,31 @@ const routes = [
     component: Intro
   },
   {
-    path: "/challenges",
+    path: "/chapter",
+    name: "chapter",
     redirect: () => {
       switch (store.getters.getActiveChapter) {
         case 3:
-          return "/chapter3";
+          return "/chapter/3";
         case 2:
-          return "/chapter2";
+          return "/chapter/2";
         default:
-          return "/chapter1";
+          return "/chapter/1";
       }
     }
   },
   {
-    path: "/chapter1",
+    path: "/chapter/1",
     name: "chapter1",
     component: Chapter1
   },
   {
-    path: "/chapter2",
+    path: "/chapter/2",
     name: "chapter2",
     component: Chapter2
   },
   {
-    path: "/chapter3",
+    path: "/chapter/3",
     name: "chapter3",
     component: Chapter3
   },

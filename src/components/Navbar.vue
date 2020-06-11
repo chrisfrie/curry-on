@@ -8,7 +8,7 @@
           /></router-link>
         </div>
         <div class="links">
-          <router-link class="link" to="/challenges">Story</router-link>
+          <router-link class="link" to="/chapter">Story</router-link>
           <router-link
             class="link"
             v-if="$store.state.user"
@@ -30,7 +30,7 @@
           v-if="showSidebar"
         >
           <ul @click="showNav">
-            <li><router-link to="/challenges">Story</router-link></li>
+            <li><router-link to="/chapter">Story</router-link></li>
             <li>
               <router-link
                 v-if="$store.state.user"
@@ -86,7 +86,7 @@ span.link:hover {
   color: black;
 }
 
-#nav a.router-link-exact-active {
+#nav a.router-link-active {
   color: black;
 }
 

@@ -129,7 +129,6 @@ export default {
         return;
       }
       this.$store.dispatch("register", this.user);
-      // this.$router.push("/challenges");
     },
     showRegister() {
       document.getElementById("register").style.display = "block";
