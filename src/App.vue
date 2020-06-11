@@ -21,10 +21,16 @@
         <div class="footer-links">
           <ul>
             <li>
-              <a href="https://codecampleipzig.de/impressum.html">Imprint</a>
+              <a
+                href="https://codecampleipzig.de/impressum.html"
+                target="_blank"
+                >Imprint</a
+              >
             </li>
             <li>
-              <a href="https://codecampleipzig.de/privacy.html">Privacy</a>
+              <a href="https://codecampleipzig.de/privacy.html" target="_blank"
+                >Privacy</a
+              >
             </li>
           </ul>
         </div>
