@@ -1,6 +1,7 @@
 <template>
   <div class="chapter" id="chapter1">
-    <div class="chapter-content">
+    <StoryNav />
+    <div>
       <h2>Chapter I</h2>
       <div>
         <p>
@@ -43,16 +44,23 @@
         :challenge="challenge"
         :key="index"
       />
+      <ChallengeCard
+        v-for="(challenge, index) in challenges"
+        :challenge="challenge"
+        :key="index"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import ChallengeCard from "@/components/ChallengeCard.vue";
+import StoryNav from "@/components/StoryNav.vue";
 
 export default {
   components: {
-    ChallengeCard
+    ChallengeCard,
+    StoryNav
   },
   computed: {
     challenges() {
@@ -60,19 +68,18 @@ export default {
       const challenge1 = this.$store.getters.getChallengeById(1);
       return challenge1 ? [challenge1] : [];
     }
+  },
+  created() {
+    this.$store.dispatch("fetchChallenges");
   }
 };
 </script>
 
 <style>
 .chapter {
-  width: 100vw;
+  max-width: 500px;
+  margin: 0 auto;
   flex-shrink: 0;
   scroll-snap-align: start;
-}
-
-.chapter-content {
-  max-width: 400px;
-  margin: 0 auto;
 }
 </style>
