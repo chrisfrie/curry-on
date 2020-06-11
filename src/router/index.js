@@ -5,9 +5,10 @@ import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
 import Profile from "@/views/Profile.vue";
-import Chapter1 from "@/components/Chapter1.vue";
-import Chapter2 from "@/components/Chapter2.vue";
-import Chapter3 from "@/components/Chapter3.vue";
+import Chapter1 from "@/views/Chapter1.vue";
+import Chapter2 from "@/views/Chapter2.vue";
+import Chapter3 from "@/views/Chapter3.vue";
+import Chapter4 from "@/views/Chapter4.vue";
 import store from "@/store";
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
