@@ -15,6 +15,7 @@ export default new Vuex.Store({
     SET_JWT(state, jwt) {
       localStorage.setItem("jwt", jwt);
       state.jwt = jwt;
+      axios.defaults.headers.common.Authorization = "Bearer " + jwt;
     },
     SET_USER(state, user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     CLEAR_USER(state) {
       state.jwt = null;
       state.user = null;
+      delete axios.defaults.headers.common.Authorization;
     },
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
@@ -96,12 +98,7 @@ export default new Vuex.Store({
     // Needs some Error handling - put a try - catch handler with a notification system; Maybe a notification for completing a challenge;
     async updateUser(ctx) {
       const res = await axios.get(
-        "http://localhost:1337/users/" + ctx.state.user.id,
-        {
-          headers: {
-            Authorization: "Bearer " + ctx.state.jwt
-          }
-        }
+        "http://localhost:1337/users/" + ctx.state.user.id
       );
       ctx.commit("SET_USER", res.data);
     }
