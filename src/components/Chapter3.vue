@@ -14,7 +14,7 @@
       :challenge="challenge"
       :key="index"
     />
-    <Chatbot v-if="isChapterRevealed(4)" />
+    <Chatbot v-if="$store.getters.isChapterRevealed(4)" />
   </div>
 </template>
 
