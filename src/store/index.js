@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "@/router";
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 Vue.use(Vuex);
 
@@ -9,7 +10,8 @@ export default new Vuex.Store({
   state: {
     jwt: null,
     user: null,
-    challenges: []
+    challenges: [],
+    showLogin: false
   },
   mutations: {
     SET_JWT(state, jwt) {
@@ -28,15 +30,18 @@ export default new Vuex.Store({
     },
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
+    },
+    SHOW_LOGIN(state) {
+      state.showLogin = true;
+    },
+    HIDE_LOGIN(state) {
+      state.showLogin = false;
     }
   },
   actions: {
     // need to implement
     async register(ctx, userdata) {
-      const res = await axios.post(
-        "http://localhost:1337/auth/local/register",
-        userdata
-      );
+      const res = await axios.post("/auth/local/register", userdata);
       const { user, jwt } = res.data;
       ctx.commit("SET_USER", user);
       ctx.commit("SET_JWT", jwt);
@@ -45,7 +50,7 @@ export default new Vuex.Store({
     // Login needs error handling - if there is an error, show the user what is needed
     async login(ctx, { email, password }) {
       // Do a post request to /auth/local with email and password
-      const res = await axios.post("http://localhost:1337/auth/local", {
+      const res = await axios.post("/auth/local", {
         identifier: email,
         password
       });
@@ -73,7 +78,7 @@ export default new Vuex.Store({
     },
     // Needs Error handling - maybe don't do a fetch, when we already have the challenges (if challanges array is populated, don't fetch again)
     async fetchChallenges(ctx) {
-      const res = await axios.get("http://localhost:1337/challenges");
+      const res = await axios.get("/challenges");
       ctx.commit("SET_CHALLENGES", res.data);
     },
     // Needs Error handling - make sure that only authenticated user can complete challenges for him/herself
@@ -89,7 +94,7 @@ export default new Vuex.Store({
       );
       formData.set("files.userChallengePicture", userChallengePicture);
 
-      await axios.post("http://localhost:1337/pictures", formData, {
+      await axios.post("/pictures", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       ctx.dispatch("updateUser");
@@ -97,9 +102,7 @@ export default new Vuex.Store({
     },
     // Needs some Error handling - put a try - catch handler with a notification system; Maybe a notification for completing a challenge;
     async updateUser(ctx) {
-      const res = await axios.get(
-        "http://localhost:1337/users/" + ctx.state.user.id
-      );
+      const res = await axios.get("/users/" + ctx.state.user.id);
       ctx.commit("SET_USER", res.data);
     }
   },

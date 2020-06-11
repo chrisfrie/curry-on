@@ -1,25 +1,28 @@
 <template>
   <div>
     <div class id="nav">
-      <div class="logo">
-        <img src="../../public/butler.png" alt="Butler" />
-      </div>
-      <div class="links">
-        <router-link to="/">Intro</router-link> |
-        <router-link to="/challenges">Story</router-link> |
-        <router-link
-          v-if="$store.state.user"
-          :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
-          >Profile</router-link
-        >
-        |
-        <span @click="logout">Logout</span>
-      </div>
+      <div class="main-navbar">
+        <div class="logo">
+          <router-link to="/"
+            ><img src="../../public/butler.png" alt="Butler"
+          /></router-link>
+        </div>
+        <div class="links">
+          <router-link class="link" to="/challenges">Story</router-link>
+          <router-link
+            class="link"
+            v-if="$store.state.user"
+            :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
+            >Profile</router-link
+          >
+          <span @click="logout">Logout</span>
+        </div>
+        <div class="control" @click="showNav">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
 
-      <div class="control" @click="showNav">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
       </div>
 
       <transition name="expand">
@@ -27,9 +30,7 @@
           :class="{ 'navigation-menu-mobile': showSidebar }"
           v-if="showSidebar"
         >
-          <img src="../../public/butler.png" alt="Butler" />
           <ul @click="showNav">
-            <li><router-link to="/">Intro</router-link></li>
             <li><router-link to="/challenges">Story</router-link></li>
             <li>
               <router-link
@@ -41,13 +42,15 @@
                 >Profile</router-link
               >
             </li>
-            <li><span @click="logout">Logout</span></li>
+
+            <li>
+              <router-link v-if="!$store.state.user" to="">Login</router-link>
+            </li>
+            <li>
+              <span @click="logout">Logout</span>
+            </li>
+
           </ul>
-          <div class="control" @click="showNav">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
         </div>
       </transition>
     </div>
@@ -73,7 +76,20 @@ export default {
 </script>
 
 <style scoped>
-#nav {
+#nav a {
+  color: var (--light-text);
+}
+
+#nav a:hover {
+  color: black;
+}
+
+#nav a.router-link-exact-active {
+  color: black;
+}
+
+.main-navbar {
+  position: relative;
   display: flex;
   height: 4.5rem;
   background-color: var(--light-background);
@@ -83,14 +99,7 @@ export default {
   border-bottom: 1px solid #bdbcb6;
   justify-content: space-between;
   align-items: center;
-}
-
-#nav a {
-  color: var (--light-text);
-}
-
-#nav a.router-link-exact-active {
-  color: var (--light-text);
+  z-index: 2;
 }
 
 .logo {
@@ -105,6 +114,10 @@ export default {
 }
 
 .links {
+  padding: 1rem;
+}
+
+.link {
   padding: 1rem;
 }
 
@@ -138,37 +151,35 @@ export default {
 
 .navigation-menu-mobile {
   position: fixed;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  top: 0;
-  left: 0;
+  display: inline-block;
+  top: 65px;
+  right: 0;
   width: 100vw;
   padding-top: 1rem;
-  padding-bottom: 1rem;
-  text-align: center;
-  background-color: #f4f3ed;
-  z-index: 999;
-  transition: all 1s ease-in-out;
+  background-color: var(--light-background);
+  z-index: 1;
   border-bottom: 1px solid #bdbcb6;
 }
 
 ul {
   list-style-type: none;
-  padding: auto;
-  align-items: right;
+  padding-right: 2rem;
+  text-align: right;
 }
 
-.expand-enter-active .expand-leave-active {
-  transition: all 1s;
+.expand-enter-active {
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease;
+}
+.expand-leave-active {
+  transition: opacity 0.5s ease-in-out, transform 1s ease;
 }
 
-.expand-enter-to {
-  transform: none;
+.expand-enter {
+  opacity: 0;
+  transform: translateY(-137px);
 }
-
-.expand-enter,
 .expand-leave-to {
-  transform: translateY(-200px);
+  transform: translateY(-137px);
+  opacity: 0;
 }
 </style>
