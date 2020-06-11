@@ -43,14 +43,21 @@ body {
   background-color: var(--light-background);
 }
 
+.footer-inner-container {
+  border-top: 1px solid #bdbcb6;
+}
+
 footer {
   display: grid;
   width: 100%;
   font-size: 1rem;
 }
 
+ul {
+  padding: 0;
+}
 .footer-links li {
-  display: inline;
+  display: inline-block;
 }
 
 .footer-links li:not(:first-child) {

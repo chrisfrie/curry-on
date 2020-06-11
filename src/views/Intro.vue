@@ -54,6 +54,11 @@ export default {
   components: {
     Login
   },
+  beforeRouteLeave() {
+    if (this.$store.state.showLogin == true) {
+      this.$store.commit("HIDE_LOGIN");
+    }
+  },
   methods: {
     divShow() {
       this.$store.commit("SHOW_LOGIN");
