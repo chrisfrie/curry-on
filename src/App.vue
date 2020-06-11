@@ -4,6 +4,7 @@
     <div class="notification-container">
       <transition-group tag="span" name="list">
         <div
+          class="speech-bubble"
           v-for="notification in $store.state.notifications"
           :key="notification.id"
         >
@@ -155,6 +156,7 @@ button {
   bottom: 1em;
   width: 300px;
 }
+
 .notification-container p {
   background-color: rgba(240, 197, 82, 0.5);
   color: #545454;
