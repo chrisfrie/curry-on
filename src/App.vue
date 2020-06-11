@@ -1,6 +1,25 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar v-if="$store.state.user" />
+    <router-view />
+    <footer>
+      <div class="footer-inner-container">
+        <div class="footer-links">
+          <ul>
+            <li>
+              <a href="https://codecampleipzig.de/impressum.html">Imprint</a>
+            </li>
+            <li>
+              <a href="https://codecampleipzig.de/privacy.html">Privacy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-copyright">
+          <p>Designed and Built by team "Curry-On" Code Camp Leipzig Class 2</p>
+          <p>Copyright © 2020 All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -22,6 +41,24 @@ export default {
 
 body {
   background-color: var(--light-background);
+}
+
+footer {
+  display: grid;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.footer-links li {
+  display: inline;
+}
+
+.footer-links li:not(:first-child) {
+  margin-left: 1em;
+}
+
+a {
+  text-decoration: none;
 }
 
 #app {
