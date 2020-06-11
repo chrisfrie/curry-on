@@ -35,7 +35,6 @@
     <div class="notification-container">
       <transition-group tag="span" name="list">
         <div
-          class="speech-bubble"
           v-for="notification in $store.state.notifications"
           :key="notification.id"
         >
