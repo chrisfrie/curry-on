@@ -33,7 +33,7 @@ body {
 }
 
 :root {
-  --light-text: #ebf1f0;
+  --light-text: #f4f3ed;
   --dark-text: #545454;
   --light-background: #f4f3ed;
   --dark-background: #4e4e5f;
