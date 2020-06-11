@@ -30,6 +30,10 @@
         </p>
 
         <p>PUFFFFF!!!</p>
+        <img
+          src="/src/assets/images/logo.png"
+          style="width:128px;height:128px"
+        />
         <p>
           Golden cloud has blown up in the air! Spicy smelling dust covered my
           tuxedo, bratwurst and everything around. “What is happening? Is that

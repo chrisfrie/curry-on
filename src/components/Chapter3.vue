@@ -59,7 +59,7 @@
       :challenge="challenge"
       :key="index"
     />
-    <Chatbot v-if="isChapterRevealed(4)" />
+    <Chatbot />
   </div>
 </template>
 
