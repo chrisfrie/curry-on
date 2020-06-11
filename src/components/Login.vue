@@ -110,23 +110,10 @@ export default {
     //   this.avatar = event.target.files[0];
     // },
     async submitLogin() {
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
-      // try {
       this.$store.dispatch("login", {
         email: this.user.email,
         password: this.user.password
       });
-      // this.$router.push("/challenges");
-      // } catch (error){
-      //   console.error("error");
-      // this.$store.dispatch("pushNotification", {
-      //   type: "error",
-      //   message: "Unable to login, please check your inputs and try again."
-      // });
-      // }
     },
     submitRegister() {
       this.$v.$touch();

@@ -38,6 +38,12 @@ export default new Vuex.Store({
     },
     PUSH_NOTIFICATION(state, notification) {
       state.notifications.push(notification);
+    },
+    REMOVE_NOTIFICATION(state, notificationToRemove) {
+      const index = state.notifications.findIndex(
+        notification => notification.id == notificationToRemove.id
+      );
+      state.notifications.splice(index, 1);
     }
   },
   actions: {
@@ -52,7 +58,11 @@ export default new Vuex.Store({
         ctx.commit("SET_JWT", jwt);
         router.push({ name: "challenges" });
       } catch {
-        alert("Unable to register, please check your inputs and try again.");
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "I believe you misstyped something, please check your inputs and try again."
+        });
       }
     },
     // Login needs error handling - if there is an error, show the user what is needed
@@ -71,7 +81,11 @@ export default new Vuex.Store({
         // Redirect to /challenges
         router.push({ name: "challenges" });
       } catch {
-        alert("Unable to login, please check your inputs and try again.");
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "Are you sure this is the correct input? Please check it and try again."
+        });
       }
     },
     loadUserFromLocalStorage(ctx) {
@@ -87,41 +101,66 @@ export default new Vuex.Store({
       ctx.commit("CLEAR_USER");
       router.push({ name: "intro" });
     },
-    // Needs Error handling - maybe don't do a fetch, when we already have the challenges (if challanges array is populated, don't fetch again)
-    async fetchChallenges(ctx) {
-      const res = await axios.get("http://localhost:1337/challenges");
-      ctx.commit("SET_CHALLENGES", res.data);
-    },
-    // Needs Error handling - make sure that only authenticated user can complete challenges for him/herself
-    async completeChallenge(ctx, { userChallengePicture, caption, challenge }) {
-      const formData = new FormData();
-      formData.set(
-        "data",
-        JSON.stringify({
-          caption,
-          user: ctx.state.user.id,
-          challenge
-        })
-      );
-      formData.set("files.userChallengePicture", userChallengePicture);
 
-      await axios.post("http://localhost:1337/pictures", formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
-      ctx.dispatch("updateUser");
-      router.push({ name: "challenges" });
+    async fetchChallenges(ctx) {
+      if (ctx.state.challenges.length != 0) return;
+      try {
+        const res = await axios.get("http://localhost:1337/challenges");
+        ctx.commit("SET_CHALLENGES", res.data);
+      } catch {
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "Sorry my dear, I am an old man, it is my nap time. Please, try later again."
+        });
+      }
     },
-    // Needs some Error handling - put a try - catch handler with a notification system; Maybe a notification for completing a challenge;
+
+    async completeChallenge(ctx, { userChallengePicture, caption, challenge }) {
+      try {
+        const formData = new FormData();
+        formData.set(
+          "data",
+          JSON.stringify({
+            caption,
+            user: ctx.state.user.id,
+            challenge
+          })
+        );
+        formData.set("files.userChallengePicture", userChallengePicture);
+
+        await axios.post("http://localhost:1337/pictures", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
+        ctx.dispatch("updateUser");
+        router.push({ name: "challenges" });
+      } catch {
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "Sorry my dear, seems like something is missing. I can not continue my story without your full engagement"
+        });
+      }
+    },
+    // Maybe a notification for completing a challenge;
     async updateUser(ctx) {
-      const res = await axios.get(
-        "http://localhost:1337/users/" + ctx.state.user.id,
-        {
-          headers: {
-            Authorization: "Bearer " + ctx.state.jwt
+      try {
+        const res = await axios.get(
+          "http://localhost:1337/users/" + ctx.state.user.id,
+          {
+            headers: {
+              Authorization: "Bearer " + ctx.state.jwt
+            }
           }
-        }
-      );
-      ctx.commit("SET_USER", res.data);
+        );
+        ctx.commit("SET_USER", res.data);
+      } catch {
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "Sorry my dear, something went wrong, but do not give up! Curry On!"
+        });
+      }
     },
     pushNotification(ctx, { type, message }) {
       const notification = {
@@ -130,6 +169,9 @@ export default new Vuex.Store({
         message
       };
       ctx.commit("PUSH_NOTIFICATION", notification);
+      setTimeout(() => {
+        ctx.commit("REMOVE_NOTIFICATION", notification);
+      }, 5000);
     }
   },
   getters: {
