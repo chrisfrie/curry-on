@@ -139,6 +139,10 @@ export default new Vuex.Store({
         });
         ctx.dispatch("updateUser");
         router.push({ name: "chapter" });
+        ctx.dispatch("pushNotification", {
+          type: "success",
+          message: "Great, you successfully completed the challenge! Curry On!"
+        });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",
@@ -203,7 +207,7 @@ export default new Vuex.Store({
       }
     },
     getActiveChapter(state, getters) {
-      for (let chapter = 3; chapter > 1; --chapter) {
+      for (let chapter = 4; chapter > 1; --chapter) {
         if (getters.isChapterRevealed(chapter)) return chapter;
       }
       return 1;

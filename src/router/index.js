@@ -8,6 +8,7 @@ import Profile from "@/views/Profile.vue";
 import Chapter1 from "@/components/Chapter1.vue";
 import Chapter2 from "@/components/Chapter2.vue";
 import Chapter3 from "@/components/Chapter3.vue";
+import Chapter4 from "@/components/Chapter4.vue";
 import store from "@/store";
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
@@ -24,6 +25,8 @@ const routes = [
     name: "chapter",
     redirect: () => {
       switch (store.getters.getActiveChapter) {
+        case 4:
+          return "/chapter/4";
         case 3:
           return "/chapter/3";
         case 2:
@@ -47,6 +50,11 @@ const routes = [
     path: "/chapter/3",
     name: "chapter3",
     component: Chapter3
+  },
+  {
+    path: "/chapter/4",
+    name: "chapter4",
+    component: Chapter4
   },
   {
     path: "/challenges/:id",
