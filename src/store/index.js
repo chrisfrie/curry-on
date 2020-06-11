@@ -20,7 +20,8 @@ export default new Vuex.Store({
     user: null,
     challenges: [],
     notifications: [],
-    showLogin: false
+    showLogin: false,
+    loading: false
   },
   mutations: {
     SET_JWT(state, jwt) {
@@ -54,6 +55,12 @@ export default new Vuex.Store({
     },
     HIDE_LOGIN(state) {
       state.showLogin = false;
+    },
+    SHOW_LOADING(state) {
+      state.loading = true;
+    },
+    HIDE_LOADING(state) {
+      state.loading = false;
     }
   },
   actions: {
@@ -133,12 +140,13 @@ export default new Vuex.Store({
           })
         );
         formData.set("files.userChallengePicture", userChallengePicture);
-
+        ctx.commit("SHOW_LOADING");
         await axios.post("/pictures", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
         ctx.dispatch("updateUser");
         router.push({ name: "chapter" });
+        ctx.commit("HIDE_LOADING");
         ctx.dispatch("pushNotification", {
           type: "success",
           message: "Great, you successfully completed the challenge! Curry On!"
@@ -161,11 +169,12 @@ export default new Vuex.Store({
           })
         );
         formData.set("files.avatar", avatar);
-
+        ctx.commit("SHOW_LOADING");
         await axios.post("/profiles", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
         ctx.dispatch("updateUser");
+        ctx.commit("HIDE_LOADING");
         ctx.dispatch("pushNotification", {
           type: "success",
           message: "Nice picture! Successfully uploaded."
@@ -178,7 +187,6 @@ export default new Vuex.Store({
         });
       }
     },
-    // Maybe a notification for completing a challenge;
     async updateUser(ctx) {
       try {
         const res = await axios.get("/users/" + ctx.state.user.id, {
