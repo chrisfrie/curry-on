@@ -44,6 +44,33 @@
         </div>
       </transition-group>
     </div>
+    <transition name="view">
+      <router-view />
+    </transition>
+    <footer>
+      <div class="footer-inner-container">
+        <div class="footer-links">
+          <ul>
+            <li>
+              <a
+                href="https://codecampleipzig.de/impressum.html"
+                target="_blank"
+                >Imprint</a
+              >
+            </li>
+            <li>
+              <a href="https://codecampleipzig.de/privacy.html" target="_blank"
+                >Privacy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-copyright">
+          <p>Designed and Built by team "Curry-On" Code Camp Leipzig Class 2</p>
+          <p>Copyright © 2020 All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
