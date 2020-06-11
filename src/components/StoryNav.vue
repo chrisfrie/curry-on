@@ -13,7 +13,7 @@
     >
     <router-link
       :to="{ name: 'chapter4' }"
-      v-if="$store.getters.isChapterRevealed(3)"
+      v-if="$store.getters.isChapterRevealed(4)"
       >4</router-link
     >
   </nav>
