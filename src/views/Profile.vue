@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     imageURL() {
-      return "http://localhost:1337" + this.user.profile.avatar.url;
+      return process.env.VUE_APP_API_URL + this.user.profile.avatar.url;
     },
     pommesPoints() {
       if (!this.$store.state.challenges.length) return 0;

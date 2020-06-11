@@ -22,7 +22,7 @@
     <button id="popup" @click="divShow()" type="button" class="start">
       Start
     </button>
-    <div id="loginPopUp">
+    <div v-if="$store.state.showLogin" id="loginPopUp">
       <Login />
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     divShow() {
-      document.getElementById("loginPopUp").style.display = "block";
+      this.$store.commit("SHOW_LOGIN");
     }
   }
 };
@@ -45,15 +45,18 @@ export default {
 
 <style scoped>
 #loginPopUp {
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  margin-top: -150px;
+  margin-left: -150px;
   opacity: 0.95;
-  display: none;
   position: fixed;
   background-color: #313131;
   overflow: auto;
-  top: 0;
-  left: 0;
+  border-radius: 1%;
+  color: var(--light-text);
 }
 
 .about-card {
