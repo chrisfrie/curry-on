@@ -156,15 +156,17 @@ button {
   width: 300px;
 }
 .notification-container p {
-  background-color: rgb(223, 253, 223);
-  color: green;
-  border-left: 3px solid green;
+  background-color: rgba(240, 197, 82, 0.5);
+  color: #545454;
+  border-left: 3px solid #545454;
   padding: 1em 0.5em;
 }
+
 .notification-container p.error {
-  color: red;
-  background-color: rgb(255, 219, 219);
-  border-left: 3px solid red;
+  color: #545454;
+  background-color: rgba(240, 197, 82, 0.5);
+  padding: 1em 0.5em;
+  border-left: 3px solid #545454;
 }
 
 .chapter {
