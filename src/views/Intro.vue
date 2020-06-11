@@ -41,7 +41,7 @@
     <button id="popup" @click="divShow()" type="button" class="start">
       Start
     </button>
-    <div id="loginPopUp">
+    <div v-if="$store.state.showLogin" id="loginPopUp">
       <Login />
     </div>
   </div>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     divShow() {
-      document.getElementById("loginPopUp").style.display = "block";
+      this.$store.commit("SHOW_LOGIN");
     }
   }
 };
@@ -71,7 +71,6 @@ export default {
   margin-top: -150px;
   margin-left: -150px;
   opacity: 0.95;
-  display: none;
   position: fixed;
   background-color: #313131;
   overflow: auto;

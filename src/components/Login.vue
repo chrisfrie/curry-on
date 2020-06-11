@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     divHide() {
-      document.getElementById("loginPopUp").style.display = "none";
+      this.$store.commit("HIDE_LOGIN");
     },
     // fileSelected(event) {
     //   // Check if a file was selected

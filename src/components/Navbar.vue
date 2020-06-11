@@ -8,15 +8,16 @@
           /></router-link>
         </div>
         <div class="links">
-          <router-link to="/challenges">Story</router-link> |
+          <router-link class="link" to="/challenges">Story</router-link>
           <router-link
+            class="link"
             v-if="$store.state.user"
             :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
             >Profile</router-link
           >
-          | <router-link to="">Leaderboard</router-link> |
-          <router-link to="">Impressum</router-link> |
-          <router-link to="">Login</router-link>
+          <router-link class="link" to="">Leaderboard</router-link>
+          <router-link class="link" to="">Impressum</router-link>
+          <router-link class="link" to="">Login</router-link>
         </div>
         <div class="control" @click="showNav">
           <div class="line"></div>
@@ -112,6 +113,10 @@ export default {
 }
 
 .links {
+  padding: 1rem;
+}
+
+.link {
   padding: 1rem;
 }
 

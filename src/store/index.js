@@ -10,7 +10,8 @@ export default new Vuex.Store({
   state: {
     jwt: null,
     user: null,
-    challenges: []
+    challenges: [],
+    showLogin: false
   },
   mutations: {
     SET_JWT(state, jwt) {
@@ -27,6 +28,12 @@ export default new Vuex.Store({
     },
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
+    },
+    SHOW_LOGIN(state) {
+      state.showLogin = true;
+    },
+    HIDE_LOGIN(state) {
+      state.showLogin = false;
     }
   },
   actions: {
