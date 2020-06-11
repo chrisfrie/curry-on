@@ -53,6 +53,8 @@ export default {
 
 body {
   background-color: var(--light-background);
+  font-size: 20px;
+  line-height: 1.5;
 }
 
 .footer-inner-container {
@@ -62,7 +64,7 @@ body {
 footer {
   display: grid;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 ul {
