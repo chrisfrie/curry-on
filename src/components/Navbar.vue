@@ -14,7 +14,7 @@
         >
         | <router-link to="">Leaderboard</router-link> |
         <router-link to="">Impressum</router-link> |
-        <router-link to="">Login</router-link>
+        <a href="" @click="logout">Logout</a>
       </div>
 
       <div class="control" @click="showNav">
@@ -44,7 +44,7 @@
             </li>
             <li><router-link to="">Leaderboard</router-link></li>
             <li><router-link to="">Impressum</router-link></li>
-            <li><router-link to="">Login</router-link></li>
+            <li><a href="" @click="logout">Logout</a></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
@@ -67,6 +67,9 @@ export default {
   methods: {
     showNav() {
       this.showSidebar = !this.showSidebar;
+    },
+    logout() {
+      this.$store.dispatch("logout");
     }
   }
 };
