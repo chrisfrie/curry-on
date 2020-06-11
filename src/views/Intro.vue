@@ -4,7 +4,6 @@
     <div class="intro-card">
       <div class="intro-card-intro">
         <img src="../../public/butler.png" alt="Butler" />
-
         <p>
           Experience every bite of Manfred’s and Herta’s currywurst love story
           <br />
@@ -62,13 +61,11 @@ export default {
   align-items: center;
 }
 
-.about-card {
-  color: var(--dark-text);
-  box-sizing: border-box;
-  padding: 10px 20px;
-  text-align: center;
-  max-width: 35rem;
+.intro-card {
+  max-width: 500px;
   margin: 0 auto;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
 .intro-card-intro {
@@ -83,30 +80,9 @@ export default {
   flex-direction: row;
   align-items: space-evenly;
   justify-content: space-around;
-}
-.instruction-card p {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.test {
-  display: flex;
-  max-width: 300px;
-  max-height: 300px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  max-width: 30ch;
 }
 
-.explore {
-  padding: 16px 20px;
-  cursor: pointer;
-  background-color: black;
-  opacity: 0.8;
-  position: relative;
-  width: 280px;
-}
 .list {
   list-style-type: none;
 }

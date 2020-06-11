@@ -1,5 +1,6 @@
 <template>
   <div class="chapter" id="chapter4">
+    <StoryNav />
     <div>
       <h2>Final Chapter</h2>
       <p>
@@ -82,10 +83,12 @@
 
 <script>
 import Chatbot from "@/components/Chatbot.vue";
+import StoryNav from "@/components/StoryNav.vue";
 
 export default {
   components: {
-    Chatbot
+    Chatbot,
+    StoryNav
   }
 };
 </script>
