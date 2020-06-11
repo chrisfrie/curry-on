@@ -1,7 +1,7 @@
 <template>
   <div class="chapter" id="chapter3">
     <StoryNav />
-    <div>
+    <div class="chapter-content">
       <p>
         ( country song )<br />
         “ Franz. Franz. Franz, Franz Josef! <br />

@@ -1,7 +1,7 @@
 <template>
   <div class="chapter" id="chapter2">
     <StoryNav />
-    <div>
+    <div class="chapter-content">
       <p>
         And it was indeed… What a woman, her passion, heart, intelligence, spicy
         shine in her eye. I WAS IN LOVE!!! And even the fact that she was

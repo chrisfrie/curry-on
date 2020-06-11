@@ -1,7 +1,7 @@
 <template>
   <div class="chapter" id="chapter1">
     <StoryNav />
-    <div>
+    <div class="chapter-content">
       <div>
         <p>
           My name is Manfred and back in the 50s I used to be a very respected
