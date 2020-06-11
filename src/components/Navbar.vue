@@ -13,7 +13,7 @@
           >Profile</router-link
         >
         |
-        <a href="" @click="logout">Logout</a>
+        <span @click="logout">Logout</span>
       </div>
 
       <div class="control" @click="showNav">
@@ -41,7 +41,7 @@
                 >Profile</router-link
               >
             </li>
-            <li><a href="" @click="logout">Logout</a></li>
+            <li><span @click="logout">Logout</span></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
