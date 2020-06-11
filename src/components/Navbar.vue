@@ -12,8 +12,7 @@
           :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
           >Profile</router-link
         >
-        | <router-link to="">Leaderboard</router-link> |
-        <router-link to="">Impressum</router-link> |
+        |
         <a href="" @click="logout">Logout</a>
       </div>
 
@@ -42,8 +41,6 @@
                 >Profile</router-link
               >
             </li>
-            <li><router-link to="">Leaderboard</router-link></li>
-            <li><router-link to="">Impressum</router-link></li>
             <li><a href="" @click="logout">Logout</a></li>
           </ul>
           <div class="control" @click="showNav">
