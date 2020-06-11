@@ -1,9 +1,7 @@
 <template>
   <div class="chapter" id="chapter2">
     <StoryNav />
-    <div>
-      <h2>Chapter II</h2>
-
+    <div class="chapter-content">
       <p>
         And it was indeed… What a woman, her passion, heart, intelligence, spicy
         shine in her eye. I WAS IN LOVE!!! And even the fact that she was
@@ -12,10 +10,9 @@
         internationally recognized investor - he was opening a big clock factory
         in Chicago.
       </p>
-      <img
-        src="../../src/assets/images/curryKneipe.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/curryKneipe.svg" />
+      </div>
       <p>
         We, we ,we…. we were together all the time, spending nights and days on
         exploring the city and introducing our golden invention to the local
@@ -24,19 +21,17 @@
         to climb a tree to eat it in peace without people asking “Where did you
         get it? I need one right now!”.
       </p>
-      <img
-        src="../../src/assets/images/treeWurst.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/treeWurst.svg" />
+      </div>
       <p>
         Herta liked to surprise me with new spice combinations.. and would let
         me try them during our blindfolded sessions … ahhhh… <br />I wouldn't
         have thought back then that our perfect idyll would be over very soon….
       </p>
-      <img
-        src="../../src/assets/images/HertaAlone.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/HertaAlone.svg" />
+      </div>
     </div>
     <ChallengeCard
       v-for="(challenge, index) in challenges"

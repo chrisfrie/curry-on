@@ -42,13 +42,21 @@ export default {
   },
   methods: {
     divShow() {
-      this.$store.commit("SHOW_LOGIN");
+      if (this.$store.state.user) {
+        this.$router.push({ name: "chapter" });
+      } else {
+        this.$store.commit("SHOW_LOGIN");
+      }
     }
   }
 };
 </script>
 
 <style scoped>
+button {
+  cursor: pointer;
+}
+
 #loginPopUp {
   width: 100vw;
   height: 100vh;
