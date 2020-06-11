@@ -15,15 +15,14 @@
             :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
             >Profile</router-link
           >
-          <router-link class="link" to="">Leaderboard</router-link>
-          <router-link class="link" to="">Impressum</router-link>
-          <router-link class="link" to="">Login</router-link>
+          <span @click="logout">Logout</span>
         </div>
         <div class="control" @click="showNav">
           <div class="line"></div>
           <div class="line"></div>
           <div class="line"></div>
         </div>
+
       </div>
 
       <transition name="expand">
@@ -43,14 +42,14 @@
                 >Profile</router-link
               >
             </li>
-            <li><router-link to="">Leaderboard</router-link></li>
-            <li><router-link to="">Impressum</router-link></li>
+
             <li>
               <router-link v-if="!$store.state.user" to="">Login</router-link>
             </li>
             <li>
-              <router-link v-if="$store.state.user" to="">Logout</router-link>
+              <span @click="logout">Logout</span>
             </li>
+
           </ul>
         </div>
       </transition>
@@ -68,6 +67,9 @@ export default {
   methods: {
     showNav() {
       this.showSidebar = !this.showSidebar;
+    },
+    logout() {
+      this.$store.dispatch("logout");
     }
   }
 };
