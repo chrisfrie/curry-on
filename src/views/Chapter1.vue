@@ -2,7 +2,6 @@
   <div class="chapter" id="chapter1">
     <StoryNav />
     <div>
-      <h2>Chapter I</h2>
       <div>
         <p>
           My name is Manfred and back in the 50s I used to be a very respected
