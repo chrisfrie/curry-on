@@ -35,6 +35,12 @@ export default {
   components: {
     Login
   },
+  beforeRouteLeave(to, from, next) {
+    if (this.$store.state.showLogin == true) {
+      this.$store.commit("HIDE_LOGIN");
+    }
+    next();
+  },
   methods: {
     divShow() {
       this.$store.commit("SHOW_LOGIN");
@@ -45,18 +51,15 @@ export default {
 
 <style scoped>
 #loginPopUp {
-  top: 50%;
-  left: 50%;
-  height: 300px;
-  width: 300px;
-  margin-top: -150px;
-  margin-left: -150px;
-  opacity: 0.95;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
-  background-color: #313131;
-  overflow: auto;
-  border-radius: 1%;
-  color: var(--light-text);
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-card {

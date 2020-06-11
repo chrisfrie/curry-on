@@ -59,14 +59,11 @@ export default new Vuex.Store({
   actions: {
     async register(ctx, userdata) {
       try {
-        const res = await axios.post(
-          "http://localhost:1337/auth/local/register",
-          userdata
-        );
+        const res = await axios.post("/auth/local/register", userdata);
         const { user, jwt } = res.data;
         ctx.commit("SET_USER", user);
         ctx.commit("SET_JWT", jwt);
-        router.push({ name: "challenges" });
+        router.push({ name: "chapter" });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",
@@ -78,7 +75,7 @@ export default new Vuex.Store({
     async login(ctx, { email, password }) {
       try {
         // Do a post request to /auth/local with email and password
-        const res = await axios.post("http://localhost:1337/auth/local", {
+        const res = await axios.post("/auth/local", {
           identifier: email,
           password
         });
@@ -87,8 +84,7 @@ export default new Vuex.Store({
         // Trigger the mutations
         ctx.commit("SET_JWT", jwt);
         ctx.commit("SET_USER", user);
-        // Redirect to /challenges
-        router.push({ name: "challenges" });
+        router.push({ name: "chapter" });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",
@@ -114,7 +110,7 @@ export default new Vuex.Store({
     async fetchChallenges(ctx) {
       if (ctx.state.challenges.length != 0) return;
       try {
-        const res = await axios.get("http://localhost:1337/challenges");
+        const res = await axios.get("/challenges");
         ctx.commit("SET_CHALLENGES", res.data);
       } catch {
         ctx.dispatch("pushNotification", {
@@ -138,11 +134,11 @@ export default new Vuex.Store({
         );
         formData.set("files.userChallengePicture", userChallengePicture);
 
-        await axios.post("http://localhost:1337/pictures", formData, {
+        await axios.post("/pictures", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
         ctx.dispatch("updateUser");
-        router.push({ name: "challenges" });
+        router.push({ name: "chapter" });
         ctx.dispatch("pushNotification", {
           type: "success",
           message: "Great, you successfully completed the challenge! Curry On!"
@@ -155,17 +151,42 @@ export default new Vuex.Store({
         });
       }
     },
+    async createProfile(ctx, { avatar }) {
+      try {
+        const formData = new FormData();
+        formData.set(
+          "data",
+          JSON.stringify({
+            avatar,
+            user: ctx.state.user.id
+          })
+        );
+        formData.set("files.avatar", avatar);
+
+        await axios.post("/profiles", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
+        ctx.dispatch("updateUser");
+        ctx.dispatch("pushNotification", {
+          type: "success",
+          message: "Nice picture! Successfully uploaded."
+        });
+      } catch {
+        ctx.dispatch("pushNotification", {
+          type: "error",
+          message:
+            "Sorry my dear, your picture got lost in the mail. Please check your Briefmarke."
+        });
+      }
+    },
     // Maybe a notification for completing a challenge;
     async updateUser(ctx) {
       try {
-        const res = await axios.get(
-          "http://localhost:1337/users/" + ctx.state.user.id,
-          {
-            headers: {
-              Authorization: "Bearer " + ctx.state.jwt
-            }
+        const res = await axios.get("/users/" + ctx.state.user.id, {
+          headers: {
+            Authorization: "Bearer " + ctx.state.jwt
           }
-        );
+        });
         ctx.commit("SET_USER", res.data);
       } catch {
         ctx.dispatch("pushNotification", {
@@ -191,7 +212,6 @@ export default new Vuex.Store({
     getChallengeById: state => id => {
       return state.challenges.find(challenge => challenge.id == id);
     },
-
     isChapterRevealed: state => chapterId => {
       if (!state.user) return false;
 
@@ -213,6 +233,12 @@ export default new Vuex.Store({
       } else {
         return false;
       }
+    },
+    getActiveChapter(state, getters) {
+      for (let chapter = 4; chapter > 1; --chapter) {
+        if (getters.isChapterRevealed(chapter)) return chapter;
+      }
+      return 1;
     }
   },
   modules: {}

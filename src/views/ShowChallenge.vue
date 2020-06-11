@@ -14,7 +14,7 @@
         <label for="chooseAPicture">Choose a Picture</label>
         <input type="file" @change="fileSelected" required />
         <label for="Caption">Describe your Picture</label>
-        <input type="text" />
+        <input v-model="caption" type="text" />
 
         <button type="submit" class="btn">Upload</button>
         <button type="button" class="btn cancel" @click="closeForm()">
@@ -50,7 +50,7 @@ export default {
     submit() {
       this.$store.dispatch("completeChallenge", {
         challenge: this.challenge.id,
-        caption: "CAPTION",
+        caption: this.caption,
         userChallengePicture: this.userChallengePicture
       });
     },

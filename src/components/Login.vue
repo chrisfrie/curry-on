@@ -1,14 +1,20 @@
 <template>
-  <div>
+  <div class="container">
     <div id="login">
-      <button id="close" @click="divHide()">X</button>
+      <button id="close" @click="divHide()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path
+            d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
+          />
+        </svg>
+      </button>
       <h1>Login</h1>
       <form @submit.prevent="submitLogin">
         <input
           v-model="user.email"
-          type="email"
+          type="text"
           name="email"
-          placeholder="Email"
+          placeholder="Email or Name"
           @blur="$v.user.email.$touch()"
         />
         <div v-if="$v.user.email.$error" class="error">
@@ -34,15 +40,8 @@
     <div id="register">
       <button id="close" @click="divHide(), reverseRegister()">X</button>
       <h1>Register</h1>
-      <!-- <div class="avatar-preview">
-        <img v-if="avatarURL" :src="avatarURL" />
-        <p v-else>Preview</p>
-      </div> -->
+
       <form @submit.prevent="submitRegister">
-        <!-- <label class="file-upload">
-          Upload Avatar
-          <input @change="fileSelected" type="file"
-        /></label> -->
         <input
           v-model="user.username"
           type="text"
@@ -80,7 +79,7 @@
 </template>
 
 <script>
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   data() {
@@ -93,24 +92,12 @@ export default {
       // avatar: null
     };
   },
-  computed: {
-    // avatarURL() {
-    //   return this.avatar ? window.URL.createObjectURL(this.avatar) : null;
-    // }
-  },
+  computed: {},
   methods: {
     divHide() {
       this.$store.commit("HIDE_LOGIN");
     },
-    // fileSelected(event) {
-    //   // Check if a file was selected
-    //   if (event.target.files.length == 0) {
-    //     return;
-    //   }
 
-    //   // Set avatar to selected file
-    //   this.avatar = event.target.files[0];
-    // },
     async submitLogin() {
       this.$store.dispatch("login", {
         email: this.user.email,
@@ -123,7 +110,6 @@ export default {
         return;
       }
       this.$store.dispatch("register", this.user);
-      // this.$router.push("/challenges");
     },
     showRegister() {
       document.getElementById("register").style.display = "block";
@@ -137,8 +123,7 @@ export default {
   validations: {
     user: {
       email: {
-        required,
-        email
+        required
       },
       password: {
         required,
@@ -161,12 +146,15 @@ export default {
   margin-top: -0.8em;
 }
 
-.login {
-  height: 150px;
-  display: flex;
-  border: 1px solid #9c9b96;
-  margin: 0 1.5rem;
-  box-sizing: border-box;
+.container {
+  width: 300px;
+  opacity: 0.95;
+  background-color: #313131;
+  overflow: auto;
+  border-radius: 1%;
+  position: relative;
+  color: var(--light-text);
+  padding: 1rem 0.5rem 2rem 0.5rem;
 }
 
 #register {
