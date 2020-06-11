@@ -12,9 +12,8 @@
           :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
           >Profile</router-link
         >
-        | <router-link to="">Leaderboard</router-link> |
-        <router-link to="">Impressum</router-link> |
-        <router-link to="">Login</router-link>
+        |
+        <span @click="logout">Logout</span>
       </div>
 
       <div class="control" @click="showNav">
@@ -42,9 +41,7 @@
                 >Profile</router-link
               >
             </li>
-            <li><router-link to="">Leaderboard</router-link></li>
-            <li><router-link to="">Impressum</router-link></li>
-            <li><router-link to="">Login</router-link></li>
+            <li><span @click="logout">Logout</span></li>
           </ul>
           <div class="control" @click="showNav">
             <div class="line"></div>
@@ -67,6 +64,9 @@ export default {
   methods: {
     showNav() {
       this.showSidebar = !this.showSidebar;
+    },
+    logout() {
+      this.$store.dispatch("logout");
     }
   }
 };
