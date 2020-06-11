@@ -186,7 +186,7 @@ export default {
 <style scoped>
 .chatbot {
   background-color: var(--light-background);
-  position: fixed;
+  position: center;
   bottom: 0;
   right: 0;
   width: 100vw;
