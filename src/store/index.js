@@ -63,7 +63,7 @@ export default new Vuex.Store({
         const { user, jwt } = res.data;
         ctx.commit("SET_USER", user);
         ctx.commit("SET_JWT", jwt);
-        router.push({ name: "challenges" });
+        router.push({ name: "chapter" });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",
@@ -84,8 +84,7 @@ export default new Vuex.Store({
         // Trigger the mutations
         ctx.commit("SET_JWT", jwt);
         ctx.commit("SET_USER", user);
-        // Redirect to /challenges
-        router.push({ name: "challenges" });
+        router.push({ name: "chapter" });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",
@@ -139,7 +138,7 @@ export default new Vuex.Store({
           headers: { "Content-Type": "multipart/form-data" }
         });
         ctx.dispatch("updateUser");
-        router.push({ name: "challenges" });
+        router.push({ name: "chapter" });
       } catch {
         ctx.dispatch("pushNotification", {
           type: "error",
