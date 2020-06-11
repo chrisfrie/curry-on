@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div id="login">
       <button id="close" @click="divHide()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -166,12 +166,15 @@ export default {
   margin-top: -0.8em;
 }
 
-.login {
-  height: 150px;
-  display: flex;
-  border: 1px solid #9c9b96;
-  margin: 0 1.5rem;
-  box-sizing: border-box;
+.container {
+  width: 300px;
+  opacity: 0.95;
+  background-color: #313131;
+  overflow: auto;
+  border-radius: 1%;
+  position: relative;
+  color: var(--light-text);
+  padding: 1rem 0.5rem 2rem 0.5rem;
 }
 
 #register {
