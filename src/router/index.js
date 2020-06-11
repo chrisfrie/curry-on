@@ -1,11 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
 import ShowChallenge from "@/views/ShowChallenge.vue";
 import axios from "axios";
 import Intro from "../views/Intro.vue";
 import Picture from "@/views/Picture.vue";
 import Profile from "@/views/Profile.vue";
+import Chapter1 from "@/components/Chapter1.vue";
+import Chapter2 from "@/components/Chapter2.vue";
+import Chapter3 from "@/components/Chapter3.vue";
 import store from "@/store";
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
@@ -19,8 +21,31 @@ const routes = [
   },
   {
     path: "/challenges",
-    name: "challenges",
-    component: Dashboard
+    redirect: () => {
+      switch (store.getters.getActiveChapter) {
+        case 3:
+          return "/chapter3";
+        case 2:
+          return "/chapter2";
+        default:
+          return "/chapter1";
+      }
+    }
+  },
+  {
+    path: "/chapter1",
+    name: "chapter1",
+    component: Chapter1
+  },
+  {
+    path: "/chapter2",
+    name: "chapter2",
+    component: Chapter2
+  },
+  {
+    path: "/chapter3",
+    name: "chapter3",
+    component: Chapter3
   },
   {
     path: "/challenges/:id",
