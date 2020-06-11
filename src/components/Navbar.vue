@@ -15,14 +15,13 @@
             :to="{ name: 'profile', params: { id: `${$store.state.user.id}` } }"
             >Profile</router-link
           >
-          <span @click="logout">Logout</span>
+          <span @click="logout" class="link">Logout</span>
         </div>
         <div class="control" @click="showNav">
           <div class="line"></div>
           <div class="line"></div>
           <div class="line"></div>
         </div>
-
       </div>
 
       <transition name="expand">
@@ -42,14 +41,12 @@
                 >Profile</router-link
               >
             </li>
-
             <li>
               <router-link v-if="!$store.state.user" to="">Login</router-link>
             </li>
             <li>
               <span @click="logout">Logout</span>
             </li>
-
           </ul>
         </div>
       </transition>
@@ -81,6 +78,11 @@ export default {
 }
 
 #nav a:hover {
+  color: black;
+}
+
+span.link:hover {
+  cursor: pointer;
   color: black;
 }
 
