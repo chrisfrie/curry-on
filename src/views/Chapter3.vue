@@ -9,18 +9,16 @@
         I’m begging of you, please don't take my girl. <br />Franz. Franz.
         Franz, Franz Josef! <br />Please don't take her just because you can…”
       </p>
-      <img
-        src="../../src/assets/images/Franz-Herta-wedding.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/franzandhertaWedding.svg" />
+      </div>
       <p>
         It was another hot night, but this time not curry but tension was in the
         air.
       </p>
-      <img
-        src="../../src/assets/images/rainWurst.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/rainWurst.svg" />
+      </div>
       <p>
         “Manfred, I have to leave you, my husband is very sick, I need to take
         care of him.” Herta said. “But what about me, us? Our love? What about
@@ -33,10 +31,9 @@
         from the train window - supposed to be the last one I'll ever be given
         to save in my heart.
       </p>
-      <img
-        src="../../src/assets/images/trainWindow.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/train.svg" />
+      </div>
       <p>
         When I came back to my apartment, I felt empty. How can I just move on
         with my life when I dedicated it to Herta and Currywurst?? I looked at
@@ -63,10 +60,9 @@
         “Surprise!!!!!” my friends and family screamed at me. “Oh my Lord” I
         sighed. I totally forgot it was my birthday.
       </p>
-      <img
-        src="../../src/assets/images/tableTwosmall.svg"
-        style="width:158px;height:128px"
-      />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/tableTwosmall.svg" />
+      </div>
     </div>
     <ChallengeCard
       v-for="(challenge, index) in challenges"

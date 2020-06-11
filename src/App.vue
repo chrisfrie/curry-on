@@ -193,4 +193,13 @@ button {
   opacity: 1;
   transform: translateX(0px);
 }
+
+.imgFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  max-width: 380px;
+}
 </style>
