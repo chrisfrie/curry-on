@@ -13,7 +13,9 @@
         </div>
       </transition-group>
     </div>
-    <router-view />
+    <transition name="view">
+      <router-view />
+    </transition>
     <footer>
       <div class="footer-inner-container">
         <div class="footer-links">
@@ -163,5 +165,32 @@ button {
   color: red;
   background-color: rgb(255, 219, 219);
   border-left: 3px solid red;
+}
+
+.chapter {
+  max-width: 500px;
+  margin: 0 auto;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.view-enter-active .view-leave-active {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+}
+
+.view-enter-active {
+  transition-delay: 0.5s;
+}
+
+.view-enter,
+.view.leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.view-enter-to,
+.view-leave {
+  opacity: 1;
+  transform: translateX(0px);
 }
 </style>

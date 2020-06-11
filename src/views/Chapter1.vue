@@ -70,11 +70,4 @@ export default {
 };
 </script>
 
-<style>
-.chapter {
-  max-width: 500px;
-  margin: 0 auto;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
-</style>
+<style scoped></style>

@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div id="login">
-      <button id="close" @click="divHide()">
+      <div id="close" @click="divHide()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path
             d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
           />
         </svg>
-      </button>
+      </div>
       <h1>Login</h1>
       <form @submit.prevent="submitLogin">
         <input
@@ -178,12 +178,16 @@ button:hover {
   position: absolute;
   top: 0;
   right: 0;
-  max-width: 15px;
-  padding: 0 0;
+  height: 5%;
+  width: 5%;
+  padding: 0;
   margin: 0.5rem;
-  align-items: center;
+  fill: var(--light-text);
 }
 
+#close:hover {
+  fill: #bebebe;
+}
 input {
   border: none;
   outline: none;
