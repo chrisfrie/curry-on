@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="challenge-details">
     <h1>
       {{ challenge.title }}
     </h1>
@@ -66,6 +66,11 @@ export default {
 </script>
 
 <style scoped>
+.challenge-details {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .open-button {
   padding: 16px 20px;
   cursor: pointer;
