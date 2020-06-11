@@ -21,10 +21,9 @@
           culinary life forever.
         </p>
 
-        <img
-          src="../../src/assets/images/Simon.svg"
-          style="width:128px;height:128px"
-        />
+        <div class="imgFlex">
+          <img src="../../src/assets/images/simonbude.svg" />
+        </div>
         <p>
           Every other night after work I was getting bratwurst at my favourite
           Bude. After a quick chat with the famous Simon, the most successful
@@ -34,10 +33,9 @@
         </p>
 
         <p>PUFFFFF!!!</p>
-        <img
-          src="../../src/assets/images/curryDust.svg"
-          style="width:128px;height:128px"
-        />
+        <div class="imgFlex">
+          <img src="../../src/assets/images/curryDust.svg" />
+        </div>
         <p>
           Golden cloud has blown up in the air! Spicy smelling dust covered my
           tuxedo, bratwurst and everything around. “What is happening? Is that
@@ -46,6 +44,7 @@
           front of me… and I knew that my heart was in trouble.
         </p>
       </div>
+
       <ChallengeCard
         v-for="(challenge, index) in challenges"
         :challenge="challenge"

@@ -252,4 +252,13 @@ button {
 .slide-right-leave-to .chapter-content {
   transform: translateX(100vw);
 }
+
+.imgFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  max-width: 380px;
+}
 </style>
