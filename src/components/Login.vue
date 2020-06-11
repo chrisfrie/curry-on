@@ -12,9 +12,9 @@
       <form @submit.prevent="submitLogin">
         <input
           v-model="user.email"
-          type="email"
+          type="text"
           name="email"
-          placeholder="Email"
+          placeholder="Email or Name"
           @blur="$v.user.email.$touch()"
         />
         <div v-if="$v.user.email.$error" class="error">
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   data() {
@@ -123,8 +123,7 @@ export default {
   validations: {
     user: {
       email: {
-        required,
-        email
+        required
       },
       password: {
         required,
