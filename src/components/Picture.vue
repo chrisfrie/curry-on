@@ -56,12 +56,12 @@ export default {
   align-items: center;
 }
 .lightbox img {
-  margin: 30% 0 0 0;
-  width: 100%;
+  margin: 10% auto 0 auto;
+  width: 90%;
 }
 .lightbox-info {
   margin: 0;
-  width: 100vw;
+  width: 90vw;
 }
 .lightbox-info-inner {
   background-color: var(--light-background);

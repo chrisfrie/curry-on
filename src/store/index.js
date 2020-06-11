@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "@/router";
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 Vue.use(Vuex);
 
@@ -18,12 +19,14 @@ export default new Vuex.Store({
     jwt: null,
     user: null,
     challenges: [],
-    notifications: []
+    notifications: [],
+    showLogin: false
   },
   mutations: {
     SET_JWT(state, jwt) {
       localStorage.setItem("jwt", jwt);
       state.jwt = jwt;
+      axios.defaults.headers.common.Authorization = "Bearer " + jwt;
     },
     SET_USER(state, user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -32,6 +35,7 @@ export default new Vuex.Store({
     CLEAR_USER(state) {
       state.jwt = null;
       state.user = null;
+      delete axios.defaults.headers.common.Authorization;
     },
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
@@ -44,6 +48,12 @@ export default new Vuex.Store({
         notification => notification.id == notificationToRemove.id
       );
       state.notifications.splice(index, 1);
+    },
+    SHOW_LOGIN(state) {
+      state.showLogin = true;
+    },
+    HIDE_LOGIN(state) {
+      state.showLogin = false;
     }
   },
   actions: {
@@ -65,7 +75,6 @@ export default new Vuex.Store({
         });
       }
     },
-    // Login needs error handling - if there is an error, show the user what is needed
     async login(ctx, { email, password }) {
       try {
         // Do a post request to /auth/local with email and password

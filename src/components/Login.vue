@@ -27,8 +27,10 @@
 
         <button type="submit">Login</button>
       </form>
+      <p>First Time Here?</p>
       <button type="submit" @click="showRegister">Register</button>
     </div>
+    <!-- Register Below -->
     <div id="register">
       <button id="close" @click="divHide(), reverseRegister()">X</button>
       <h1>Register</h1>
@@ -98,7 +100,7 @@ export default {
   },
   methods: {
     divHide() {
-      document.getElementById("loginPopUp").style.display = "none";
+      this.$store.commit("HIDE_LOGIN");
     },
     // fileSelected(event) {
     //   // Check if a file was selected
@@ -159,51 +161,50 @@ export default {
   margin-top: -0.8em;
 }
 
+.login {
+  height: 150px;
+  display: flex;
+  border: 1px solid #9c9b96;
+  margin: 0 1.5rem;
+  box-sizing: border-box;
+}
+
 #register {
   display: none;
 }
 
-button,
-input {
+button {
   border: none;
   outline: none;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 0.5rem auto;
   padding: 0.5rem;
-  width: 75%;
-  max-width: 300px;
+  width: 80%;
   display: block;
 }
 
+button:hover {
+  color: black;
+}
+
 #close {
-  position: fixed;
-  right: 0;
+  position: absolute;
   top: 0;
+  right: 0;
+  max-width: 15px;
+  padding: 0 0;
+  margin: 0.5rem;
+  align-items: center;
+}
+
+input {
   border: none;
   outline: none;
-  width: 5%;
-  height: 5%;
-  max-width: 40px;
-  text-align: center;
-  padding: 0;
+  margin: 0 auto 0.5rem auto;
+  padding: 0.5rem;
+  width: 75%;
+  display: block;
 }
 
-.file-upload input[type="file"] {
-  display: none;
-}
-.file-upload {
-  border: 1px solid lightgrey;
-  color: grey;
-  width: 25%;
-
-  cursor: pointer;
-  padding: 0.5rem 2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  display: inline-block;
-  text-transform: uppercase;
-  background-color: #c9c8c3;
-  font-size: 13.33px;
-}
 .avatar-preview {
   width: 200px;
   height: 200px;
