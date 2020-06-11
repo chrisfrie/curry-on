@@ -11,6 +11,11 @@
       v-if="$store.getters.isChapterRevealed(3)"
       >3</router-link
     >
+    <router-link
+      :to="{ name: 'chapter4' }"
+      v-if="$store.getters.isChapterRevealed(3)"
+      >4</router-link
+    >
   </nav>
 </template>
 
