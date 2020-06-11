@@ -92,5 +92,17 @@ export default {
 .user-info {
   text-align: left;
   align-self: center;
+  padding: 0 0 0 20px;
+}
+button {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+@media (max-width: 390px) {
+  .profile-body {
+    flex-wrap: wrap;
+  }
 }
 </style>
