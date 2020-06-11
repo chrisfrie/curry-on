@@ -2,7 +2,6 @@
   <div class="chapter" id="chapter3">
     <StoryNav />
     <div>
-      <h2>Chapter Three</h2>
       <p>
         ( country song )<br />
         “ Franz. Franz. Franz, Franz Josef! <br />
