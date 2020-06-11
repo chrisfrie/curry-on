@@ -81,15 +81,9 @@ const routes = [
     props: true
   },
   {
-    path: "/profiles/:id",
+    path: "/profile",
     name: "profile",
-    component: Profile,
-    async beforeEnter(to, from, next) {
-      const res = await axios.get(`/users/${to.params.id}`);
-      to.params.user = res.data;
-      next();
-    },
-    props: true
+    component: Profile
   }
 ];
 

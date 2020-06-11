@@ -44,11 +44,6 @@
         :challenge="challenge"
         :key="index"
       />
-      <ChallengeCard
-        v-for="(challenge, index) in challenges"
-        :challenge="challenge"
-        :key="index"
-      />
     </div>
   </div>
 </template>
