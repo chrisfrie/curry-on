@@ -15,19 +15,21 @@
           type="email"
           name="email"
           placeholder="Email"
+          @blur="$v.user.email.$touch()"
         />
-        <!-- <div v-if="$v.user.email.$error" class="error">
-            Email is required, please check your input
-          </div> -->
+        <div v-if="$v.user.email.$error" class="error">
+          Email is required, please check your input
+        </div>
         <input
           v-model="user.password"
           type="password"
           name="password"
           placeholder="Password"
+          @blur="$v.user.password.$touch()"
         />
-        <!-- <div v-if="$v.user.password.$error" class="error">
-            Password is required, has to have at least 6 characters
-          </div> -->
+        <div v-if="$v.user.password.$error" class="error">
+          Password is required, has to have at least 6 characters
+        </div>
 
         <button type="submit">Login</button>
       </form>
@@ -52,21 +54,31 @@
           type="text"
           name="name"
           placeholder="Username"
+          @blur="$v.user.username.$touch()"
         />
+        <div v-if="$v.user.username.$error" class="error">
+          Username is required, please check your input
+        </div>
         <input
           v-model="user.email"
           type="email"
           name="email"
           placeholder="Email"
+          @blur="$v.user.email.$touch()"
         />
-
+        <div v-if="$v.user.email.$error" class="error">
+          Email is required, please check your input
+        </div>
         <input
           v-model="user.password"
           type="password"
           name="password"
           placeholder="Password"
+          @blur="$v.user.password.$touch()"
         />
-
+        <div v-if="$v.user.password.$error" class="error">
+          Password is required, please check your input
+        </div>
         <button type="submit">Register</button>
       </form>
     </div>
@@ -74,6 +86,8 @@
 </template>
 
 <script>
+import { required, email, minLength } from "vuelidate/lib/validators";
+
 export default {
   data() {
     return {
@@ -110,19 +124,12 @@ export default {
       });
     },
     submitRegister() {
-      // try {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
       this.$store.dispatch("register", this.user);
       // this.$router.push("/challenges");
-
-      //   if (this.avatar) {
-      //     await this.$store.dispatch("createProfile", this.avatar);
-      //   }
-      // } catch {
-      //   this.$store.dispatch("pushNotification", {
-      //     type: "error",
-      //     message: "Sorry, couldn't register, please check your inputs"
-      //   });
-      // }
     },
     showRegister() {
       document.getElementById("register").style.display = "block";
@@ -132,11 +139,34 @@ export default {
       document.getElementById("register").style.display = "none";
       document.getElementById("login").style.display = "block";
     }
+  },
+  validations: {
+    user: {
+      email: {
+        required,
+        email
+      },
+      password: {
+        required,
+        minLength: minLength(6)
+      },
+      username: {
+        required
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
+.error {
+  color: lightcoral;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.5em;
+  margin-top: -0.8em;
+}
+
 .login {
   height: 150px;
   display: flex;

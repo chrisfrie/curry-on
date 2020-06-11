@@ -1,6 +1,18 @@
 <template>
   <div id="app">
     <Navbar v-if="$store.state.user" />
+    <div class="notification-container">
+      <transition-group tag="span" name="list">
+        <div
+          v-for="notification in $store.state.notifications"
+          :key="notification.id"
+        >
+          <p :class="notification.type">
+            {{ notification.message }}
+          </p>
+        </div>
+      </transition-group>
+    </div>
     <router-view />
     <footer>
       <div class="footer-inner-container">
@@ -109,5 +121,45 @@ button {
   color: var(--dark-text);
   border: 2px solid #9c9b96;
   outline: none;
+}
+
+.list-enter {
+  opacity: 0;
+  transform: scaleY(0);
+}
+.list-enter-active {
+  transition: all 1s;
+}
+.list-enter-to {
+  opacity: 1;
+  transform: none;
+}
+.list-leave {
+  opacity: 1;
+}
+.list-leave-active {
+  transition: all 1s;
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(200px);
+}
+
+.notification-container {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  width: 300px;
+}
+.notification-container p {
+  background-color: rgb(223, 253, 223);
+  color: green;
+  border-left: 3px solid green;
+  padding: 1em 0.5em;
+}
+.notification-container p.error {
+  color: red;
+  background-color: rgb(255, 219, 219);
+  border-left: 3px solid red;
 }
 </style>
