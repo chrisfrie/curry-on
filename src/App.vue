@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar v-if="$store.state.user" />
+    <router-view />
     <footer>
       <div class="footer-inner-container">
         <div class="footer-links">
