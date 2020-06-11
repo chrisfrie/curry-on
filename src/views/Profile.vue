@@ -98,6 +98,7 @@ button {
   border-radius: 50%;
   width: 150px;
   height: 150px;
+  cursor: pointer;
 }
 
 @media (max-width: 390px) {
