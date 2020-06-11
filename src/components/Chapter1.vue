@@ -1,29 +1,41 @@
 <template>
   <div class="chapter" id="chapter1">
     <div class="chapter-content">
+      <h2>Chapter I</h2>
       <div>
-        <h2>Chapter I</h2>
         <p>
-          And it was indeed… What a woman, her passion, heart, intelligence,
-          spicy shine in her eye. I WAS IN LOVE!!! And even the fact that she
-          was married couldn’t stop me from worshiping her. Happily, Herta’s
-          husband was far away, starting a business in America.
+          My name is Manfred and back in the 50s I used to be a very respected
+          butler, serving oysters at the most glamorous parties and high society
+          events in Berlin. I had access to the absolutely best and the most
+          highly sophisticated cuisine you could imagine, but my true culinary
+          passion was Berlin's street food.
         </p>
 
         <p>
-          We, we ,we…. we were together all the time, spending nights and days
-          on exploring the city and introducing our golden invention to the
-          local street food scene. Currywurst became our love potion, favourite
-          snack and an absolute hit in Berlin! So precious, that sometimes we
-          would have to climb a tree to eat it in peace without people asking
-          “Where did you get it? I need one right now!”.
+          The purpose of that story, however, is not to brag about my status
+          back in the days... Oh my wurst, my memory… one second... of course!
         </p>
 
         <p>
-          Herta liked to surprise me with new spice combinations.. and would let
-          me try them during our blindfolded sessions … ahhhh… <br />I wouldn't
-          have thought back then that our perfect idyll would be over very
-          soon….
+          It all begins on this one hot evening, that changed my personal and
+          culinary life forever.
+        </p>
+
+        <p>
+          Every other night after work I was getting bratwurst at my favourite
+          Bude. After a quick chat with the famous Simon, the most successful
+          Street-Food-Bude owner himself, I picked my order and asked for extra
+          Tomatenmark on the sausage. It was getting late, so I quickly turned
+          back to head home…
+        </p>
+
+        <p>PUFFFFF!!!</p>
+        <p>
+          Golden cloud has blown up in the air! Spicy smelling dust covered my
+          tuxedo, bratwurst and everything around. “What is happening? Is that
+          magic or a bomb explosion?” After a few seconds, the dust settled and
+          there she was - the most stunning woman in Western Berlin standing in
+          front of me… and I knew that my heart was in trouble.
         </p>
       </div>
       <ChallengeCard

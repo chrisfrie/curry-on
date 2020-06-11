@@ -2,55 +2,29 @@
   <div class="chapter" id="chapter2">
     <div>
       <h2>Chapter II</h2>
+
       <p>
-        ( country song ) “ Franz. Franz. Franz, Franz Josef! <br />
-        I’m begging of you, please don't take my girl. <br />Franz. Franz.
-        Franz, Franz Josef! <br />Please don't take her just because you can…”
+        And it was indeed… What a woman, her passion, heart, intelligence, spicy
+        shine in her eye. I WAS IN LOVE!!! And even the fact that she was
+        married couldn’t stop me from worshiping her. Happily, Herta’s husband
+        was far away, starting a business in America. Together with Taylor H. -
+        internationally recognized investor - he was opening a big clock factory
+        in Chicago.
       </p>
 
       <p>
-        It was another hot night, but this time not curry but tension was in the
-        air.
+        We, we ,we…. we were together all the time, spending nights and days on
+        exploring the city and introducing our golden invention to the local
+        street food scene. Currywurst became our love potion, favourite snack
+        and an absolute hit in Berlin! So precious, that sometimes we would have
+        to climb a tree to eat it in peace without people asking “Where did you
+        get it? I need one right now!”.
       </p>
 
       <p>
-        “Manfred, I have to leave you, my husband is very sick, I need to take
-        care of him.” Herta said. “But what about me, us? Our love? What about
-        all of the currywurst we ate together?” I screamed. “I am sorry my love,
-        I don’t think you understand… It is 1959..I am a woman trapped in social
-        construct, I need to go to America to support my husband” she said.
-        “Please… you can’t break my heart”. I sobbed. “I am sorry” Herta
-        whispered. That night we had our last currywurst and the sky was crying
-        with us. The next day she left, and that image of her - sadly waving
-        from the train window - supposed to be the last one I'll ever be given
-        to save in my heart.
-      </p>
-
-      <p>
-        When I came back to my apartment, I felt empty. How can I just move on
-        with my life when I dedicated it to Herta and Currywurst?? I looked at
-        my kitchen counter and suddenly one thought popped up in my head -
-        “Maybe you can’t have her, but you can still continue your Currywurst
-        journey, you must!”.
-      </p>
-
-      <p>
-        I went through my cabinets and placed everything I found on the table.
-        “Wait a second…” I mumbled. “Vinegar, Tomatenmark, onion, garlic,
-        spices… Maybe the new chapter of my life needs a new Currywurst sauce!”
-        I mixed all of the ingredients, put my Wurst on the pan and when the
-        sausage was ready I poured the sauce over it and sprinkled everything
-        with curry powder. What I created was a true perfection.
-      </p>
-
-      <p>
-        I wanted to go to the other room and share it with Herta, but she was
-        very gone. “Stop that Manfred, you can’t live in your past” I
-        thought...but still.. I had to let someone taste this marvelous
-        creation!<br />
-        “Knock, knock” - there was a knock at the door. I opened.
-        “Surprise!!!!!” my friends and family screamed at me. “Oh my Lord” I
-        sighed. I totally forgot it was my birthday.
+        Herta liked to surprise me with new spice combinations.. and would let
+        me try them during our blindfolded sessions … ahhhh… <br />I wouldn't
+        have thought back then that our perfect idyll would be over very soon….
       </p>
     </div>
     <ChallengeCard

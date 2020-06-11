@@ -1,41 +1,22 @@
 <template>
   <div>
-    <h1>Welcome to the CurryOn game!</h1>
+    <h1>Welcome to CurryOn!</h1>
     <div class="intro-card">
       <div class="intro-card-intro">
         <img src="../../public/butler.png" alt="Butler" />
 
-        Experience every bite of Manfred’s and Herta’s currywurst love story by
-        completing a series of photo-challenges and evoke the drama!!!
+        <p>
+          Experience every bite of Manfred’s and Herta’s currywurst love story
+          <br />
+          by completing a series of photo-challenges and evoke the drama!!!
+        </p>
       </div>
       <ul class="list">
         <li>6 challenges to take</li>
         <li>3 chapters to reveal</li>
       </ul>
-      <p>
-        My name is Manfred and back in 50s I use to be a very respected butler,
-        serving oysters at the most glamorous parties and high society events in
-        Berlin. <br />
 
-        I was offered the best food you could imagine, but my true love was
-        street food of the Western Berlin. Getting some little treat after work
-        was my daily ritual. <br />
-
-        Everything in my culinary and personal life has changed this one hot
-        night… I was getting a bratwurst in my favourite Bude, after a quick
-        chat with Simon bude- owner I picked my order and asked for extra
-        tomatenmark on my sausage. It was getting late so I turned back to head
-        home… <br />
-        PUFFFFF!!! <br />
-        Golden cloud has blown up in the air! Spicy smelling dust covered my
-        tuxedo, bratwurst and everything around. What was that, was it that only
-        a mirage? <br />
-
-        When the dust saddled I saw a stunning women standing in front of me and
-        I knew that for that moment my heart was in trouble.
-        <br />
-        If you want to know what happened next push the button.
-      </p>
+      <p>Are you ready?</p>
     </div>
 
     <button id="popup" @click="divShow()" type="button" class="start">
