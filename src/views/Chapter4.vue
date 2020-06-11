@@ -19,6 +19,10 @@
         not be. You're tired Manfred” I thought. I looked once again and it
         became clear - she is back and she is back for good.
       </p>
+      <img
+        src="../../src/assets/images/tableWurst.svg"
+        style="width:158px;height:128px"
+      />
       <p>...</p>
 
       <p>
@@ -29,6 +33,7 @@
         who won the love of his life back. We spent our days mostly trying new
         Currywurst recipes, walking along the beach and talking. I was so happy.
       </p>
+
       <p>
         One morning we chose another direction and ended up having a picnic
         close to the Netherlands border. You could only imagine how surprised we
@@ -45,6 +50,10 @@
         make a very good indian curry” he recited. <br />
         “Curry, you say…” Herta smiled at me.
       </p>
+      <img
+        src="../../src/assets/images/nordsee.svg"
+        style="width:158px;height:128px"
+      />
 
       <p>…</p>
 
@@ -60,7 +69,10 @@
         “Son, you are truly a blessing, I am the happiest man in the world” I
         said and kissed Herta. My life was finally complete.
       </p>
-
+      <img
+        src="../../src/assets/images/theEnd.svg"
+        style="width:158px;height:128px"
+      />
       <p>THE END</p>
     </div>
 
