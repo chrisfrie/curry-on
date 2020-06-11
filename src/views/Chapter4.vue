@@ -19,7 +19,7 @@
         not be. You're tired Manfred” I thought. I looked once again and it
         became clear - she is back and she is back for good.
       </p>
-      <img src="../../src/assets/images/tablewurst.svg" />
+      <img src="../../src/assets/images/tablewurstSecondTry.svg" />
       <p>...</p>
 
       <p>
@@ -66,7 +66,7 @@
         said and kissed Herta. My life was finally complete.
       </p>
       <div class="imgFlex">
-        <img src="../../src/assets/images/theend.svg" />
+        <img src="../../src/assets/images/theendsecondtry.svg" />
       </div>
       <p>THE END</p>
     </div>
