@@ -145,6 +145,16 @@ button {
   color: var(--dark-text);
   border: 2px solid #9c9b96;
   outline: none;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .list-enter {
