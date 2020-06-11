@@ -1,5 +1,6 @@
 <template>
   <div class="chapter" id="chapter2">
+    <StoryNav />
     <div>
       <h2>Chapter Two</h2>
       <p>
@@ -19,10 +20,12 @@
 
 <script>
 import ChallengeCard from "@/components/ChallengeCard.vue";
+import StoryNav from "@/components/StoryNav.vue";
 
 export default {
   components: {
-    ChallengeCard
+    ChallengeCard,
+    StoryNav
   },
   computed: {
     challenges() {
@@ -34,6 +37,9 @@ export default {
         return [];
       }
     }
+  },
+  created() {
+    this.$store.dispatch("fetchChallenges");
   }
 };
 </script>

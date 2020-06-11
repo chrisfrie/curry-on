@@ -181,7 +181,6 @@ export default new Vuex.Store({
     getChallengeById: state => id => {
       return state.challenges.find(challenge => challenge.id == id);
     },
-
     isChapterRevealed: state => chapterId => {
       if (!state.user) return false;
 
@@ -203,6 +202,12 @@ export default new Vuex.Store({
       } else {
         return false;
       }
+    },
+    getActiveChapter(state, getters) {
+      for (let chapter = 3; chapter > 1; --chapter) {
+        if (getters.isChapterRevealed(chapter)) return chapter;
+      }
+      return 1;
     }
   },
   modules: {}
