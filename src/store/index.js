@@ -59,7 +59,7 @@ export default new Vuex.Store({
   actions: {
     async register(ctx, userdata) {
       try {
-        const res = await axios.post("/auth/local/register", userdata);
+        const res = await axios.post("auth/local/register", userdata);
         const { user, jwt } = res.data;
         ctx.commit("SET_USER", user);
         ctx.commit("SET_JWT", jwt);

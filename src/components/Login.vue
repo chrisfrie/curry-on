@@ -89,7 +89,6 @@ export default {
         email: "",
         password: ""
       }
-      // avatar: null
     };
   },
   computed: {},

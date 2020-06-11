@@ -1,6 +1,37 @@
 <template>
   <div id="app">
-    <Navbar v-if="$store.state.user" />
+    <div>
+      <div class="main-container">
+        <main class="main-content">
+          <Navbar v-if="$store.state.user" />
+          <transition name="view">
+            <router-view />
+          </transition>
+        </main>
+        <footer>
+          <div class="footer-inner-container">
+            <div class="footer-links">
+              <ul>
+                <li>
+                  <a href="https://codecampleipzig.de/impressum.html"
+                    >Imprint</a
+                  >
+                </li>
+                <li>
+                  <a href="https://codecampleipzig.de/privacy.html">Privacy</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-copyright">
+              <p>
+                Designed and Built by team "Curry-On" Code Camp Leipzig Class 2
+              </p>
+              <p>Copyright © 2020 All Rights Reserved</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
     <div class="notification-container">
       <transition-group tag="span" name="list">
         <div
@@ -13,27 +44,6 @@
         </div>
       </transition-group>
     </div>
-    <transition name="view">
-      <router-view />
-    </transition>
-    <footer>
-      <div class="footer-inner-container">
-        <div class="footer-links">
-          <ul>
-            <li>
-              <a href="https://codecampleipzig.de/impressum.html">Imprint</a>
-            </li>
-            <li>
-              <a href="https://codecampleipzig.de/privacy.html">Privacy</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-copyright">
-          <p>Designed and Built by team "Curry-On" Code Camp Leipzig Class 2</p>
-          <p>Copyright © 2020 All Rights Reserved</p>
-        </div>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -57,6 +67,17 @@ body {
   background-color: var(--light-background);
   font-size: 20px;
   line-height: 1.5;
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.main-content {
+  flex-grow: 1;
 }
 
 .footer-inner-container {
@@ -64,6 +85,7 @@ body {
 }
 
 footer {
+  flex-shrink: 0;
   display: grid;
   width: 100%;
   font-size: 0.8rem;
@@ -125,6 +147,16 @@ button {
   color: var(--dark-text);
   border: 2px solid #9c9b96;
   outline: none;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .list-enter {
@@ -176,10 +208,6 @@ button {
 
 .view-enter-active .view-leave-active {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease;
-}
-
-.view-enter-active {
-  transition-delay: 0.5s;
 }
 
 .view-enter,
