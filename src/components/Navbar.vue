@@ -54,7 +54,6 @@
         </div>
       </transition>
     </div>
-    <router-view />
   </div>
 </template>
 
