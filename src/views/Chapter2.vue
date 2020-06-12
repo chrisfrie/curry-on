@@ -67,4 +67,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chapter-content {
+  text-align: justify;
+}
+</style>

@@ -20,7 +20,7 @@
         became clear - she is back and she is back for good.
       </p>
       <img src="../../src/assets/images/tablewurstSecondTry.svg" />
-      <p>...</p>
+      <p style="text-align: center">…</p>
 
       <p>
         Herta and I decided to spend the summer up in my cabin. We needed some
@@ -51,7 +51,7 @@
         <img src="../../src/assets/images/nordsee.svg" />
       </div>
 
-      <p>…</p>
+      <p style="text-align: center">…</p>
 
       <p>
         “Gabe, Herta, please, Curry on! We are late for the Christmas Market!” I
@@ -87,4 +87,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chapter-content {
+  text-align: justify;
+}
+</style>
