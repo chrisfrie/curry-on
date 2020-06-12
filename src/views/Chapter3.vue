@@ -2,12 +2,12 @@
   <div class="chapter" id="chapter3">
     <StoryNav />
     <div class="chapter-content">
-      <p>
-        ( country song )<br />
-        “ Franz. Franz. Franz, Franz Josef! <br />
+      <p style="text-align:left; font-style: italic">
+        Franz. Franz. Franz, Franz Josef! <br />
         I’m begging of you, please don't take my girl. <br />Franz. Franz.
-        Franz, Franz Josef! <br />Please don't take her just because you can…”
+        Franz, Franz Josef! <br />Please don't take her just because you can…
       </p>
+
       <div class="imgFlex">
         <img src="../../src/assets/images/franzandhertaWedding.svg" />
       </div>
@@ -52,12 +52,14 @@
 
       <p>
         I wanted to go to the other room and share it with Herta, but she was
-        very gone. “Stop that Manfred, you can’t live in your past” I
-        thought...but still.. I had to let someone taste this marvelous
-        creation!<br />
+        very gone. <br />
+        “Stop that Manfred, you can’t live in your past” I scolded myself.
+        <br />
+        Still.. I had to let someone taste this marvelous creation!<br />
         “Knock, knock” - there was a knock at the door. I opened.
         “Surprise!!!!!” my friends and family screamed at me. “Oh my Lord” I
-        sighed. I totally forgot it was my birthday.
+        sighed.<br />
+        I totally forgot it was my birthday.
       </p>
       <div class="imgFlex">
         <img src="../../src/assets/images/tableTwosmall.svg" />
@@ -101,4 +103,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chapter-content {
+  text-align: justify;
+}
+</style>
