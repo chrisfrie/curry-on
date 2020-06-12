@@ -77,6 +77,8 @@ const general = [
       "cunt",
       "bugger",
       "twat",
+      "idiot",
+      "asshole",
       "suck"
     ],
     responses: [
