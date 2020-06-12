@@ -11,8 +11,8 @@
         </p>
       </div>
       <ul class="list">
-        <li>6 challenges to take</li>
-        <li>3 chapters to reveal</li>
+        <li>6 Challenges to take</li>
+        <li>3 Chapters to reveal</li>
       </ul>
 
       <p>
@@ -84,6 +84,7 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  margin: 0 1rem;
 }
 
 .intro-card-intro p {
@@ -94,9 +95,18 @@ button {
   max-width: 30ch;
 }
 
+.intro-card-intro img {
+  padding-right: 0.5rem;
+}
+
 .list {
   list-style-type: none;
 }
+
+li {
+  letter-spacing: 1.6px;
+}
+
 button {
   border: none;
   outline: none;
@@ -108,6 +118,6 @@ button {
 }
 
 .text {
-  float: right;
+  text-align: justify;
 }
 </style>
