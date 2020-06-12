@@ -108,6 +108,6 @@ button {
 }
 
 .text {
-  text-align: justify;
+  float: right;
 }
 </style>
