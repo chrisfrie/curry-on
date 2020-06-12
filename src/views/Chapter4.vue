@@ -70,7 +70,6 @@
       <div class="imgFlex">
         <img src="../../src/assets/images/theendsecondtry.svg" />
       </div>
-      <p>THE END</p>
     </div>
 
     <Chatbot />

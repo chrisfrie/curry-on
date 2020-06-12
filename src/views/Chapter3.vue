@@ -70,19 +70,16 @@
       :challenge="challenge"
       :key="index"
     />
-    <Chatbot v-if="$store.getters.isChapterRevealed(4)" />
   </div>
 </template>
 
 <script>
 import ChallengeCard from "@/components/ChallengeCard.vue";
-import Chatbot from "@/components/Chatbot.vue";
 import StoryNav from "@/components/StoryNav.vue";
 
 export default {
   components: {
     ChallengeCard,
-    Chatbot,
     StoryNav
   },
   computed: {
