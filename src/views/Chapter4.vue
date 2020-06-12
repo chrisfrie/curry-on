@@ -19,7 +19,9 @@
         not be. You're tired Manfred” I thought. I looked once again and it
         became clear - she is back and she is back for good.
       </p>
-      <img src="../../src/assets/images/tablewurstSecondTry.svg" />
+      <div class="imgFlex">
+        <img src="../../src/assets/images/tablewurstSecondTry.svg" />
+      </div>
       <p>...</p>
 
       <p>
