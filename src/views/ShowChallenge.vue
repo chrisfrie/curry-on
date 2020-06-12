@@ -11,8 +11,22 @@
 
     <div class="form-popup" id="challengeForm">
       <form class="form-container" @submit.prevent="submit">
-        <label for="chooseAPicture">Choose a Picture</label>
-        <input type="file" @change="fileSelected" required />
+        <!-- <label for="chooseAPicture">Choose a Picture</label>
+        <input type="file" @change="fileSelected" required /> -->
+
+        <template>
+          <input
+            style="display: none"
+            ref="fileInput"
+            @change="fileSelected"
+            type="file"
+            required
+          />
+          <button class="choose-pic" @click="$refs.fileInput.click()">
+            Choose a Picture
+          </button>
+        </template>
+
         <label for="Caption">Describe your Picture</label>
         <input v-model="caption" type="text" />
 
@@ -66,6 +80,17 @@ export default {
 </script>
 
 <style scoped>
+label {
+  padding-top: 1rem;
+}
+
+button.choose-pic {
+  display: block;
+  padding: 16px 20px;
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
 .challenge-details {
   max-width: 500px;
   margin: 0 auto;

@@ -33,14 +33,11 @@ export default {
 .gallery-container {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 0 2rem 2rem;
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  max-width: 90%;
-  margin: 1rem auto;
   justify-content: center;
 }
 
@@ -54,22 +51,16 @@ h4 {
 }
 
 .gallery-panel {
-  flex: 1 0 8rem;
   object-fit: cover;
   border-radius: 0.2rem;
-  margin: 1rem;
-  box-shadow: 0.3rem 0.4rem 0.4rem #9c9b96;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .gallery-panel img {
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
+  margin: 0.3rem;
   object-fit: cover;
-  transition: transform 400ms ease-out;
-}
-
-.gallery-panel img:hover {
-  transform: scale(1.15);
 }
 </style>
