@@ -226,6 +226,27 @@ button {
   flex-shrink: 0;
   scroll-snap-align: start;
 }
+
+.chapter-content {
+  margin: 0 1rem;
+}
+
+.imgFlex img {
+  margin: 0 1rem;
+}
+
+@media (max-width: 599px) {
+  .imgFlex img {
+    max-width: 90vw;
+  }
+}
+
+@media (min-width: 600px) {
+  .imgFlex img {
+    max-width: 500px;
+  }
+}
+
 .slide-left-leave-active,
 .slide-right-leave-active,
 .slide-left-leave-active .chapter-content,

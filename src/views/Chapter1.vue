@@ -32,7 +32,7 @@
           back to head home…
         </p>
 
-        <p>PUFFFFF!!!</p>
+        <p style="text-align: center">PUFFFFF!!!</p>
         <div class="imgFlex">
           <img src="../../src/assets/images/curryDust.svg" />
         </div>
@@ -76,4 +76,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chapter-content {
+  text-align: justify;
+}
+</style>
