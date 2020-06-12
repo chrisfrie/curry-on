@@ -52,21 +52,23 @@ export default {
 .challenge-card {
   height: 150px;
   display: flex;
-  border: 1px solid #9c9b96;
-  margin: 0 1.5rem;
+  border: 1.2px solid #9c9b96;
+  margin: 0.5rem;
+  margin-top: 0;
+  margin-left: 2rem;
   box-sizing: border-box;
-  box-shadow: -6px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: -15px 8px 15px rgba(0, 0, 0, 0.1);
 }
 .challenge-container:last-child {
   margin-bottom: 4rem;
 }
 
 .challenge-card img {
-  width: 150px;
+  width: 120px;
   height: 120px;
   object-fit: cover;
   box-sizing: border-box;
-  margin-left: -2rem;
+  margin-left: -1rem;
   align-self: center;
   border: 1px solid #9c9b96;
 }
