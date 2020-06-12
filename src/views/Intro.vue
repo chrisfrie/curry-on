@@ -107,4 +107,8 @@ button {
   max-width: 300px;
   display: block;
 }
+
+.text {
+  text-align: justify;
+}
 </style>
