@@ -100,6 +100,7 @@ main.main-content {
 
 .footer-inner-container {
   border-top: 1px solid #bdbcb6;
+  z-index: 1;
 }
 
 footer {
