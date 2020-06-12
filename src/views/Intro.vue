@@ -1,12 +1,13 @@
 <template>
   <div>
     <h1>CurryOn!</h1>
+    <h2>A story game for Wurst-Enthusiast</h2>
     <div class="intro-card">
       <div class="intro-card-intro">
         <img src="../../public/butler.png" alt="Butler" />
         <p class="text">
-          Experience every bite of Manfred’s and Herta’s currywurst love story
-          by completing a series of photo-challenges and evoke the drama!!!
+          Experience every bite of Manfred’s currywurst love story by completing
+          a series of photo-challenges and evoke the drama!!!
         </p>
       </div>
       <ul class="list">
