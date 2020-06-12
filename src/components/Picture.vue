@@ -55,12 +55,12 @@ export default {
   display: table;
 }
 .container img {
-  max-width: 80%;
+  max-width: 60%;
 }
 .picture-info {
   display: block;
   margin: 0 auto;
-  min-width: 80%;
+  min-width: 60%;
   border-radius: 10%;
   display: table-cell;
 }
