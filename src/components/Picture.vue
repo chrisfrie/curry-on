@@ -52,17 +52,17 @@ export default {
   overflow: auto;
   border-radius: 1%;
   position: relative;
+  display: table;
 }
 .container img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 60%;
 }
 .picture-info {
   display: block;
   margin: 0 auto;
-  min-width: 80%;
-  max-width: 80%;
+  min-width: 60%;
   border-radius: 10%;
+  display: table-cell;
 }
 .picture-caption {
   background-color: var(--light-background);
