@@ -244,7 +244,6 @@ main ul {
 footer {
   display: flex;
   justify-content: space-between;
-  z-index: 1;
 }
 
 footer input {
