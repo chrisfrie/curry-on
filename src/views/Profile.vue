@@ -2,7 +2,20 @@
   <div class="profile-wrapper">
     <h2>Profile</h2>
     <section class="profile-body">
-      <div class="avatar"><img :src="imageURL" /></div>
+      <div v-if="user.profile && user.profile.avatar" class="avatar">
+        <img :src="imageURL" />
+      </div>
+
+      <template v-else-if="$store.state.user.id == user.id">
+        <input
+          style="display: none"
+          ref="fileInput"
+          @change="fileSelected"
+          type="file"
+        />
+        <button @click="$refs.fileInput.click()">Upload Avatar</button>
+      </template>
+
       <div class="user-info">
         <h2>{{ user.username }}</h2>
         <p>Current Pommes Points: {{ pommesPoints }}</p>
@@ -16,13 +29,20 @@
 import ProfileGallery from "@/components/ProfileGallery.vue";
 
 export default {
-  props: ["user"],
   components: {
     ProfileGallery
   },
+  data() {
+    return {
+      avatar: null
+    };
+  },
   computed: {
+    user() {
+      return this.$store.state.user;
+    },
     imageURL() {
-      return "http://localhost:1337" + this.user.profile.avatar.url;
+      return process.env.VUE_APP_UPLOAD_URL + this.user.profile.avatar.url;
     },
     pommesPoints() {
       if (!this.$store.state.challenges.length) return 0;
@@ -35,6 +55,19 @@ export default {
         currentPoints += Number(challenge.pommesPoints);
       }
       return currentPoints;
+    },
+    avatarPreviewUrl() {
+      return this.avatar ? window.URL.createObjectURL(this.avatar) : null;
+    }
+  },
+  methods: {
+    fileSelected(event) {
+      // Check if a file was selected
+      if (event.target.files.length == 0) {
+        return;
+      }
+
+      this.$store.dispatch("createProfile", { avatar: event.target.files[0] });
     }
   },
   async created() {
@@ -46,18 +79,32 @@ export default {
 <style scoped>
 .profile-body {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .avatar img {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border: 1px black;
+  border: 2px solid #bdbcb6;
   border-radius: 50%;
-  margin-right: 2rem;
+  margin: 1rem;
 }
 .user-info {
-  text-align: left;
+  text-align: center;
   align-self: center;
+  padding: 0 0 0 20px;
+}
+button {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+@media (max-width: 390px) {
+  .profile-body {
+    flex-wrap: wrap;
+  }
 }
 </style>

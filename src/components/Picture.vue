@@ -1,16 +1,20 @@
 <template>
-  <div class="lightbox" @click.self="closeLightbox">
+  <div class="container" @click.self="closeLightbox">
     <img :src="myApiUrl + picture.userChallengePicture.url" />
-    <div class="lightbox-info">
-      <div class="lightbox-info-inner">
+    <div class="picture-info">
+      <div class="picture-caption">
         {{ picture.caption }}
+        <div class="picture-user">
+          by:
+          {{ picture.user.username }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { getPictures, getChallenges } from "@/services/challenge-service.js";
+import { getPictures } from "@/services/challenge-service.js";
 
 export default {
   name: "Picture",
@@ -27,7 +31,7 @@ export default {
       });
     },
     myApiUrl() {
-      return process.env.VUE_APP_API_URL;
+      return process.env.VUE_APP_UPLOAD_URL;
     }
   },
   methods: {
@@ -37,36 +41,37 @@ export default {
   },
   async created() {
     this.pictures = (await getPictures()).data;
-    this.challenges = (await getChallenges()).data;
   }
 };
 </script>
 
 <style scoped>
-.lightbox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: auto;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container {
+  opacity: 0.95;
+  background-color: #313131;
+  overflow: auto;
+  border-radius: 1%;
+  position: relative;
 }
-.lightbox img {
-  margin: 30% 0 0 0;
-  width: 100%;
+.container img {
+  max-width: 80%;
+  max-height: 80%;
 }
-.lightbox-info {
-  margin: 0;
-  width: 100vw;
+.picture-info {
+  display: block;
+  margin: 0 auto;
+  min-width: 80%;
+  max-width: 80%;
+  border-radius: 10%;
 }
-.lightbox-info-inner {
+.picture-caption {
   background-color: var(--light-background);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  justify-content: center;
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 1%;
+}
+
+.picture-user {
+  font-size: 24px;
 }
 </style>

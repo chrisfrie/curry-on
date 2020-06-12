@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="challenge-details">
     <h1>
       {{ challenge.title }}
     </h1>
@@ -11,10 +11,24 @@
 
     <div class="form-popup" id="challengeForm">
       <form class="form-container" @submit.prevent="submit">
-        <label for="chooseAPicture">Choose a Picture</label>
-        <input type="file" @change="fileSelected" required />
+        <!-- <label for="chooseAPicture">Choose a Picture</label>
+        <input type="file" @change="fileSelected" required /> -->
+
+        <template>
+          <input
+            style="display: none"
+            ref="fileInput"
+            @change="fileSelected"
+            type="file"
+            required
+          />
+          <button class="choose-pic" @click="$refs.fileInput.click()">
+            Choose a Picture
+          </button>
+        </template>
+
         <label for="Caption">Describe your Picture</label>
-        <input type="text" />
+        <input v-model="caption" type="text" />
 
         <button type="submit" class="btn">Upload</button>
         <button type="button" class="btn cancel" @click="closeForm()">
@@ -50,7 +64,7 @@ export default {
     submit() {
       this.$store.dispatch("completeChallenge", {
         challenge: this.challenge.id,
-        caption: "CAPTION",
+        caption: this.caption,
         userChallengePicture: this.userChallengePicture
       });
     },
@@ -66,6 +80,22 @@ export default {
 </script>
 
 <style scoped>
+label {
+  padding-top: 1rem;
+}
+
+button.choose-pic {
+  display: block;
+  padding: 16px 20px;
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+.challenge-details {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .open-button {
   padding: 16px 20px;
   cursor: pointer;

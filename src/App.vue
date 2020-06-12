@@ -1,6 +1,49 @@
 <template>
   <div id="app">
-    <Navbar />
+    <div>
+      <div class="main-container">
+        <main class="main-content">
+          <Navbar v-if="$store.state.user" />
+          <transition :name="transitionName">
+            <router-view />
+          </transition>
+        </main>
+        <footer>
+          <div class="footer-inner-container">
+            <div class="footer-links">
+              <ul>
+                <li>
+                  <a href="https://codecampleipzig.de/impressum.html"
+                    >Imprint</a
+                  >
+                </li>
+                <li>
+                  <a href="https://codecampleipzig.de/privacy.html">Privacy</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-copyright">
+              <p>
+                Designed and Built by team "Curry-On" Code Camp Leipzig Class 2
+              </p>
+              <p>Copyright © 2020 All Rights Reserved</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="notification-container">
+      <transition-group tag="span" name="list">
+        <div
+          v-for="notification in $store.state.notifications"
+          :key="notification.id"
+        >
+          <p :class="notification.type">
+            {{ notification.message }}
+          </p>
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
@@ -9,6 +52,24 @@ import Navbar from "@/components/Navbar.vue";
 export default {
   components: {
     Navbar
+  },
+  data() {
+    return {
+      transitionName: ""
+    };
+  },
+  watch: {
+    $route(to, from) {
+      if (from.name.startsWith("chapter") && to.name.startsWith("chapter")) {
+        const toChapter = Number(to.name[7]);
+        const fromChapter = Number(from.name[7]);
+
+        this.transitionName =
+          toChapter < fromChapter ? "slide-right" : "slide-left";
+      } else {
+        this.transitionName = "none";
+      }
+    }
   }
 };
 </script>
@@ -22,6 +83,45 @@ export default {
 
 body {
   background-color: var(--light-background);
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.main-content {
+  flex-grow: 1;
+}
+
+.footer-inner-container {
+  border-top: 1px solid #bdbcb6;
+}
+
+footer {
+  flex-shrink: 0;
+  display: grid;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+ul {
+  padding: 0;
+}
+.footer-links li {
+  display: inline-block;
+}
+
+.footer-links li:not(:first-child) {
+  margin-left: 1em;
+}
+
+a {
+  text-decoration: none;
 }
 
 #app {
@@ -33,7 +133,7 @@ body {
 }
 
 :root {
-  --light-text: #ebf1f0;
+  --light-text: #f4f3ed;
   --dark-text: #545454;
   --light-background: #f4f3ed;
   --dark-background: #4e4e5f;
@@ -65,5 +165,103 @@ button {
   color: var(--dark-text);
   border: 2px solid #9c9b96;
   outline: none;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.list-enter {
+  opacity: 0;
+  transform: scaleY(0);
+}
+.list-enter-active {
+  transition: all 1s;
+}
+.list-enter-to {
+  opacity: 1;
+  transform: none;
+}
+.list-leave {
+  opacity: 1;
+}
+.list-leave-active {
+  transition: all 1s;
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(200px);
+}
+
+.notification-container {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  width: 300px;
+}
+
+.notification-container p {
+  background-color: rgba(240, 197, 82, 0.5);
+  color: #545454;
+  border-left: 3px solid #545454;
+  padding: 1em 0.5em;
+}
+
+.notification-container p.error {
+  color: #545454;
+  background-color: rgba(240, 197, 82, 0.5);
+  padding: 1em 0.5em;
+  border-left: 3px solid #545454;
+}
+
+.chapter {
+  max-width: 500px;
+  margin: 0 auto;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+.slide-left-leave-active,
+.slide-right-leave-active,
+.slide-left-leave-active .chapter-content,
+.slide-right-leave-active .chapter-content {
+  transition: all 1s ease-in;
+}
+
+.slide-left-enter-active,
+.slide-right-enter-active,
+.slide-left-enter-active .chapter-content,
+.slide-right-enter-active .chapter-content {
+  transition: all 1s ease-out 1s;
+}
+
+.slide-left-enter .chapter-content {
+  transform: translateX(100vw);
+}
+
+.slide-left-leave-to .chapter-content {
+  transform: translateX(-100vw);
+}
+
+.slide-right-enter .chapter-content {
+  transform: translateX(-100vw);
+}
+
+.slide-right-leave-to .chapter-content {
+  transform: translateX(100vw);
+}
+
+.imgFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  max-width: 380px;
 }
 </style>
