@@ -4,7 +4,7 @@
       <div class="main-navbar">
         <div class="logo">
           <router-link to="/"
-            ><img src="../../public/butler.png" alt="Butler"
+            ><img src="../../src/assets/images/KONIEC0.png" alt="CurryOnLogo"
           /></router-link>
         </div>
         <div class="sk-circle" v-if="$store.state.loading">
