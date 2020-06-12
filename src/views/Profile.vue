@@ -79,18 +79,32 @@ export default {
 <style scoped>
 .profile-body {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .avatar img {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border: 1px black;
+  border: 2px solid #bdbcb6;
   border-radius: 50%;
-  margin-right: 2rem;
+  margin: 1rem;
 }
 .user-info {
-  text-align: left;
+  text-align: center;
   align-self: center;
+  padding: 0 0 0 20px;
+}
+button {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+@media (max-width: 390px) {
+  .profile-body {
+    flex-wrap: wrap;
+  }
 }
 </style>
