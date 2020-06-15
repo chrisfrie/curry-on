@@ -5,6 +5,7 @@ import router from "@/router";
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 Vue.use(Vuex);
+Vue.config.devtools = true;
 
 let nextId = 1;
 
@@ -41,6 +42,7 @@ export default new Vuex.Store({
     SET_CHALLENGES(state, challenges) {
       state.challenges = challenges;
     },
+
     PUSH_NOTIFICATION(state, notification) {
       state.notifications.push(notification);
     },
@@ -129,8 +131,10 @@ export default new Vuex.Store({
     },
 
     async completeChallenge(ctx, { userChallengePicture, caption, challenge }) {
+      console.log(userChallengePicture, caption);
       try {
-        const formData = new FormData();
+        let formData = new FormData();
+        console.log("formdata init");
         formData.set(
           "data",
           JSON.stringify({
