@@ -10,9 +10,11 @@
     <button class="open-button" @click="openForm()">Accept Challenge!</button>
 
     <div class="form-popup" id="challengeForm">
-      <form class="form-container" @submit.prevent="submit">
-        <!-- <label for="chooseAPicture">Choose a Picture</label>
-        <input type="file" @change="fileSelected" required /> -->
+      <form novalidate @submit.prevent class="form-container">
+        <div class="picture-preview">
+          <img v-if="pictureUrl" :src="pictureUrl" />
+          <p v-else>Preview</p>
+        </div>
 
         <template>
           <input
@@ -30,7 +32,9 @@
         <label for="Caption">Describe your Picture</label>
         <input v-model="caption" type="text" />
 
-        <button type="submit" class="btn">Upload</button>
+        <button type="submit" class="btn" @click="submit">
+          Upload
+        </button>
         <button type="button" class="btn cancel" @click="closeForm()">
           Close
         </button>
@@ -52,6 +56,14 @@ export default {
     return {
       userChallengePicture: null
     };
+  },
+
+  computed: {
+    pictureUrl() {
+      return this.userChallengePicture
+        ? window.URL.createObjectURL(this.userChallengePicture)
+        : null;
+    }
   },
 
   methods: {
@@ -82,6 +94,15 @@ export default {
 <style scoped>
 label {
   padding-top: 1rem;
+}
+
+.picture-preview img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #bdbcb6;
+  border-radius: 50%;
+  margin: 1rem;
 }
 
 button.choose-pic {

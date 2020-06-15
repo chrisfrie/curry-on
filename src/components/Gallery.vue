@@ -27,13 +27,9 @@ export default {
     },
     filteredPictures() {
       return this.challenge.pictures.filter(
-        picture => !picture.userChallengePicture.url
+        picture => picture.userChallengePicture.url
       );
     }
-  },
-  created() {
-    console.log("test");
-    console.log(this.challenge.pictures);
   }
 };
 </script>
