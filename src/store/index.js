@@ -152,6 +152,7 @@ export default new Vuex.Store({
           message: "Great, you successfully completed the challenge! Curry On!"
         });
       } catch {
+        ctx.commit("HIDE_LOADING");
         ctx.dispatch("pushNotification", {
           type: "error",
           message:

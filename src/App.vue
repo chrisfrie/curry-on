@@ -100,7 +100,7 @@ main.main-content {
 
 .footer-inner-container {
   border-top: 1px solid #bdbcb6;
-  background-color: var(--light-background)
+  background-color: var(--light-background);
   z-index: 1;
 }
 

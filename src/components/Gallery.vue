@@ -6,11 +6,11 @@
     <div class="gallery">
       <div
         class="gallery-panel"
-        v-for="picture in challenge.pictures"
+        v-for="picture in filteredPictures"
         :key="picture.id"
       >
         <router-link :to="`/pictures/${picture.id}`">
-          <img :src="myApiUrl + picture.userChallengePicture.url" />
+          <img :src="picture.userChallengePicture.url" />
         </router-link>
       </div>
     </div>
@@ -24,7 +24,16 @@ export default {
   computed: {
     myApiUrl() {
       return process.env.VUE_APP_UPLOAD_URL;
+    },
+    filteredPictures() {
+      return this.challenge.pictures.filter(
+        picture => !picture.userChallengePicture.url
+      );
     }
+  },
+  created() {
+    console.log("test");
+    console.log(this.challenge.pictures);
   }
 };
 </script>
