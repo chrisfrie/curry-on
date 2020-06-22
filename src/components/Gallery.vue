@@ -26,8 +26,11 @@ export default {
       return process.env.VUE_APP_UPLOAD_URL;
     },
     filteredPictures() {
-      return this.challenge.pictures.filter(
+      const validPictures = this.challenge.pictures.filter(
         picture => picture.userChallengePicture.url
+      );
+      return validPictures.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
     }
   }
