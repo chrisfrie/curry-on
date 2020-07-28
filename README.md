@@ -12,14 +12,14 @@ This open source game has been created and as the final project of the second cl
 
 ## How to play
 
-1.  Visit:
+1.  Visit: https://loving-feynman-16214a.netlify.app/
 2.  Login or register
 3.  Immerse yourself in Manfred's story
 4.  Complete challenges by eating Currywurst and uploading images
 
 ## Installation
 
-To get started run "yarn". This will get you all the packages used in the project. To run the game locally in your browser, run "yarn serve".
+To get started run "yarn" or "npm install". This will get you all the packages used in the project. To run the game locally in your browser, run "yarn serve" "npm serve".
 
 ## Backend
 
