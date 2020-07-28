@@ -1,29 +1,26 @@
-# curry-on
+# CurryOn!
 
-## Project setup
-```
-yarn install
-```
+<img src="src/assets/images/KONIEC0.png" width="200">
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+CurryOn! is a Story Game for Wurst-Enthusiasts.
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Over the course of four chapters and six challenges, Wurst-Enthusiast Manfred tells the story of his love for Currywurst.
 
-### Run your unit tests
-```
-yarn test:unit
-```
+This open source game has been created as the final project of the second class of the Code Camp Leipzig. The attentive reader will recognize some endearing guest appearances from the Code Camp Leipzig Team. If you want to contribute and help us make the game even more fun, you are very welcome!
 
-### Lints and fixes files
-```
-yarn lint
-```
+[Let's discover the story of Manfred!](https://loving-feynman-16214a.netlify.app/)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## How to play
+
+1.  Visit: https://loving-feynman-16214a.netlify.app/
+2.  Login or register
+3.  Immerse yourself in Manfred's story
+4.  Complete challenges by eating Currywurst and uploading images
+
+## Installation
+
+To get started run "yarn" or "npm install". This will get you all the packages used in the project. To run the game locally in your browser, run "yarn serve" "npm serve".
+
+## Backend
+
+The backend for the game can be found [here](https://github.com/chrisfrie/curry-on-api).
